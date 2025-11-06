@@ -1,90 +1,566 @@
-# project-terraform-github
+[![Terraform Plan](https://github.com/BKT-DevOps/01-github-infra/actions/workflows/terraform-plan.yaml/badge.svg?branch=develop)](https://github.com/BKT-DevOps/01-github-infra/actions/workflows/terraform-plan.yaml)
+<img width="1536" height="1024" alt="team_logo" src="https://github.com/user-attachments/assets/f59340f1-9ecd-4ead-9091-bc853bc50924" />
+# Terraform ve GitHub Actions İş Akışı ile GitHub Depolarını Yönetin
+
+Bu proje, herhangi bir kuruluş için Terraform aracılığıyla GitHub depo altyapısını yönetir ve **herhangi bir kuruluşu kolaylaştırmak** ve **kurulum karmaşıklığını ortadan kaldırmak** için tasarlanmıştır.
+
+**Organizatörler için:** Bu çözüm, organizatörlerin **standartlaştırılmış yapılandırmalara göre gerekli sayıda depoyu kolayca oluşturmalarını sağlayarak**, tüm ekiplerin/projelerin aynı kurulum ve güvenlik politikalarıyla başlamasını garanti eder. Depoları tek tek manuel olarak oluşturup yapılandırmak yerine, organizatörler tek bir birleştirme işlemiyle tüm altyapıyı ana dala dağıtabilirler.
+
+**Ekipler ve Katılımcılar için:** Ekip üyeleri ve liderleri, zaman alan GitHub yapılandırmaları, depo kurulumu ve erişim yönetimi için değerli zamanlarını harcamak yerine, **tamamen geliştirme görevlerine odaklanabilirler**. Tüm projeler aynı temel yapılandırmayı kullanır, böylece **standart ve tutarlı geliştirme ortamları** sağlanır.
+
+**Gelecekteki Organizasyonlar İçin: Bu proje, gelecekteki projeler veya etkinlikler için yeniden kullanılabilir bir şablon ve referans** görevi görür, organizatörlerin farklı proje formatları, ekip boyutları ve gereksinimler için altyapıyı hızlı bir şekilde uyarlayıp dağıtmasına olanak tanır.
+
+Sistem, otomatik GitHub Actions iş akışları aracılığıyla uygun güvenlik kontrolleri, dal koruma kuralları ve kullanıcı erişim yönetimi ile birden fazla ekip depolama alanı oluşturur ve yapılandırır.
+
+# Manage GitHub Repositories via Terraform and GitHub Actions Workflow
 
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 
 <br>
 
-> **ÖNEMLİ:** Bu repodaki kodlar, daha büyük bir proje olan **InfraCoders** projesinin bir parçasıdır. Projenin genel hedefleri hakkında bilgi için [`docs/PROJECT.md`](docs/PROJECT.md) belgesini inceleyin.
 
-<!-- LÜTFEN BU ALANI DOLDURUN: Bu reponun ne işe yaradığını anlatan bir veya iki cümlelik kısa bir açıklama ekleyin. -->
+# GitHub Organizasyonları için Terraform ile Repo, Takım ve Kullanıcı Yönetimi Projesi
+
+Bu Terraform konfigürasyonu, proje yönetimi için takım tabanlı bir yapıyla GitHub organizasyonunu yönetir. Kamuya açık topluluklar için tasarlanmıştır; projeler özel takımlar ve repolar ile organize edilir.
+
+
+## Mimari Genel Bakış
+
+### Temel Kavramlar
+
+- **Her Proje için Bir Takım**: Her proje için ayrı bir GitHub takımı oluşturulur.
+- **Takım Tabanlı Erişim**: Takımlar, proje repolarına uygun izinlerle atanır.
+- **Proje Liderleri**: Her projenin, tüm proje repolarına admin erişimi olan bir lideri vardır.
+- **Branch Koruması**: Main branch korumalıdır ve proje lideri onayı gerektirir.
+- **CODEOWNERS**: Proje liderlerinin değişiklikleri onaylamasını sağlamak için otomatik olarak oluşturulur.
+
+
+### Yapı
+
+```
+Organizasyon
+├── Proje Alpha (Takım)
+│   ├── alpha-api (repo)
+│   ├── alpha-web (repo)
+│   └── Üyeler: alice (lider), bob, charlie
+├── Proje Beta (Takım)
+│   ├── beta-service (repo)
+│   └── Üyeler: diana (lider), eve, frank
+└── Proje Gamma (Takım)
+  ├── gamma-docs (repo)
+  └── Üyeler: grace (lider), henry
+```
+
+# Özellikler
+
+- ✅ **Takım Yönetimi**: Her proje için otomatik takım oluşturma.
+- ✅ **Branch Otomasyonu**: Her yeni projede otomatik olarak `main`, `release`, `develop` branch'ları açılır.
+- ✅ **Repo Yönetimi**: Proje başına birden fazla repo desteği.
+- ✅ **Erişim Kontrolü**: Rol tabanlı izinler (lider = admin, üyeler = push/triage).
+- ✅ **Branch Koruması**: Main branch için koruma ve onay gereksinimi.
+- ✅ **Dokümantasyon**: Otomatik proje ve takım dokümantasyonu.
+- ✅ **Issue Yönetimi**: Etiketli ilk kurulum issue'u.
+
+- ✅ **CODEOWNERS**: Kod inceleme gereksinimi için otomatik dosya oluşturma (isteğe bağlı).
+- ✅ **Esnek Roller**: Proje bazında farklı izin seviyeleri.
+- ✅ **Çoklu Proje Desteği**: Kullanıcılar birden fazla projede farklı rollerle yer alabilir.
+
+## Dokümantasyon
+
+
+Her repoda bir `docs/` klasörü oluşturulur. Bu klasör örnek dokümantasyonu içerir. Takım liderleri ve üyeleri bu örnek belgelerden yararlanarak kendi özgün belgelerini oluşturabilirler.
+
+
+## Konfigürasyon Referansı
+
+### Proje Konfigürasyonu
+
+
+Her proje için `projects` haritasında aşağıdaki alanlar desteklenir:
+
+| Alan | Tip | Açıklama | Seçenekler |
+|------|-----|----------|------------|
+| `lead` | string | Proje liderinin GitHub kullanıcı adı | Geçerli bir GitHub kullanıcı adı |
+| `team_permission` | string | Takım üyeleri için temel izin | `pull`, `triage`, `push`, `maintain` |
+| `repositories` | list | Proje için repo listesi | Repo Konfigürasyonu |
+| `members` | list | Takım üyeleri listesi | Üye Konfigürasyonu |
+
+### Repo Konfigürasyonu
+
+| Alan | Tip | Açıklama | Seçenekler |
+|------|-----|----------|------------|
+| `name` | string | Repo adı | Geçerli bir repo adı |
+| `description` | string | Repo açıklaması | Herhangi bir metin |
+| `visibility` | string | Repo görünürlüğü | `public`, `private` |
+| `create_codeowners` | bool | CODEOWNERS dosyası oluşturulsun mu | `true`, `false` |
+
+### Üye Konfigürasyonu
+
+| Alan | Tip | Açıklama | Seçenekler |
+|------|-----|----------|------------|
+| `username` | string | GitHub kullanıcı adı | Geçerli bir GitHub kullanıcı adı |
+| `role` | string | Takım rolü | `member`, `maintainer` |
+
+## İzin Matrisi
+
+| Rol | Repo Erişimi | Takım Yönetimi | Branch Koruması |
+|-----|--------------|---------------|-----------------|
+| **Proje Lideri** | Admin | Takımı yönetebilir | Korumayı aşabilir (konfigüre edilebilir) |
+| **Takım Sorumlusu** | `team_permission`'a göre | Üye ekleyip çıkarabilir | Korumaya tabidir |
+| **Takım Üyesi** | `team_permission`'a göre | Takımı yönetemez | Korumaya tabidir |
+
+## Branch Koruma Kuralları
+
+Tüm repolarda `main` branch otomatik olarak aşağıdaki kurallarla korunur:
+
+
+- ✅ Pull request incelemesi gereklidir (en az 1 onay).
+- ✅ Kod sahibi incelemesi gereklidir (CODEOWNERS ile).
+- ✅ Yeni commit geldiğinde eski onaylar iptal edilir.
+- ✅ Durum kontrolleri güncel olmalıdır.
+- ❌ Adminler için kısıtlamalar esnek olması için devre dışı.
+
+## En İyi Uygulamalar
+
+
+### 1. Takım İzinleri
+
+- Sadece dokümantasyon projeleri için `triage` kullanın.
+- Aktif geliştirme projeleri için `push` kullanın.
+- Daha fazla kontrol gerektiren üst düzey üyeler için `maintain` kullanın.
+
+
+### 2. Proje Yapısı
+
+- İlgili repoları aynı projede tutun.
+- Proje adlarını açıklayıcı ve gerçek projeyi yansıtacak şekilde seçin.
+- Aktif katılım gösteren, net proje liderleri atayın.
+
+
+### 3. Güvenlik
+
+- GitHub kişisel erişim anahtarlarını düzenli olarak değiştirin.
+- Takım izinlerinde en az ayrıcalık ilkesini uygulayın.
+
+
+### 4. Repo Yönetimi
+
+- Açık kaynak topluluk projeleri için public görünürlük kullanın.
+- Repo açıklamalarını net ve bilgilendirici tutun.
+
+## GitHub Actions: Otomatik Terraform Uygulaması
+
+
+Bu projede, ana dalda (main branch) yapılan her değişiklik sonrasında GitHub Actions otomasyonu devreye girer ve Terraform değişiklikleri otomatik olarak uygulanır.
+
+- Herhangi bir pull request ana dala (main) birleştirildiğinde, ilgili Terraform kodu otomatik olarak çalıştırılır ve altyapı güncellenir.
+- Ek bir manuel işlem gerektirmez; değişiklikler doğrudan organizasyon ortamına yansır.
+- Otomasyonun durumu ve çıktıları GitHub Actions sekmesinden takip edilebilir.
+- Otomatik uygulama sayesinde altyapı değişiklikleri hızlı, güvenli ve izlenebilir şekilde yönetilir. Tüm değişiklikler için kod incelemesi ve onay mekanizması (CODEOWNERS, branch protection) devrededir.
 
 ---
 
-### 🛠️ Yerel Geliştirme Ortamı Kurulumu
+## İleri Seviye Kullanım
 
-#### Ön Gereksinimler
+### Yeni Proje Ekleme
 
-<!-- Doldur: Bu projeyi çalıştırmak için geliştiricinin bilgisayarında hangi araçların (örn: Node.js v18+) kurulu olması gerektiğini listeleyin. -->
-*   Aracın Adı `(versiyon)`
 
-#### Kurulum
+1. `terraform.tfvars` dosyanıza projeyi ekleyin:
 
-1.  **Repoyu Klonlayın:**
-    ```bash
-    git clone https://github.com/BKT-DevOps/project-terraform-github.git
-    cd project-terraform-github
-    ```
-2.  **Bağımlılıkları Yükleyin:**
-    <!-- Doldur: Bağımlılıkları kurmak için gereken komutu buraya yazın (Örnek: npm install). -->
-    
-3.  **Ortam Değişkenlerini Ayarlayın:**
-    <!-- Doldur: Gerekliyse, .env.example dosyasını .env olarak kopyalamalarını söyleyin. -->
 
-#### Uygulamayı Çalıştırma
-<!-- Doldur: Geliştirme sunucusunu başlatan komutu buraya yazın (Örnek: npm run dev). -->
+```hcl
+projects = {
 
-#### Testleri Çalıştırma
-<!-- Doldur: Testleri çalıştıran komutu buraya yazın (Örnek: npm test). -->
+  ...mevcut projeler...
+  "yeni-proje" = {
+    lead            = "yeni-lider-kullanici"
+    team_permission = "push"
+    repositories = [
+      {
+        name              = "yeni-proje-repo" # repo ismi
+        description       = "Yeni proje için repo" # repo açıklaması
+        visibility        = "public" # repo görünürlüğü
+        create_codeowners = true
+      }
+    ]
+    members = [
+      {
+        username = "yeni-lider-kullanici"
+        role     = "maintainer"
+      }
+    ]
+  }
+}
+```
 
-### 🤝 Katkıda Bulunma
-Projeye katkıda bulunmak isterseniz, lütfen [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasını inceleyin.
 
-### 📄 Lisans
-Bu proje **MIT Lisansı** ile lisanslanmıştır. Detaylar için [`LICENSE`](LICENSE) dosyasına bakınız.
+2. Geri kalan işlemleri GitHub Actions otomasyonu halleder!
 
+### Proje Silme
+
+
+⚠️ **Uyarı**: Bu işlem takımları siler, repo erişimini kaldırır ve başka yerde referanslanmayan repoları silebilir.
+
+
+1. Projeyi `terraform.tfvars` dosyasından çıkarın.
+2. Geri kalan işlemleri GitHub Actions otomasyonu halleder!
+
+### Projeler Arası İşbirliği Yönetimi
+
+
+Kullanıcılar birden fazla projede farklı rollerle yer alabilir:
+
+
+```hcl
+  # "alice" proje-alpha'nın lideri, proje-beta'nın üyesi
+  # Aşağıda örnek açıklamalar ile birlikte iki proje tanımı gösterilmiştir:
+projects = {
+  "proje-alpha" = { # "proje-alpha" takım ismi olacaktır
+    lead = "alice" # proje lideri
+    members = [
+      { username = "alice", role = "maintainer" } # üye rolü (maintainer repo yöneticisi, member normal üye)
+    ]
+  }
+  "proje-beta" = { # "proje-beta" takım ismi olacaktır
+    lead = "bob" # proje lideri
+    members = [
+      { username = "bob", role = "maintainer" }, # üye rolü
+      { username = "alice", role = "member" }    # üye rolü
+    ]
+  }
+}
+```
+
+
+## Sorun Giderme
+
+
+### Sık Karşılaşılan Sorunlar
+
+
+1. **İzin Reddedildi**: GitHub token'ınızın `admin:org` yetkisine sahip olduğundan emin olun.
+2. **Kullanıcı Bulunamadı**: Tüm kullanıcı adlarının GitHub'da mevcut olduğundan emin olun.
+3. **Repo Zaten Var**: Repo adları organizasyonda benzersiz olmalıdır.
+4. **Takım Adı Çakışması**: Takım adları organizasyonda benzersiz olmalıdır.
+
+
+## Güvenlik Notları
+
+
+1. **Token Güvenliği**: GitHub token'larını asla versiyon kontrolüne eklemeyin.
+2. **State Dosyası**: Terraform state dosyası hassas bilgi içerebilir - güvenli saklayın.
+3. **Erişim Kontrolü**: Takım üyeliklerini ve izinleri düzenli olarak gözden geçirin.
+4. **Denetim Logları**: Yetkisiz değişiklikler için GitHub denetim loglarını izleyin.
+
+## Katkı
+
+
+PR açabilir ve issue oluşturabilirsiniz.
+
+## Lisans
+
+
+Bu proje MIT Lisansı ile lisanslanmıştır - detaylar için LICENSE dosyasına bakınız.
 </details>
-
 <details>
 <summary><strong>🇬🇧 English</strong></summary>
 
 <br>
 
-> **IMPORTANT:** This repository is part of a larger project: **InfraCoders**. For project goals, please review the [`docs/PROJECT.md`](docs/PROJECT.md) document.
+# GitHub Organization Management via Terraform
 
-<!-- PLEASE FILL THIS IN: Add a short, one-sentence description of what this repository does. -->
+This Terraform configuration manages a GitHub organization with a team-based structure for project management. It's designed for public communities where projects are organized with dedicated teams and repositories.
+
+## Architecture Overview
+
+### Core Concepts
+
+- **One Team per Project**: Each project gets its own GitHub team
+- **Team-based Access**: Teams are assigned to project repositories with appropriate permissions
+- **Project Leads**: Each project has a designated lead with admin access to all project repositories
+- **Branch Protection**: Main branch is protected and requires code owner approval
+- **CODEOWNERS**: Automatically created to ensure project leads approve changes
+
+### Structure
+
+```
+Organization
+├── Project Alpha (Team)
+│   ├── alpha-api (Repository)
+│   ├── alpha-web (Repository)
+│   └── Members: alice (lead), bob, charlie
+├── Project Beta (Team)
+│   ├── beta-service (Repository)
+│   └── Members: diana (lead), eve, frank
+└── Project Gamma (Team)
+    ├── gamma-docs (Repository)
+    └── Members: grace (lead), henry
+```
+
+# Features
+
+- ✅ **Team Management**: Automatic team creation per project
+- ✅ **Branch Automation**: Each new project automatically creates `main`, `release`, and `develop` branches
+- ✅ **Repository Management**: Multiple repos per project support
+- ✅ **Access Control**: Role-based permissions (lead = admin, members = push/triage)
+- ✅ **Branch Protection**: Main branch protection with required reviews
+- ✅ **Documentation**: Automatic project and team documentation creation
+- ✅ **Issue Management**: Initial setup issue with proper labels
+- ✅ **CODEOWNERS**: Automatic generation for code review requirements (optional)
+- ✅ **Flexible Roles**: Different permission levels per project
+- ✅ **Multi-project Support**: Users can be in multiple projects with different roles
+
+## Documentation
+
+Each repository automatically gets comprehensive documentation in the `docs/` folder and an enhanced README.
+
+## Configuration Reference
+
+### Project Configuration
+
+Each project in the `projects` map supports:
+
+| Field | Type | Description | Options |
+|-------|------|-------------|---------|
+| `lead` | string | GitHub username of project lead | Any valid GitHub username |
+| `team_permission` | string | Base permission for team members | `pull`, `triage`, `push`, `maintain` |
+| `repositories` | list | List of repositories for this project | See Repository Configuration |
+| `members` | list | List of team members | See Member Configuration |
+
+### Repository Configuration
+
+| Field | Type | Description | Options |
+|-------|------|-------------|---------|
+| `name` | string | Repository name | Any valid repository name |
+| `description` | string | Repository description | Any string |
+| `visibility` | string | Repository visibility | `public`, `private` |
+| `create_codeowners` | bool | Whether to create CODEOWNERS file | `true`, `false` |
+
+### Member Configuration
+
+| Field | Type | Description | Options |
+|-------|------|-------------|---------|
+| `username` | string | GitHub username | Any valid GitHub username |
+| `role` | string | Team role | `member`, `maintainer` |
+
+## Permission Matrix
+
+| Role | Repository Access | Team Management | Branch Protection |
+|------|------------------|-----------------|-------------------|
+| **Project Lead** | Admin | Can manage team | Bypass protection (configurable) |
+| **Team Maintainer** | Based on `team_permission` | Can add/remove members | Subject to protection |
+| **Team Member** | Based on `team_permission` | Cannot manage team | Subject to protection |
+
+## Branch Protection Rules
+
+All repositories automatically get branch protection on `main` with:
+
+- ✅ Required pull request reviews (1 approval minimum)
+- ✅ Require code owner reviews (via CODEOWNERS)
+- ✅ Dismiss stale reviews when new commits are pushed
+- ✅ Require status checks to be up to date
+- ❌ Enforce restrictions for administrators (disabled for flexibility)
+
+## Best Practices
+
+### 1. Team Permissions
+
+- Use `triage` for documentation-only projects
+- Use `push` for active development projects
+- Use `maintain` for senior team members who need more control
+
+### 2. Project Structure
+
+- Keep related repositories in the same project
+- Use descriptive project names that reflect the actual project
+- Assign clear project leads who are actively involved
+
+### 3. Security
+
+- Regularly rotate GitHub personal access tokens
+- Use principle of least privilege for team permissions
+
+### 4. Repository Management
+
+- Enable CODEOWNERS for code review requirements
+- Use public visibility for open-source community projects
+- Keep repository descriptions clear and informative
+
+## GitHub Actions: Automatic Terraform Apply
+
+This project uses GitHub Actions automation to apply Terraform changes automatically whenever a change is merged into the `main` branch.
+
+- When a pull request is merged to `main`, GitHub Actions will run and apply the Terraform code automatically.
+- No manual steps are required; infrastructure changes are deployed directly to the cloud/organization environment.
+- You can monitor the automation status and logs in the GitHub Actions tab.
+
+**Note:** This automation ensures infrastructure changes are managed quickly, securely, and in a fully auditable way. All changes are subject to code review and approval mechanisms (CODEOWNERS, branch protection).
 
 ---
 
-### 🛠️ Local Development Setup
+## Advanced Usage
 
-#### Prerequisites
-<!-- Fill in: List the tools a developer must have installed (e.g., Node.js v18+). -->
-*   Tool Name `(version)`
+### Adding a New Project
 
-#### Installation
+1. Add the project to your `terraform.tfvars`:
 
-1.  **Clone the repository:**
+```hcl
+projects = {
+  # ... existing projects ...
+  "new-project" = {
+    lead            = "new-lead-username"
+    team_permission = "push"
+    repositories = [
+      {
+        name              = "new-project-repo"
+        description       = "Repository for new project"
+        visibility        = "public"
+        create_codeowners = true
+      }
+    ]
+    members = [
+      {
+        username = "new-lead-username"
+        role     = "maintainer"
+      }
+    ]
+  }
+}
+```
+
+2. GitHub Actions Automation will do the rest!
+
+### Removing a Project
+
+⚠️ **Warning**: This will delete teams, remove repository access, and potentially delete repositories if they're not referenced elsewhere.
+
+1. Remove the project from `terraform.tfvars`
+2. GitHub Actions Automation will do the rest!
+
+### Managing Cross-Project Collaboration
+
+Users can be members of multiple projects with different roles:
+
+```hcl
+# User "alice" is lead of project-alpha and member of project-beta
+projects = {
+  "project-alpha" = {
+    lead = "alice"
+    members = [
+      { username = "alice", role = "maintainer" }
+    ]
+  }
+  "project-beta" = {
+    lead = "bob"
+    members = [
+      { username = "bob", role = "maintainer" },
+      { username = "alice", role = "member" }
+    ]
+  }
+}
+```
+</details>
+
+<details>
+<summary><strong>Hızlı Başlangıç</strong></summary>
+<br>
+
+## Hızlı Başlangıç (Quick Start)
+Bu projeyi kullanarak kendi GitHub organizasyonunuzu yönetmeye başlamak için aşağıdaki adımları izleyin.
+
+### Ön Gereksinimler (Prerequisites)
+
+1.  **Terraform:** Bilgisayarınızda `1.x.x` veya üzeri bir Terraform versiyonu kurulu olmalıdır. [Terraform Kurulum Rehberi](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+2.  **GitHub Kişisel Erişim Anahtarı (Personal Access Token):** GitHub organizasyonunuzda değişiklik yapma yetkisine sahip bir PAT oluşturmanız gerekir.
+    -   Token'ı [bu linkten](https://github.com/settings/tokens/new) oluşturabilirsiniz.
+    -   Token'a mutlaka **`admin:org`** yetkisini verin.
+    -   Oluşturduğunuz token'ı güvenli bir yere kaydedin, bir daha göremeyeceksiniz.
+
+### Kurulum ve Çalıştırma
+
+1.  **Projeyi Klonlayın:**
     ```bash
-    git clone https://github.com/BKT-DevOps/project-terraform-github.git
-    cd project-terraform-github
+    git clone https://github.com/organizasyon/proje-adi.git
+    cd proje-adi
     ```
-2.  **Install dependencies:**
-    <!-- Fill in: Provide the command to install dependencies (Example: npm install). -->
-    
-3.  **Set up environment variables:**
-    <!-- Fill in: If necessary, instruct users to copy .env.example to .env. -->
+2.  **Konfigürasyon Dosyasını Hazırlayın:**
+    `terraform.tfvars.example` dosyasını kopyalayarak `terraform.tfvars` adında yeni bir dosya oluşturun ve kendi bilgilerinizle doldurun.
+    ```hcl
+    # terraform.tfvars
 
-#### Running the Application
-<!-- Fill in: Provide the command to start the development server (Example: npm run dev). -->
+    github_organization = "sizin-github-org-adiniz"
+    github_token        = "BURAYA_PAT_TOKENINIZI_YAPISTIRIN"
 
-#### Running Tests
-<!-- Fill in: Provide the command to run the tests (Example: npm test). -->
+    projects = {
+      "proje-alpha" = {
+        lead            = "proje-lideri-kullanici-adi"
+        team_permission = "push"
+        # ... diğer proje ayarları ...
+      }
+    }
+    ```
+    **ÖNEMLİ:** `terraform.tfvars` dosyasını asla Git'e göndermeyin! `.gitignore` dosyanızda `*.tfvars` satırının olduğundan emin olun.
 
-### 🤝 Contributing
-If you wish to contribute, please review the [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
+3.  **Terraform'u Başlatın:**
+    Bu komut, gerekli GitHub provider'ını indirir.
+    ```bash
+    terraform init
+    ```
 
-### 📄 License
-This project is licensed under the **MIT License**. See the [`LICENSE`](LICENSE) file for details.
+4.  **Değişiklikleri Planlayın:**
+    Bu komut, GitHub üzerinde ne gibi değişiklikler (repo oluşturma, takım ekleme vb.) yapılacağını size gösterir ama henüz bir şey yapmaz.
+    ```bash
+    terraform plan
+    ```
+
+5.  **Değişiklikleri Uygulayın:**
+    Planı kontrol edip her şeyin doğru olduğundan emin olduktan sonra, değişiklikleri uygulamak için bu komutu çalıştırın.
+    ```bash
+    terraform apply
+    ```
+<summary>🚨 <strong>Tehlike Bölgesi (Danger Zone)</strong></summary>
+
+<p>Aşağıdaki komut, bu Terraform konfigürasyonu tarafından yönetilen <strong>tüm kaynakları kalıcı olarak yok edecektir.</strong> Bu, GitHub organizasyonunuzdaki repoları, takımları ve üyelikleri sileceği anlamına gelir.</p>
+
+<p><strong>Bu işlemi yapmadan önce iki kez düşünün. Geri alınamaz.</strong></p>
+
+<h4>Tüm Kaynakları Yok Et</h4>
+<p>Her şeyi silmek için aşağıdaki komutu çalıştırın ve sizden onay istendiğinde <code>yes</code> yazın.</p>
+
+```bash
+# DİKKAT: Bu komut, yönetilen tüm kaynakları kalıcı olarak silecektir.
+terraform destroy
+```
+</details>
+<details>
+<summary><strong>Çözümleme (Troubleshooting)</strong></summary>
+
+### Common Issues
+
+1. **Permission Denied**: Ensure your GitHub token has `admin:org` scope
+2. **User Not Found**: Verify all usernames exist on GitHub
+3. **Repository Exists**: Repository names must be unique in the organization
+4. **Team Name Conflicts**: Team names must be unique in the organization
 
 </details>
+<details>
+<summary><strong>Güvenlik Dikkatleri (Security Considerations)</strong></summary>
+
+## Security Considerations
+
+1. **Token Security**: Never commit GitHub tokens to version control
+2. **State File**: Terraform state may contain sensitive information - store securely
+3. **Access Control**: Regularly review team memberships and permissions
+4. **Audit Logging**: Monitor GitHub audit logs for unauthorized changes
+
+</details>
+<details>
+<summary><strong>Katkıda Bulunma (Contributing)</strong></summary>
+
+Please feel free to raise a PR and create issue.
+</details>
+<details>
+<summary><strong>Lisans (License)</strong></summary>
+
+This project is licensed under the MIT License - see the LICENSE file for details.
