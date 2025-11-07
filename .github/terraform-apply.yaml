@@ -1,4 +1,5 @@
 # refer official document:https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+
 name: Terraform Apply
 
 on:
