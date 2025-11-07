@@ -1,4 +1,4 @@
-# ${project_name} Projesi Wiki'sine Hoş Geldiniz
+# InfraCoders Projesi Wiki'sine Hoş Geldiniz
 
 <details open> <summary><strong>🇹🇷 Türkçe</strong></summary> <br>
 
