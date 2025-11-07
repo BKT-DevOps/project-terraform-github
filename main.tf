@@ -366,7 +366,7 @@ resource "github_repository_file" "wiki_home" {
   file       = "docs/WIKI_HOME.md" # Wiki için referans
   content = replace(
     replace(
-      file("${path.module}docs/WIKI_HOME.md"),
+      file("${path.module}/docs/WIKI_HOME.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
     "{{PROJECT_LEAD}}", each.value.lead
