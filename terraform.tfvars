@@ -200,7 +200,7 @@ projects = {
   # "Documentation" = { 
   #   # === Proje Yöneticisi (tam admin hakları) ===
   #   lead            = "ahmet"
-  
+
   #   # === Takımın genel izin seviyesi ===
   #   # "admin"    → tüm repo ayarlarını değiştirebilir
   #   # "maintain" → kod yönetimi + issue + PR kontrolü
@@ -208,7 +208,7 @@ projects = {
   #   # "triage"   → issue/PR düzenleme, kod gönderemez
   #   # "pull"     → sadece okuma yetkisi
   #   team_permission = "push"
-  
+
   #   # === Repositories (repo bazında ayar) ===
   #   repositories = [
   #     {
@@ -216,7 +216,7 @@ projects = {
   #       description  = "Topluluk için genel dokümantasyon"
   #       visibility   = "public"
   #       license      = "mit"
-  
+
   #       # Repo bazında özel izin tanımı (opsiyonel)
   #       repo_permissions = [
   #         {
@@ -234,7 +234,7 @@ projects = {
   #       ]
   #     }
   #   ]
-  
+
   #   # === Team Members ===
   #   members = [
   #     # Lider: admin haklarına sahip
