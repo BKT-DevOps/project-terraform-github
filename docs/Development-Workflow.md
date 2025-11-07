@@ -1,6 +1,6 @@
 # Geliştirme Akışı (Development Workflow)
 
-Bu belge, ${project_name} projesindeki geliştirme süreçleri, standartları ve iş akışları için bir rehberdir.
+Bu belge, {{PROJECT_NAME}} projesindeki geliştirme süreçleri, standartları ve iş akışları için bir rehberdir.
 
 ### İş Akışı (Workflow)
 
