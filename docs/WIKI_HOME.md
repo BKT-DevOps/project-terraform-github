@@ -2,7 +2,7 @@
 
 <details open> <summary><strong>🇹🇷 Türkçe</strong></summary> <br>
 
-Bu alan, **${project_name}** projesinin yaşayan dokümantasyon merkezidir. Projenin mimarisi, tasarım kararları ve uzun vadeli bilgileri burada yer alacaktır.
+Bu alan, **InfraCoders ** projesinin yaşayan dokümantasyon merkezidir. Projenin mimarisi, tasarım kararları ve uzun vadeli bilgileri burada yer alacaktır.
 
 👤 **Proje Lideri:** @${project_lead}
 
@@ -32,7 +32,7 @@ Bu Wiki, `README.md` dosyasını tamamlayıcı niteliktedir. `README.md` projeni
 
 <details> <summary><strong>🇬🇧 English</strong></summary> <br>
 
-This is the living documentation hub for the **${project_name}** project. The project's architecture, design decisions, and long-term information will reside here.
+This is the living documentation hub for the **InfraCoders ** project. The project's architecture, design decisions, and long-term information will reside here.
 
 👤 **Project Lead:** @${project_lead}
 
