@@ -36,6 +36,12 @@ resource "github_repository" "repo" {
   allow_rebase_merge = false
   allow_auto_merge   = false
 
+  lifecycle {
+    ignore_changes = [
+      description,
+      visibility
+      ]
+  }
 }
 
 # Set up team access to repositories
@@ -128,7 +134,7 @@ resource "github_repository_file" "codeowners" {
   branch         = "main"
   file           = ".github/CODEOWNERS"
   content        = "* @${each.value.lead}\n"
-  commit_message = "Add CODEOWNERS file"
+  commit_message = "initial commit"
 
   overwrite_on_create = true
 
@@ -139,7 +145,10 @@ resource "github_repository_file" "codeowners" {
   ]
 
   lifecycle {
-    ignore_changes = [content]
+    ignore_changes = [
+      content,
+      commit_message
+    ]
   }
 }
 
@@ -153,6 +162,15 @@ resource "github_issue_label" "setup" {
   description = "Initial setup tasks"
 
   depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [
+      repository,
+      name,
+      color,
+      description
+    ]
+  }
 }
 
 resource "github_issue_label" "priority_high" {
@@ -164,6 +182,15 @@ resource "github_issue_label" "priority_high" {
   description = "High priority tasks"
 
   depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [
+      repository,
+      name,
+      color,
+      description
+    ]
+  }
 }
 
 # Create initial setup issue for each project
@@ -188,12 +215,18 @@ resource "github_issue" "initial_setup" {
     github_issue_label.setup,
     github_issue_label.priority_high
   ]
+
+  lifecycle {
+    ignore_changes = [
+      title,
+      body,
+      assignees,
+      labels,
+      repository
+    ]
+  }
 }
 
-
-
-# Create documentation pages in docs folder (can be used as wiki content)
-# Note: Files are created after repository is fully initialized
 resource "github_repository_file" "docs_project" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
@@ -226,7 +259,10 @@ resource "github_repository_file" "docs_architecture" {
 
   repository     = github_repository.repo[each.key].name
   file           = "docs/Architecture-Overview.md"
-  content        = file("${path.module}/docs/Architecture-Overview.md")
+  content        = replace(
+    file("${path.module}/docs/Architecture-Overview.md"),
+    "{{PROJECT_NAME}}", each.value.project_name
+  )
   commit_message = "Add Architecture Overview document"
 
   overwrite_on_create = true
@@ -290,7 +326,7 @@ resource "github_repository_file" "team" {
     ]))
   )
 
-  commit_message      = "Add team documentation"
+  commit_message      = "initial commit"
   overwrite_on_create = true
 
   depends_on = [
@@ -357,8 +393,6 @@ resource "github_repository_file" "code_of_conduct" {
   }
 }
 
-
-# Opsiyonel: Wiki sayfaları
 resource "github_repository_file" "wiki_home" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
@@ -371,7 +405,7 @@ resource "github_repository_file" "wiki_home" {
     ),
     "{{PROJECT_LEAD}}", each.value.lead
   )
-  commit_message      = "Add wiki home documentation"
+  commit_message      = "initial commit"
   overwrite_on_create = true
 
   lifecycle {
@@ -436,7 +470,7 @@ resource "github_repository_file" "issue_template_config" {
   branch              = "main"
   file                = ".github/ISSUE_TEMPLATE/config.yml"
   content             = file("${path.module}/.github/ISSUE_TEMPLATE/config.yml")
-  commit_message      = "Add issue template config for reporting"
+  commit_message      = "initial commit"
   overwrite_on_create = true
   depends_on          = [github_repository.repo]
 }
@@ -448,7 +482,7 @@ resource "github_repository_file" "report_abuse_template" {
   branch              = "main"
   file                = ".github/ISSUE_TEMPLATE/report-abuse.yml"
   content             = file("${path.module}/.github/ISSUE_TEMPLATE/report-abuse.yml")
-  commit_message      = "Add report-abuse issue template"
+  commit_message      = "initial commit"
   overwrite_on_create = true
   depends_on          = [github_repository.repo]
 

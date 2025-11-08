@@ -1,6 +1,6 @@
 # Mimariye Genel Bakış (Architecture Overview)
 
-Bu sayfa, ${project_name} projesinin yüksek seviyeli mimarisini, ana bileşenlerini ve bu bileşenlerin birbiriyle olan ilişkilerini açıklamaktadır.
+Bu sayfa, {{PROJECT_NAME}} projesinin yüksek seviyeli mimarisini, ana bileşenlerini ve bu bileşenlerin birbiriyle olan ilişkilerini açıklamaktadır.
 
 *Bu alan projenin teknik mimarisi geliştikçe doldurulmalıdır.*
 

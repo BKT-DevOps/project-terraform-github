@@ -50,35 +50,13 @@ output "project_summary" {
   }
 }
 
-output "initial_issues" {
-  description = "Initial setup issues created for each project"
-  value = {
-    for project_name, issue in github_issue.initial_setup : project_name => {
-      number    = issue.number
-      title     = issue.title
-      assignees = issue.assignees
-      url       = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/issues/${issue.number}"
-    }
-  }
-}
-
 output "documentation_pages" {
   description = "Documentation pages created for each project"
   value = {
     for project_name, _ in var.projects : project_name => {
-      project_doc = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/PROJECT.md"
-      team_doc    = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/TEAM.md"
-      repository  = github_repository.repo[local.project_main_repos[project_name]].full_name
-    }
-  }
-}
-
-output "wiki_pages" {
-  description = "Wiki Home pages for each project"
-  value = {
-    for project_name, data in local.wiki_pages : project_name => {
-      repository = data.repository
-      url        = "https://github.com/${var.github_organization}/${data.repository}/wiki"
+      repository  = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}"
+      project = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/projects"
+      team_and_roles    = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/TEAM.md"
     }
   }
 }
