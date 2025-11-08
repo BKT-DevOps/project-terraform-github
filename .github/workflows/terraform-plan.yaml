@@ -39,6 +39,21 @@ jobs:
           role-to-assume: ${{ env.AWS_TF_ROLE_ARN }}
           aws-region: eu-west-2
 
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v6
+        with:
+          cache: true
+      
+      - name: TFLint Init
+        id: tflint-init
+        run: tflint --init
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run TFLint
+        id: tflint
+        run: tflint -f compact
+
       - name: Terraform Init
         id: init
         run: terraform init
@@ -94,6 +109,8 @@ jobs:
             | Step | Status |
             |------|--------|
             | Format | \`${{ steps.fmt.outcome }}\` |
+            | TFLint Init | \`${{ steps.tflint-init.outcome }}\` |
+            | TFLint | \`${{ steps.tflint.outcome }}\` |
             | Init | \`${{ steps.init.outcome }}\` |
             | Validate | \`${{ steps.validate.outcome }}\` |
             | Plan | \`${{ steps.plan.outcome }}\` |
