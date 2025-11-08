@@ -54,6 +54,24 @@ jobs:
         id: tflint
         run: tflint -f compact
 
+      - name: Determine Environment from Base Branch
+        id: get_env
+        run: |
+          # determine env according PR branch
+          if [ "${{ github.base_ref }}" == "main" ]; then
+            echo "TF_WORKSPACE=main" >> $GITHUB_OUTPUT
+            echo "VAR_FILE=main.tfvars" >> $GITHUB_OUTPUT
+          elif [ "${{ github.base_ref }}" == "release" ]; then
+            echo "TF_WORKSPACE=release" >> $GITHUB_OUTPUT
+            echo "VAR_FILE=release.tfvars" >> $GITHUB_OUTPUT
+          elif [ "${{ github.base_ref }}" == "develop" ]; then
+            echo "TF_WORKSPACE=develop" >> $GITHUB_OUTPUT
+            echo "VAR_FILE=develop.tfvars" >> $GITHUB_OUTPUT
+          else
+            echo "TF_WORKSPACE=default" >> $GITHUB_OUTPUT
+            echo "VAR_FILE=main.tfvars" >> $GITHUB_OUTPUT
+          fi
+
       - name: Terraform Init
         id: init
         run: terraform init
@@ -62,13 +80,17 @@ jobs:
           TF_VAR_github_organization: ${{ secrets.ORG_GITHUB_NAME }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Select Terraform Workspace
+        id: workspace
+        run: terraform workspace select ${{ steps.get_env.outputs.TF_WORKSPACE }} || terraform workspace new ${{ steps.get_env.outputs.TF_WORKSPACE }}
+
       - name: Terraform Validate
         id: validate
         run: terraform validate
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color -out=tfplan
+        run: terraform plan -no-color -out=tfplan -var-file="${{ steps.get_env.outputs.VAR_FILE }}"
         env:
           TF_VAR_github_organization: ${{ secrets.ORG_GITHUB_NAME }}
           TF_VAR_github_token: ${{ secrets.ORG_PAT }}
