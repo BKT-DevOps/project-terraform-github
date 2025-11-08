@@ -174,7 +174,7 @@ resource "github_issue" "initial_setup" {
   title      = "Initial Setup"
   body = replace(
     replace(
-      file("${path.module}/sample_repo_docs/initial-setup-issue.md"),
+      file("${path.module}/docs/initial-setup-issue.md"),
       "{{PROJECT_NAME}}", each.key
     ),
     "{{PROJECT_LEAD}}", each.value.lead
@@ -201,7 +201,7 @@ resource "github_repository_file" "docs_project" {
   file       = "docs/project_definition.md"
   content = replace(
     replace(
-      file("${path.module}/sample_repo_docs/project_definition.md"),
+      file("${path.module}/docs/project_definition.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
     "{{PROJECT_LEAD}}", each.value.lead
@@ -226,7 +226,7 @@ resource "github_repository_file" "docs_architecture" {
 
   repository     = github_repository.repo[each.key].name
   file           = "docs/Architecture-Overview.md"
-  content        = file("${path.module}/sample_repo_docs/Architecture-Overview.md")
+  content        = file("${path.module}/docs/Architecture-Overview.md")
   commit_message = "Add Architecture Overview document"
 
   overwrite_on_create = true
@@ -247,7 +247,7 @@ resource "github_repository_file" "docs_workflow" {
 
   repository     = github_repository.repo[each.key].name
   file           = "docs/Development-Workflow.md"
-  content        = file("${path.module}/sample_repo_docs/Development-Workflow.md")
+  content        = file("${path.module}/docs/Development-Workflow.md")
   commit_message = "Add Development Workflow document"
 
   overwrite_on_create = true
@@ -272,7 +272,7 @@ resource "github_repository_file" "team" {
         replace(
           replace(
             replace(
-              file("${path.module}/sample_repo_docs/team.md"),
+              file("${path.module}/docs/TEAM.md"),
               "{{PROJECT_NAME}}", each.value.project_name
             ),
             "{{GITHUB_ORG}}", var.github_organization
@@ -314,7 +314,7 @@ resource "github_repository_file" "readme" {
     replace(
       replace(
         replace(
-          file("${path.module}/sample_repo_docs/readme.md"),
+          file("${path.module}/README.md"),
           "{{PROJECT_NAME}}", each.value.project_name
         ),
         "{{PROJECT_LEAD}}", each.value.lead
@@ -345,7 +345,7 @@ resource "github_repository_file" "code_of_conduct" {
   repository     = github_repository.repo[each.key].name
   branch         = "main"
   file           = "CODE_OF_CONDUCT.md"
-  content        = file("${path.module}/sample_repo_docs/CODE_OF_CONDUCT.md")
+  content        = file("${path.module}/CODE_OF_CONDUCT.md")
   commit_message = "Add CODE_OF_CONDUCT.md file"
 
   overwrite_on_create = true
@@ -366,7 +366,7 @@ resource "github_repository_file" "wiki_home" {
   file       = "docs/WIKI_HOME.md" # Wiki için referans
   content = replace(
     replace(
-      file("${path.module}/sample_repo_docs/wiki.md"),
+      file("${path.module}/docs/WIKI_HOME.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
     "{{PROJECT_LEAD}}", each.value.lead
@@ -393,7 +393,7 @@ locals {
       repository = project.repositories[0].name
       content = replace(
         replace(
-          file("${path.module}/sample_repo_docs/wiki.md"),
+          file("${path.module}/docs/WIKI_HOME.md"),
           "{{PROJECT_NAME}}", project_name
         ),
         "{{PROJECT_LEAD}}", project.lead
@@ -435,7 +435,7 @@ resource "github_repository_file" "issue_template_config" {
   repository          = github_repository.repo[each.key].name
   branch              = "main"
   file                = ".github/ISSUE_TEMPLATE/config.yml"
-  content             = file("${path.module}/sample_repo_docs/config.yml")
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/config.yml")
   commit_message      = "Add issue template config for reporting"
   overwrite_on_create = true
   depends_on          = [github_repository.repo]
@@ -447,7 +447,7 @@ resource "github_repository_file" "report_abuse_template" {
   repository          = github_repository.repo[each.key].name
   branch              = "main"
   file                = ".github/ISSUE_TEMPLATE/report-abuse.yml"
-  content             = file("${path.module}/sample_repo_docs/report-abuse.yml")
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/report-abuse.yml")
   commit_message      = "Add report-abuse issue template"
   overwrite_on_create = true
   depends_on          = [github_repository.repo]
@@ -462,7 +462,7 @@ resource "github_repository_file" "pr_template" {
 
   repository     = github_repository.repo[each.key].name
   file           = ".github/pull_request_template.md"
-  content        = file("${path.module}/sample_repo_docs/pull_request_template.md")
+  content        = file("${path.module}/.github/pull_request_template.md")
   commit_message = "Add default PR template"
 
   overwrite_on_create = true
