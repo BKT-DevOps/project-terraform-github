@@ -22,7 +22,7 @@ Bu Wiki, `README.md` dosyasını tamamlayıcı niteliktedir. `README.md` projeni
 ### 🗺️ Sayfa Haritası ve Faydalı Linkler
 
 - **[Takım Bilgileri](wiki_team)**: Proje ekibi ve rolleri hakkında güncel bilgi için bu sayfayı ziyaret edin.
-- **[Proje Tanıtım Belgesi](project_definition)**: Projenin ana hedefleri ve kapsamı.
+- **[Proje Tanıtım Belgesi](Project-Definition)**: Projenin ana hedefleri ve kapsamı.
 - **[Mimariye Genel Bakış](Architecture-Overview)**: Projenin ana bileşenlerini ve etkileşimlerini anlatan sayfa.
 - **[Geliştirme Akışı](Development-Workflow)**: Detaylı branch stratejisi, kod inceleme ve test süreçleri.
 - **[Issue Takip Panosu](../issues)**: Mevcut görevleri ve hataları görmek için.
@@ -53,7 +53,7 @@ This Wiki complements the `README.md` file. While the README explains "how to ru
 ### 🗺️ Page Index & Useful Links
 
 - **[Team Information](wiki_team)**: Visit this page for up-to-date information on the project team and their roles.
-- **[Project Charter](project_definition)**: The main goals and scope of the project.
+- **[Project Charter](Project-Definition)**: The main goals and scope of the project.
 - **[Architecture Overview](Architecture-Overview)**: A page describing the main components and their interactions.
 - **[Development Workflow](Development-Workflow)**: Detailed branching strategy, code review, and testing processes.
 - **[Issue Tracker](../issues)**: To see current tasks and bugs.
