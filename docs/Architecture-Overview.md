@@ -1,6 +1,7 @@
 # Mimariye Genel Bakış (Architecture Overview)
 
-Bu sayfa, {{PROJECT_NAME}} projesinin yüksek seviyeli mimarisini, ana bileşenlerini ve bu bileşenlerin birbiriyle olan ilişkilerini açıklamaktadır.
+
+Bu sayfa, InfraCoders projesinin yüksek seviyeli mimarisini, ana bileşenlerini ve bu bileşenlerin birbiriyle olan ilişkilerini açıklamaktadır.
 
 *Bu alan projenin teknik mimarisi geliştikçe doldurulmalıdır.*
 

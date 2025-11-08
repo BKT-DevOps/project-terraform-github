@@ -4,6 +4,7 @@
 
 Bu alan, **{{PROJECT_NAME}} ** projesinin yaşayan dokümantasyon merkezidir. Projenin mimarisi, tasarım kararları ve uzun vadeli bilgileri burada yer alacaktır.
 
+
 👤 **Proje Lideri:** @${project_lead}
 
 ---
@@ -33,6 +34,7 @@ Bu Wiki, `README.md` dosyasını tamamlayıcı niteliktedir. `README.md` projeni
 <details> <summary><strong>🇬🇧 English</strong></summary> <br>
 
 This is the living documentation hub for the **{{PROJECT_NAME}} ** project. The project's architecture, design decisions, and long-term information will reside here.
+
 
 👤 **Project Lead:** @${project_lead}
 
