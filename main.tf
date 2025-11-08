@@ -509,3 +509,4 @@ resource "github_repository_file" "pr_template" {
     ignore_changes = [content]
   }
 }
+
