@@ -85,6 +85,10 @@ projects = {
       {
         username = "slymanmrcan"
         role     = "member"
+      },
+      {
+        username = "lerkush"
+        role     = "member"
       }
     ]
   }
@@ -191,3 +195,4 @@ projects = {
   #   ]
   # }
 }
+
