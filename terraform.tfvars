@@ -123,7 +123,7 @@ projects = {
     ]
   }
 
-  "project-test" = {
+  "project-test-ismail" = {
     lead            = "ismailaricioglu"
     team_permission = "push"
     repositories = [
@@ -144,6 +144,10 @@ projects = {
       },
       {
         username = "onurceylan"
+        role     = "member"
+      },
+      {
+        username = "flovearth"
         role     = "member"
       }
     ]
