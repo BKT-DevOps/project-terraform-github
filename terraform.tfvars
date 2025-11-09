@@ -151,63 +151,53 @@ projects = {
         role     = "member"
       }
     ]
+  },
+  "project-test-ismail" = {
+    lead            = "ismailaricioglu"
+    team_permission = "push"
+    repositories = [
+      {
+        name        = "test-repo-34"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+      }
+    ]
+    members = [
+      {
+        username = "egeren"
+        role     = "maintainer"
+      },
+      {
+        username = "UsainSasal"
+        role     = "member"
+      },
+      {
+        username = "onurceylan"
+        role     = "member"
+      },
+      {
+        username = "flovearth"
+        role     = "member"
+      }
+    ]
   }
-
-  # "Documentation" = {
-  #   lead            = "flovearth"
-  #   team_permission = "push"
-  #   repositories = [
-  #     {
-  #       name        = "01-Documentation"
-  #       description = "Topluluk için genel dokümantasyon"
-  #       visibility  = "public"
-  #     }
-  #   ]
-  #   members = [
-  #     {
-  #       username = "flovearth"
-  #       role     = "maintainer"
-  #     },
-  #     {
-  #       username = "ismailaricioglu"
-  #       role     = "maintainer"
-  #     },
-  #     {
-  #       username = "onurceylan"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "UsainSasal"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "egeren"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "hulyaoner"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "lerkush"
-  #       role     = "member"
-  #     },
-  #   ]
-  # }
-  # DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
-
-  # Organization (Organizasyon) Roller  : github_membership
-  # Team (Takım) Roller                 : github_team_membership
-  # Environment Protection Rules        : github_repository_environment
-  # Actions / Workflow Roller           : github_actions_repository_permissions
-  # Branch Protection Roller            : github_branch_protection
-
-  # | Kapsam            | Roller / İzinler                               |
-  # | ----------------- | ---------------------------------------------- |
-  # | Repository        | `admin`, `maintain`, `write`, `triage`, `read` |
-  # | Organization      | `admin`, `member`                              |
-  # | Team              | `maintainer`, `member`                         |
-  # | Environment       | `selected_teams`, `selected_users`, `all`      |
-  # | Actions           | `read`, `write`, `none`                        |
-  # | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
 }
+
+
+# DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
+
+# Organization (Organizasyon) Roller  : github_membership
+# Team (Takım) Roller                 : github_team_membership
+# Environment Protection Rules        : github_repository_environment
+# Actions / Workflow Roller           : github_actions_repository_permissions
+# Branch Protection Roller            : github_branch_protection
+
+# | Kapsam            | Roller / İzinler                               |
+# | ----------------- | ---------------------------------------------- |
+# | Repository        | `admin`, `maintain`, `write`, `triage`, `read` |
+# | Organization      | `admin`, `member`                              |
+# | Team              | `maintainer`, `member`                         |
+# | Environment       | `selected_teams`, `selected_users`, `all`      |
+# | Actions           | `read`, `write`, `none`                        |
+# | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
+
