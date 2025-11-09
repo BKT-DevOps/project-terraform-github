@@ -4,7 +4,7 @@ variable "github_organization" {
 }
 
 variable "github_token" {
-  description = "GitHub personal access token with appropriate permissions"
+  description = "GitHub personal access token with appropriate permission"
   type        = string
   sensitive   = true
 }
