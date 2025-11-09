@@ -40,7 +40,7 @@ resource "github_repository" "repo" {
     ignore_changes = [
       description,
       visibility
-      ]
+    ]
   }
 }
 
@@ -257,9 +257,9 @@ resource "github_repository_file" "docs_project" {
 resource "github_repository_file" "docs_architecture" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
-  repository     = github_repository.repo[each.key].name
-  file           = "docs/Architecture-Overview.md"
-  content        = replace(
+  repository = github_repository.repo[each.key].name
+  file       = "docs/Architecture-Overview.md"
+  content = replace(
     file("${path.module}/docs/Architecture-Overview.md"),
     "{{PROJECT_NAME}}", each.value.project_name
   )
