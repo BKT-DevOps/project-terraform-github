@@ -180,48 +180,10 @@ projects = {
         role     = "member"
       }
     ]
+  }
+}
 
-  # "Documentation" = {
-  #   lead            = "flovearth"
-  #   team_permission = "push"
-  #   repositories = [
-  #     {
-  #       name        = "01-Documentation"
-  #       description = "Topluluk için genel dokümantasyon"
-  #       visibility  = "public"
-  #     }
-  #   ]
-  #   members = [
-  #     {
-  #       username = "flovearth"
-  #       role     = "maintainer"
-  #     },
-  #     {
-  #       username = "ismailaricioglu"
-  #       role     = "maintainer"
-  #     },
-  #     {
-  #       username = "onurceylan"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "UsainSasal"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "egeren"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "hulyaoner"
-  #       role     = "member"
-  #     },
-  #     {
-  #       username = "lerkush"
-  #       role     = "member"
-  #     },
-  #   ]
-  # }
+
   # DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
 
   # Organization (Organizasyon) Roller  : github_membership
@@ -238,4 +200,4 @@ projects = {
   # | Environment       | `selected_teams`, `selected_users`, `all`      |
   # | Actions           | `read`, `write`, `none`                        |
   # | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
-}
+
