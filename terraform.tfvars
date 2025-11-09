@@ -184,20 +184,20 @@ projects = {
 }
 
 
-  # DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
+# DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
 
-  # Organization (Organizasyon) Roller  : github_membership
-  # Team (Takım) Roller                 : github_team_membership
-  # Environment Protection Rules        : github_repository_environment
-  # Actions / Workflow Roller           : github_actions_repository_permissions
-  # Branch Protection Roller            : github_branch_protection
+# Organization (Organizasyon) Roller  : github_membership
+# Team (Takım) Roller                 : github_team_membership
+# Environment Protection Rules        : github_repository_environment
+# Actions / Workflow Roller           : github_actions_repository_permissions
+# Branch Protection Roller            : github_branch_protection
 
-  # | Kapsam            | Roller / İzinler                               |
-  # | ----------------- | ---------------------------------------------- |
-  # | Repository        | `admin`, `maintain`, `write`, `triage`, `read` |
-  # | Organization      | `admin`, `member`                              |
-  # | Team              | `maintainer`, `member`                         |
-  # | Environment       | `selected_teams`, `selected_users`, `all`      |
-  # | Actions           | `read`, `write`, `none`                        |
-  # | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
+# | Kapsam            | Roller / İzinler                               |
+# | ----------------- | ---------------------------------------------- |
+# | Repository        | `admin`, `maintain`, `write`, `triage`, `read` |
+# | Organization      | `admin`, `member`                              |
+# | Team              | `maintainer`, `member`                         |
+# | Environment       | `selected_teams`, `selected_users`, `all`      |
+# | Actions           | `read`, `write`, `none`                        |
+# | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
 
