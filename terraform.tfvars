@@ -123,6 +123,31 @@ projects = {
     ]
   }
 
+  "project-test" = {
+    lead            = "ismailaricioglu"
+    team_permission = "push"
+    repositories = [
+      {
+        name        = "test-repo"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+      }
+    ]
+    members = [
+      {
+        username = "egeren"
+        role     = "maintainer"
+      },
+      {
+        username = "UsainSasal"
+        role     = "member"
+      },
+      {
+        username = "onurceylan"
+        role     = "member"
+      }
+    ]
+  },
   "project-test-ismail" = {
     lead            = "ismailaricioglu"
     team_permission = "push"
