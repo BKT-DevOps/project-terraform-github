@@ -442,13 +442,13 @@ locals {
   all_repos = flatten([
     for project_name, project in var.projects : [
       for repo in project.repositories : {
-        project_name    = project_name
-        repo_name       = repo.name
-        description     = repo.description
-        visibility      = repo.visibility
-        lead            = project.lead
-        team_permission = project.team_permission
-        license         = try(repo.license, "mit")
+        project_name       = project_name
+        repo_name          = repo.name
+        description        = repo.description
+        visibility         = repo.visibility
+        lead               = project.lead
+        team_permission    = project.team_permission
+        license            = try(repo.license, "mit")
         gitignore_template = try(repo.gitignore_template, "")
       }
     ]
@@ -521,10 +521,10 @@ resource "github_repository_file" "gitignore" {
     if repo.gitignore_template == "" # Sadece template belirtilmemişse oluştur
   }
 
-  repository = github_repository.repo[each.key].name
-  branch     = "main"
-  file       = ".gitignore"
-  content    = file("${path.module}/.gitignore.default")
+  repository     = github_repository.repo[each.key].name
+  branch         = "main"
+  file           = ".gitignore"
+  content        = file("${path.module}/.gitignore.default")
   commit_message = "Add default .gitignore file"
 
   overwrite_on_create = true
