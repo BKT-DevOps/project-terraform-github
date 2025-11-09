@@ -153,7 +153,7 @@ projects = {
     team_permission = "push"
     repositories = [
       {
-        name        = "test-repo"
+        name        = "test-repo-34"
         description = "Test repository for demo purposes"
         visibility  = "public"
       }
