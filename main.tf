@@ -30,6 +30,9 @@ resource "github_repository" "repo" {
   # Optional License
   license_template = each.value.license
 
+  # gitignore_template -itignore_template - eğer kullanıcı belirtmişse onu kullan
+  gitignore_template = each.value.gitignore_template != "" ? each.value.gitignore_template : null
+
   # Enable branch protection
   allow_merge_commit = true
   allow_squash_merge = true
@@ -446,6 +449,7 @@ locals {
         lead            = project.lead
         team_permission = project.team_permission
         license         = try(repo.license, "mit")
+        gitignore_template = try(repo.gitignore_template, "")
       }
     ]
   ])
@@ -510,3 +514,26 @@ resource "github_repository_file" "pr_template" {
   }
 }
 
+# Default .gitignore dosyası oluştur (kullanıcı template belirtmemişse)
+resource "github_repository_file" "gitignore" {
+  for_each = {
+    for repo in local.all_repos : repo.repo_name => repo
+    if repo.gitignore_template == "" # Sadece template belirtilmemişse oluştur
+  }
+
+  repository = github_repository.repo[each.key].name
+  branch     = "main"
+  file       = ".gitignore"
+  content    = file("${path.module}/.gitignore.default")
+  commit_message = "Add default .gitignore file"
+
+  overwrite_on_create = true
+
+  depends_on = [
+    github_repository.repo
+  ]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}

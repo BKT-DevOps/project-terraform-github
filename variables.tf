@@ -19,6 +19,7 @@ variable "projects" {
       description = string
       visibility  = string
       license     = optional(string)
+      gitignore_template = optional(string, "")
     }))
     members = list(object({
       username = string
