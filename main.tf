@@ -7,7 +7,7 @@ provider "github" {
 resource "github_team" "project" {
   for_each    = var.projects
   name        = each.key
-  description = "${each.key} projesi geliştirme ekibi"
+  description = "${each.key} projesi geliştirme"
   privacy     = "closed"
 }
 
