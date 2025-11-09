@@ -26,7 +26,7 @@ _(Projenin neleri içerdiğini ve neleri **içermediğini** burada belirtin.)_
 Bu projenin teknik ve idari liderliğinden **@flovearth** sorumludur.
 
 ### 🔗 İlgili Bağlantılar
-*   **[Takım Bilgileri](team.md):** Proje ekibi ve rolleri.
+*   **[Takım Bilgileri](Team.md):** Proje ekibi ve rolleri.
 *   **Proje Panosu:** _(Varsa GitHub Projects panosunun linkini buraya ekleyin)_
 
 ---
@@ -60,7 +60,7 @@ _(Define what is included and what is **not** included in the project's scope he
 **@flovearth** is responsible for the technical and administrative leadership of this project.
 
 ### 🔗 Related Links
-*   **[Team Information](TEAM.md):** The project team and their roles.
+*   **[Team Information](Team.md):** The project team and their roles.
 *   **Project Board:** _(Add the link to the GitHub Projects board here, if any)_
 
 ---

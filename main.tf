@@ -201,7 +201,7 @@ resource "github_issue" "initial_setup" {
   title      = "Initial Setup"
   body = replace(
     replace(
-      file("${path.module}/docs/initial-setup-issue.md"),
+      file("${path.module}/docs/Initial-Setup-Issue.md"),
       "{{PROJECT_NAME}}", each.key
     ),
     "{{PROJECT_LEAD}}", each.value.lead
@@ -231,10 +231,10 @@ resource "github_repository_file" "docs_project" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
   repository = github_repository.repo[each.key].name
-  file       = "docs/project_definition.md"
+  file       = "docs/Project-Definition.md"
   content = replace(
     replace(
-      file("${path.module}/docs/project_definition.md"),
+      file("${path.module}/docs/Project-Definition.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
     "{{PROJECT_LEAD}}", each.value.lead
@@ -300,7 +300,7 @@ resource "github_repository_file" "team" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
   repository = github_repository.repo[each.key].name
-  file       = "docs/TEAM.md"
+  file       = "docs/Team.md"
 
   content = replace(
     replace(
@@ -308,7 +308,7 @@ resource "github_repository_file" "team" {
         replace(
           replace(
             replace(
-              file("${path.module}/docs/TEAM.md"),
+              file("${path.module}/docs/Team.md"),
               "{{PROJECT_NAME}}", each.value.project_name
             ),
             "{{GITHUB_ORG}}", var.github_organization
@@ -397,10 +397,10 @@ resource "github_repository_file" "wiki_home" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
   repository = github_repository.repo[each.key].name
-  file       = "docs/WIKI_HOME.md" # Wiki için referans
+  file       = "docs/Wiki-Home.md" # Wiki için referans
   content = replace(
     replace(
-      file("${path.module}/docs/WIKI_HOME.md"),
+      file("${path.module}/docs/Wiki-Home.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
     "{{PROJECT_LEAD}}", each.value.lead
@@ -427,7 +427,7 @@ locals {
       repository = project.repositories[0].name
       content = replace(
         replace(
-          file("${path.module}/docs/WIKI_HOME.md"),
+          file("${path.module}/docs/Wiki-Home.md"),
           "{{PROJECT_NAME}}", project_name
         ),
         "{{PROJECT_LEAD}}", project.lead
