@@ -6,7 +6,7 @@ provider "github" {
 # Create teams for each project
 resource "github_team" "project" {
   for_each    = var.projects
-  name        = each.key
+  name        = each.value.team_name
   description = "${each.key} projesi geliştirme ekibi"
   privacy     = "closed"
 }
@@ -204,10 +204,10 @@ resource "github_issue" "initial_setup" {
       file("${path.module}/docs/Initial-Setup-Issue.md"),
       "{{PROJECT_NAME}}", each.key
     ),
-    "{{PROJECT_LEAD}}", each.value.lead
+    "{{PROJECT_LEAD}}", each.value.project_lead
   )
 
-  assignees = [each.value.lead]
+  assignees = [each.value.project_lead]
   labels    = ["setup", "priority:high"]
 
   depends_on = [
@@ -281,9 +281,12 @@ resource "github_repository_file" "docs_architecture" {
 resource "github_repository_file" "docs_workflow" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
-  repository     = github_repository.repo[each.key].name
-  file           = "docs/Development-Workflow.md"
-  content        = file("${path.module}/docs/Development-Workflow.md")
+  repository = github_repository.repo[each.key].name
+  file       = "docs/Development-Workflow.md"
+  content = replace(
+    file("${path.module}/docs/Development-Workflow.md"),
+    "{{PROJECT_NAME}}", each.value.project_name
+  )
   commit_message = "Add Development Workflow document"
 
   overwrite_on_create = true
@@ -308,8 +311,11 @@ resource "github_repository_file" "team" {
         replace(
           replace(
             replace(
-              file("${path.module}/docs/Team.md"),
-              "{{PROJECT_NAME}}", each.value.project_name
+              replace(
+                file("${path.module}/docs/Team.md"),
+                "{{PROJECT_NAME}}", each.value.project_name
+              ),
+              "{{TEAM_NAME}}", var.projects[each.value.project_name].team_name
             ),
             "{{GITHUB_ORG}}", var.github_organization
           ),
@@ -427,10 +433,16 @@ locals {
       repository = project.repositories[0].name
       content = replace(
         replace(
-          file("${path.module}/docs/Wiki-Home.md"),
-          "{{PROJECT_NAME}}", project_name
+          replace(
+            replace(
+              file("${path.module}/docs/Wiki-Home.md"),
+              "{{PROJECT_NAME}}", project_name
+            ),
+            "{{PROJECT_LEAD}}", project.project_lead
+          ),
+          "{{TEAM_NAME}}", project.team_name
         ),
-        "{{PROJECT_LEAD}}", project.lead
+        "{{GITHUB_ORG}}", var.github_organization
       )
     }
   }
@@ -443,7 +455,7 @@ locals {
         repo_name       = repo.name
         description     = repo.description
         visibility      = repo.visibility
-        lead            = project.lead
+        lead            = project.project_lead
         team_permission = project.team_permission
         license         = try(repo.license, "mit")
       }

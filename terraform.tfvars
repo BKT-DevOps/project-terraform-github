@@ -1,50 +1,48 @@
 # GitHub Configuration
 github_organization = "BKT-DevOps"
 
-# Example Project Configuration
-# "project-alpha" = {  # "project-alpha" takım ismi olacaktır
-#   lead            = "flovearth" # proje lideri
-#   team_permission = "push" # takım izni
-#   repositories = [ # proje repoları
-#     {
-#       name              = "to-do-api" # repo ismi
-#       description       = "API service for Project To-Do" # repo açıklaması
-#       visibility        = "public" # repo görünürlüğü
-#     }
-#   ]
-#   members = [ # proje üyeleri
-#     {
-#       username = "flovearth" # üye GitHub kullanıcı adı
-#       role     = "maintainer" # üye rolü (maintainer repo yöneticisi, member normal üye)
-#     },
-#     {
-#       username = "hulyaoner" # üye GitHub kullanıcı adı
-#       role     = "member" # üye rolü (maintainer repo yöneticisi, member normal üye)
-#     },
-#     {
-#       username = "lerkush"
-#       role     = "member"
-#     },
-#     {
-#       username = "ismailaricioglu"
-#       role     = "member"
-#     }  # aynı formatta diğer üyeler eklenebilir 
-#   ]
+#=============================================================================
+# PROJE YAPISININ AÇIKLAMASI
+#=============================================================================
+# Bu dosyada her proje şu yapıda tanımlanır:
+# 
+# "proje-identifier" = {           # Proje benzersiz adı (key)
+#   team_name       = "..."        # GitHub'da oluşturulacak takım adı
+#   project_lead    = "..."        # Proje lideri GitHub kullanıcı adı
+#   team_permission = "push"       # Takım izin seviyesi
+#   repositories    = [...]        # Proje altındaki repository'ler
+#   members         = [...]        # Takım üyeleri
 # }
+#
+# TEAM PERMISSION SEVİYELERİ:
+#   - "pull"     → Sadece okuma yetkisi
+#   - "triage"   → Issue/PR düzenleme, kod gönderemez
+#   - "push"     → Yazma yetkisi (kod gönderme)
+#   - "maintain" → Kod yönetimi + issue + PR kontrolü
+#
+# MEMBER ROLE'LERİ:
+#   - "member"     → Normal takım üyesi
+#   - "maintainer" → Takım yöneticisi
+#=============================================================================
 
 # Projects Configuration
 projects = {
-  "InfraCoders" = {
-    lead            = "flovearth"
+  # ========================================
+  # PROJE: Infrastructure as Code
+  # ========================================
+  "infra-automation" = {
+    team_name       = "InfraCoders"
+    project_lead    = "flovearth"
     team_permission = "push"
+
     repositories = [
       {
         name        = "project-terraform-github"
-        description = "Terraform ile GitHub Repolarının Otomatik yönetimi"
+        description = "Terraform ile GitHub Repolarının Otomatik Yönetimi"
         visibility  = "public"
-      },
-
+      }
     ]
+
     members = [
       {
         username = "barisbutun"
@@ -93,16 +91,22 @@ projects = {
     ]
   }
 
-  "kovan" = {
-    lead            = "hakanceran64"
+  # ========================================
+  # PROJE: Communication Platform
+  # ========================================
+  "communication-platform" = {
+    team_name       = "Kovan"
+    project_lead    = "hakanceran64"
     team_permission = "push"
+
     repositories = [
       {
         name        = "communication-service"
-        description = "Core service for Project Communication"
+        description = "Core service for Communication Platform"
         visibility  = "public"
       }
     ]
+
     members = [
       {
         username = "flovearth"
@@ -127,8 +131,12 @@ projects = {
     ]
   }
 
-  "project-test" = {
-    lead            = "ismailaricioglu"
+  # ========================================
+  # PROJE: Demo & Testing
+  # ========================================
+  "demo-testing" = {
+    team_name       = "DemoTeam"
+    project_lead    = "ismailaricioglu"
     team_permission = "push"
     repositories = [
       {
@@ -151,38 +159,163 @@ projects = {
         role     = "member"
       }
     ]
-  },
-  "project-test-ismail" = {
-    lead            = "ismailaricioglu"
-    team_permission = "push"
+  }
+  "frontend-test" = {
+    team_name       = "UIExperts"
+    project_lead    = "ismailaricioglu"
+    team_permission = "maintain"
+
     repositories = [
       {
-        name        = "test-repo-34"
-        description = "Test repository for demo purposes"
+        name        = "dashboard-ui-test"
+        description = "Test Dashboard UI Application"
         visibility  = "public"
+        license     = "mit"
       }
     ]
+
     members = [
       {
-        username = "egeren"
+        username = "ismailaricioglu"
         role     = "maintainer"
       },
       {
-        username = "UsainSasal"
-        role     = "member"
-      },
-      {
-        username = "onurceylan"
-        role     = "member"
-      },
-      {
-        username = "flovearth"
-        role     = "member"
+        username = "slymanmrcan"
+        role     = "maintainer"
       }
     ]
   }
-}
+  
 
+  # Ekip Rolleri ve İzinler İçin Örnekler
+
+  # ___ORNEK: 1
+
+  # "Documentation" = {
+  #   lead            = "flovearth"
+  #   team_permission = "push"
+  #   
+  #   repositories = [
+  #     {
+  #       name        = "community-documentation"
+  #       description = "Topluluk için genel dokümantasyon"
+  #       visibility  = "public"
+  #     }
+  #   ]
+  #   
+  #   members = [
+  #     {
+  #       username = "flovearth"
+  #       role     = "maintainer"
+  #     },
+  #     {
+  #       username = "ismailaricioglu"
+  #       role     = "maintainer"
+  #     },
+  #     {
+  #       username = "onurceylan"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "UsainSasal"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "egeren"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "hulyaoner"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "lerkush"
+  #       role     = "member"
+  #     },
+  #   ]
+  # }
+
+  # ___ORNEK: 2
+
+  # "Documentation" = { 
+  #   # === Proje Yöneticisi (tam admin hakları) ===
+  #   lead            = "ahmet"
+
+  #   # === Takımın genel izin seviyesi ===
+  #   # "admin"    → tüm repo ayarlarını değiştirebilir
+  #   # "maintain" → kod yönetimi + issue + PR kontrolü
+  #   # "push"     → yazma yetkisi (kod gönderme)
+  #   # "triage"   → issue/PR düzenleme, kod gönderemez
+  #   # "pull"     → sadece okuma yetkisi
+  #   team_permission = "push"
+
+  #   # === Repositories (repo bazında ayar) ===
+  #   repositories = [
+  #     {
+  #       name         = "01-Documentation"
+  #       description  = "Topluluk için genel dokümantasyon"
+  #       visibility   = "public"
+  #       license      = "mit"
+
+  #       # Repo bazında özel izin tanımı (opsiyonel)
+  #       repo_permissions = [
+  #         {
+  #           username   = "ahmet"
+  #           permission = "admin"
+  #         },
+  #         {
+  #           username   = "ayse"
+  #           permission = "maintain"
+  #         },
+  #         {
+  #           username   = "mehmet"
+  #           permission = "triage"
+  #         }
+  #       ]
+  #     }
+  #   ]
+
+  #   # === Team Members ===
+  #   members = [
+  #     {
+  #       username = "ahmet"
+  #       role     = "maintainer"              # Takım yöneticisi
+  #     },
+  #     {
+  #       username = "ayse"
+  #       role     = "maintainer"              # Eş yönetici
+  #     },
+  #     {
+  #       username = "mehmet"
+  #       role     = "member"                  # Normal üye
+  #     },
+  #     {
+  #       username = "fatma"
+  #       role     = "member"
+  #       comment  = "Kod katkısı, issue açma, PR oluşturma izni var (push)."
+  #     },
+  #     {
+  #       username = "huseyin"
+  #       role     = "member"
+  #       comment  = "Read + Issue + Pull Request izni (triage)."
+  #     },
+  #     {
+  #       username = "anil"
+  #       role     = "member"
+  #       comment  = "Belgeleme sürecinde görevli, yazma (push) izni var."
+  #     },
+  #     {
+  #       username = "fatma"
+  #       role     = "member"
+  #       comment  = "Belge gözden geçirme, yorum yapma (read + comment) yetkisi."
+  #     },
+  #     {
+  #       username = "havva"
+  #       role     = "member"
+  #       comment  = "Yeni üye, sadece public read erişimine sahip."
+  #     }
+  #   ]
+  # }
 
 # DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
 
