@@ -78,5 +78,5 @@ variable "projects" {
     ])
     error_message = "GitHub usernames must start and end with alphanumeric characters"
   }
-  
+
 }

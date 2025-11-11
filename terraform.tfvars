@@ -189,7 +189,7 @@ projects = {
       }
     ]
   }
-  
+
 
   # Ekip Rolleri ve İzinler İçin Örnekler
 
@@ -342,87 +342,87 @@ projects = {
 
 }
 
-  # ___ORNEK: 2
+# ___ORNEK: 2
 
-  # "Documentation" = { 
-  #   # === Proje Yöneticisi (tam admin hakları) ===
-  #   lead            = "ahmet"
+# "Documentation" = { 
+#   # === Proje Yöneticisi (tam admin hakları) ===
+#   lead            = "ahmet"
 
-  #   # === Takımın genel izin seviyesi ===
-  #   # "admin"    → tüm repo ayarlarını değiştirebilir
-  #   # "maintain" → kod yönetimi + issue + PR kontrolü
-  #   # "push"     → yazma yetkisi (kod gönderme)
-  #   # "triage"   → issue/PR düzenleme, kod gönderemez
-  #   # "pull"     → sadece okuma yetkisi
-  #   team_permission = "push"
+#   # === Takımın genel izin seviyesi ===
+#   # "admin"    → tüm repo ayarlarını değiştirebilir
+#   # "maintain" → kod yönetimi + issue + PR kontrolü
+#   # "push"     → yazma yetkisi (kod gönderme)
+#   # "triage"   → issue/PR düzenleme, kod gönderemez
+#   # "pull"     → sadece okuma yetkisi
+#   team_permission = "push"
 
-  #   # === Repositories (repo bazında ayar) ===
-  #   repositories = [
-  #     {
-  #       name         = "01-Documentation"
-  #       description  = "Topluluk için genel dokümantasyon"
-  #       visibility   = "public"
-  #       license      = "mit"
+#   # === Repositories (repo bazında ayar) ===
+#   repositories = [
+#     {
+#       name         = "01-Documentation"
+#       description  = "Topluluk için genel dokümantasyon"
+#       visibility   = "public"
+#       license      = "mit"
 
-  #       # Repo bazında özel izin tanımı (opsiyonel)
-  #       repo_permissions = [
-  #         {
-  #           username   = "ahmet"
-  #           permission = "admin"
-  #         },
-  #         {
-  #           username   = "ayse"
-  #           permission = "maintain"
-  #         },
-  #         {
-  #           username   = "mehmet"
-  #           permission = "triage"
-  #         }
-  #       ]
-  #     }
-  #   ]
+#       # Repo bazında özel izin tanımı (opsiyonel)
+#       repo_permissions = [
+#         {
+#           username   = "ahmet"
+#           permission = "admin"
+#         },
+#         {
+#           username   = "ayse"
+#           permission = "maintain"
+#         },
+#         {
+#           username   = "mehmet"
+#           permission = "triage"
+#         }
+#       ]
+#     }
+#   ]
 
-  #   # === Team Members ===
-  #   members = [
-  #     {
-  #       username = "ahmet"
-  #       role     = "maintainer"              # Takım yöneticisi
-  #     },
-  #     {
-  #       username = "ayse"
-  #       role     = "maintainer"              # Eş yönetici
-  #     },
-  #     {
-  #       username = "mehmet"
-  #       role     = "member"                  # Normal üye
-  #     },
-  #     {
-  #       username = "fatma"
-  #       role     = "member"
-  #       comment  = "Kod katkısı, issue açma, PR oluşturma izni var (push)."
-  #     },
-  #     {
-  #       username = "huseyin"
-  #       role     = "member"
-  #       comment  = "Read + Issue + Pull Request izni (triage)."
-  #     },
-  #     {
-  #       username = "anil"
-  #       role     = "member"
-  #       comment  = "Belgeleme sürecinde görevli, yazma (push) izni var."
-  #     },
-  #     {
-  #       username = "fatma"
-  #       role     = "member"
-  #       comment  = "Belge gözden geçirme, yorum yapma (read + comment) yetkisi."
-  #     },
-  #     {
-  #       username = "havva"
-  #       role     = "member"
-  #       comment  = "Yeni üye, sadece public read erişimine sahip."
-  #     }
-  #   ]
-  # }
+#   # === Team Members ===
+#   members = [
+#     {
+#       username = "ahmet"
+#       role     = "maintainer"              # Takım yöneticisi
+#     },
+#     {
+#       username = "ayse"
+#       role     = "maintainer"              # Eş yönetici
+#     },
+#     {
+#       username = "mehmet"
+#       role     = "member"                  # Normal üye
+#     },
+#     {
+#       username = "fatma"
+#       role     = "member"
+#       comment  = "Kod katkısı, issue açma, PR oluşturma izni var (push)."
+#     },
+#     {
+#       username = "huseyin"
+#       role     = "member"
+#       comment  = "Read + Issue + Pull Request izni (triage)."
+#     },
+#     {
+#       username = "anil"
+#       role     = "member"
+#       comment  = "Belgeleme sürecinde görevli, yazma (push) izni var."
+#     },
+#     {
+#       username = "fatma"
+#       role     = "member"
+#       comment  = "Belge gözden geçirme, yorum yapma (read + comment) yetkisi."
+#     },
+#     {
+#       username = "havva"
+#       role     = "member"
+#       comment  = "Yeni üye, sadece public read erişimine sahip."
+#     }
+#   ]
+# }
 
 # DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
 
