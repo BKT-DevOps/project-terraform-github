@@ -165,7 +165,7 @@ projects = {
 
   # ___ORNEK: 1
   "frontend-test" = {
-    team_name       = "UIExperts-teamname"
+    team_name       = "UIExperts"
     project_lead    = "ismailaricioglu"
     team_permission = "maintain"
 
