@@ -427,26 +427,6 @@ locals {
     project_name => project.repositories[0].name
   }
 
-  wiki_pages = {
-    for project_name, project in var.projects :
-    project_name => {
-      repository = project.repositories[0].name
-      content = replace(
-        replace(
-          replace(
-            replace(
-              file("${path.module}/docs/Wiki-Home.md"),
-              "{{PROJECT_NAME}}", project_name
-            ),
-            "{{PROJECT_LEAD}}", project.project_lead
-          ),
-          "{{TEAM_NAME}}", project.team_name
-        ),
-        "{{GITHUB_ORG}}", var.github_organization
-      )
-    }
-  }
-
   # Flatten repos from projects
   all_repos = flatten([
     for project_name, project in var.projects : [
