@@ -123,6 +123,7 @@ resource "github_branch_protection" "main" {
     github_repository_file.codeowners,
     github_repository_file.docs_architecture,
     github_repository_file.docs_workflow,
+    github_repository_file.docs_verified_commits,
     github_repository_file.pr_template
   ]
 }
@@ -298,6 +299,31 @@ resource "github_repository_file" "docs_workflow" {
   ]
 }
 
+# Verified Commits Guide dokümanı
+resource "github_repository_file" "docs_verified_commits" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  file       = "docs/Verified-Commits-Guide.md"
+  content = replace(
+    file("${path.module}/docs/Verified-Commits-Guide.md"),
+    "{{PROJECT_NAME}}", each.value.project_name
+  )
+  commit_message = "Add Verified Commits Guide document"
+
+  overwrite_on_create = true
+
+  depends_on = [
+    github_repository.repo,
+    github_team_repository.access,
+    github_repository_collaborator.lead
+  ]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
 # Team sayfası için dinamik içerik
 resource "github_repository_file" "team" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
@@ -356,7 +382,7 @@ resource "github_repository_file" "readme" {
     replace(
       replace(
         replace(
-          file("${path.module}/README.md"),
+          file("${path.module}/docs/Readme.md"),
           "{{PROJECT_NAME}}", each.value.project_name
         ),
         "{{PROJECT_LEAD}}", each.value.lead

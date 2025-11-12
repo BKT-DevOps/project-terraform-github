@@ -1,4 +1,4 @@
-# InfraCoders Projesi Wiki'sine Hoş Geldiniz
+# {{PROJECT_NAME}} Projesi Wiki'sine Hoş Geldiniz
 
 <details open> <summary><strong>🇹🇷 Türkçe</strong></summary> <br>
 

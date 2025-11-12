@@ -1,16 +1,10 @@
 # {{TEAM_NAME}} Takımı ve Rolleri
-
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
-
 <br>
-
 Bu projedeki güncel ekip üyelerini ve rollerini görmek için lütfen GitHub'ın kendi takım sayfasını ziyaret edin. Oradaki liste **her zaman günceldir**.
-
 ### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
-
 ---
-
 ## 📊 Takım İstatistikleri
 
 - **Proje Adı:** {{PROJECT_NAME}}
