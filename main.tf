@@ -6,7 +6,7 @@ provider "github" {
 # Create teams for each project
 resource "github_team" "project" {
   for_each    = var.projects
-  name        = each.key
+  name        = each.value.team_name
   description = "${each.key} projesi geliştirme ekibi"
   privacy     = "closed"
 }
@@ -37,7 +37,7 @@ resource "github_repository" "repo" {
   allow_merge_commit = true
   allow_squash_merge = true
   allow_rebase_merge = false
-  allow_auto_merge   = false
+  allow_auto_merge   = true
 
   lifecycle {
     ignore_changes = [
@@ -66,11 +66,11 @@ resource "github_team_membership" "members" {
 }
 
 # Grant admin access to project leads
-resource "github_repository_collaborator" "lead" {
+resource "github_repository_collaborator" "project_lead" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
   repository = github_repository.repo[each.key].name
-  username   = each.value.lead
+  username   = each.value.project_lead
   permission = "admin"
 }
 
@@ -121,12 +121,10 @@ resource "github_branch_protection" "main" {
   require_signed_commits = true
 
   depends_on = [
-    github_repository_file.docs_project,
-    github_repository_file.readme,
-    github_repository_file.codeowners,
-    github_repository_file.docs_architecture,
-    github_repository_file.docs_workflow,
-    github_repository_file.pr_template
+    github_repository.repo,
+    github_branch.release,
+    github_branch.develop,
+
   ]
 }
 
@@ -136,7 +134,7 @@ resource "github_repository_file" "codeowners" {
   repository     = github_repository.repo[each.key].name
   branch         = "main"
   file           = ".github/CODEOWNERS"
-  content        = "* @${each.value.lead}\n"
+  content        = "* @${each.value.project_lead}\n"
   commit_message = "initial commit"
 
   overwrite_on_create = true
@@ -144,7 +142,7 @@ resource "github_repository_file" "codeowners" {
   depends_on = [
     github_repository.repo,
     github_team_repository.access,
-    github_repository_collaborator.lead
+    github_repository_collaborator.project_lead
   ]
 
   lifecycle {
@@ -207,10 +205,10 @@ resource "github_issue" "initial_setup" {
       file("${path.module}/docs/Initial-Setup-Issue.md"),
       "{{PROJECT_NAME}}", each.key
     ),
-    "{{PROJECT_LEAD}}", each.value.lead
+    "{{PROJECT_LEAD}}", each.value.project_lead
   )
 
-  assignees = [each.value.lead]
+  assignees = [each.value.project_lead]
   labels    = ["setup", "priority:high"]
 
   depends_on = [
@@ -240,7 +238,7 @@ resource "github_repository_file" "docs_project" {
       file("${path.module}/docs/Project-Definition.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
-    "{{PROJECT_LEAD}}", each.value.lead
+    "{{PROJECT_LEAD}}", each.value.project_lead
   )
   commit_message = "Add project documentation"
 
@@ -249,12 +247,12 @@ resource "github_repository_file" "docs_project" {
   depends_on = [
     github_repository.repo,
     github_team_repository.access,
-    github_repository_collaborator.lead
+    github_repository_collaborator.project_lead
   ]
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 # Architecture Overview dokümanı
 resource "github_repository_file" "docs_architecture" {
@@ -273,20 +271,23 @@ resource "github_repository_file" "docs_architecture" {
   depends_on = [
     github_repository.repo,
     github_team_repository.access,
-    github_repository_collaborator.lead
+    github_repository_collaborator.project_lead
   ]
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Development Workflow dokümanı
 resource "github_repository_file" "docs_workflow" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
-  repository     = github_repository.repo[each.key].name
-  file           = "docs/Development-Workflow.md"
-  content        = file("${path.module}/docs/Development-Workflow.md")
+  repository = github_repository.repo[each.key].name
+  file       = "docs/Development-Workflow.md"
+  content = replace(
+    file("${path.module}/docs/Development-Workflow.md"),
+    "{{PROJECT_NAME}}", each.value.project_name
+  )
   commit_message = "Add Development Workflow document"
 
   overwrite_on_create = true
@@ -294,8 +295,33 @@ resource "github_repository_file" "docs_workflow" {
   depends_on = [
     github_repository.repo,
     github_team_repository.access,
-    github_repository_collaborator.lead
+    github_repository_collaborator.project_lead
   ]
+}
+
+# Verified Commits Guide dokümanı
+resource "github_repository_file" "docs_verified_commits" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  file       = "docs/Verified-Commits-Guide.md"
+  content = replace(
+    file("${path.module}/docs/Verified-Commits-Guide.md"),
+    "{{PROJECT_NAME}}", each.value.project_name
+  )
+  commit_message = "Add Verified Commits Guide document"
+
+  overwrite_on_create = true
+
+  depends_on = [
+    github_repository.repo,
+    github_team_repository.access,
+    github_repository_collaborator.project_lead
+  ]
+
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Team sayfası için dinamik içerik
@@ -311,12 +337,15 @@ resource "github_repository_file" "team" {
         replace(
           replace(
             replace(
-              file("${path.module}/docs/Team.md"),
-              "{{PROJECT_NAME}}", each.value.project_name
+              replace(
+                file("${path.module}/docs/Team.md"),
+                "{{PROJECT_NAME}}", each.value.project_name
+              ),
+              "{{TEAM_NAME}}", var.projects[each.value.project_name].team_name
             ),
             "{{GITHUB_ORG}}", var.github_organization
           ),
-          "{{PROJECT_LEAD}}", each.value.lead
+          "{{PROJECT_LEAD}}", each.value.project_lead
         ),
         "{{MEMBER_COUNT}}", tostring(length(var.projects[each.value.project_name].members))
       ),
@@ -326,7 +355,8 @@ resource "github_repository_file" "team" {
     ),
     "{{REGULAR_MEMBER_COUNT}}", tostring(length([
       for m in var.projects[each.value.project_name].members : m if m.role == "member"
-    ]))
+      ])
+    )
   )
 
   commit_message      = "initial commit"
@@ -335,12 +365,12 @@ resource "github_repository_file" "team" {
   depends_on = [
     github_repository.repo,
     github_team_repository.access,
-    github_repository_collaborator.lead
+    github_repository_collaborator.project_lead
   ]
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Create comprehensive README for each repository
@@ -353,10 +383,10 @@ resource "github_repository_file" "readme" {
     replace(
       replace(
         replace(
-          file("${path.module}/README.md"),
+          file("${path.module}/docs/Readme.md"),
           "{{PROJECT_NAME}}", each.value.project_name
         ),
-        "{{PROJECT_LEAD}}", each.value.lead
+        "{{PROJECT_LEAD}}", each.value.project_lead
       ),
       "{{GITHUB_ORG}}", var.github_organization
     ),
@@ -367,14 +397,14 @@ resource "github_repository_file" "readme" {
   depends_on = [
     github_repository.repo,
     github_team_repository.access,
-    github_repository_collaborator.lead
+    github_repository_collaborator.project_lead
   ]
 
   overwrite_on_create = true # This will overwrite the auto-generated README
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # --- Code of Conduct dosyasını her repoya ekle ---
@@ -406,14 +436,14 @@ resource "github_repository_file" "wiki_home" {
       file("${path.module}/docs/Wiki-Home.md"),
       "{{PROJECT_NAME}}", each.value.project_name
     ),
-    "{{PROJECT_LEAD}}", each.value.lead
+    "{{PROJECT_LEAD}}", each.value.project_lead
   )
   commit_message      = "initial commit"
   overwrite_on_create = true
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Local values for processing complex data structures
@@ -432,7 +462,7 @@ locals {
         repo_name          = repo.name
         description        = repo.description
         visibility         = repo.visibility
-        lead               = project.lead
+        project_lead       = project.project_lead
         team_permission    = project.team_permission
         license            = try(repo.license, "mit")
         gitignore_template = try(repo.gitignore_template, "")

@@ -26,7 +26,7 @@ output "team_memberships" {
   description = "Team membership summary"
   value = {
     for project_name, project in var.projects : project_name => {
-      lead         = project.lead
+      project_lead = project.project_lead
       members      = [for member in project.members : member.username]
       repositories = [for repo in project.repositories : repo.name]
     }
@@ -41,7 +41,7 @@ output "project_summary" {
     total_memberships  = length(local.all_memberships)
     projects = {
       for project_name, project in var.projects : project_name => {
-        lead         = project.lead
+        project_lead = project.project_lead
         repositories = length(project.repositories)
         members      = length(project.members)
         main_repo    = local.project_main_repos[project_name]

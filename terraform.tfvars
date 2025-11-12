@@ -1,46 +1,43 @@
 # GitHub Configuration
 github_organization = "BKT-DevOps"
 
-# Example Project Configuration
-# "project-alpha" = {  # "project-alpha" takım ismi olacaktır
-#   lead            = "flovearth" # proje lideri
-#   team_permission = "push" # takım izni
-#   repositories = [ # proje repoları
-#     {
-#       name              = "to-do-api" # repo ismi
-#       description       = "API service for Project To-Do" # repo açıklaması
-#       visibility        = "public" # repo görünürlüğü
-#     }
-#   ]
-#   members = [ # proje üyeleri
-#     {
-#       username = "flovearth" # üye GitHub kullanıcı adı
-#       role     = "maintainer" # üye rolü (maintainer repo yöneticisi, member normal üye)
-#     },
-#     {
-#       username = "hulyaoner" # üye GitHub kullanıcı adı
-#       role     = "member" # üye rolü (maintainer repo yöneticisi, member normal üye)
-#     },
-#     {
-#       username = "lerkush"
-#       role     = "member"
-#     },
-#     {
-#       username = "ismailaricioglu"
-#       role     = "member"
-#     }  # aynı formatta diğer üyeler eklenebilir 
-#   ]
-# }
+#=============================================================================
+# PROJE YAPISININ AÇIKLAMASI
+#=============================================================================
+# Bu dosyada her proje şu yapıda tanımlanır:
+# 
+# "proje-identifier" = {           # Proje benzersiz adı (key)
+#   team_name       = "..."        # GitHub'da oluşturulacak takım adı
+#   project_lead    = "..."        # Proje lideri GitHub kullanıcı adı
+#   team_permission = "push"       # Takım izin seviyesi
+#   repositories    = [...]        # Proje altındaki repository'ler
+#   members         = [...]        # Takım üyeleri
+
+#
+# TEAM PERMISSION SEVİYELERİ:
+#   - "pull"     → Sadece okuma yetkisi
+#   - "triage"   → Issue/PR düzenleme, kod gönderemez
+#   - "push"     → Yazma yetkisi (kod gönderme)
+#   - "maintain" → Kod yönetimi + issue + PR kontrolü
+#
+# MEMBER ROLE'LERİ:
+#   - "member"     → Normal takım üyesi
+#   - "maintainer" → Takım yöneticisi
+#=============================================================================
 
 # Projects Configuration
 projects = {
+  # ========================================
+  # PROJE: Infrastructure as Code
+  # ========================================
   "InfraCoders" = {
-    lead            = "flovearth"
+    project_lead    = "flovearth"
+    team_name       = "InfraCoders"
     team_permission = "push"
     repositories = [
       {
         name        = "project-terraform-github"
-        description = "Terraform ile GitHub Repolarının Otomatik yönetimi"
+        description = "Terraform ile GitHub Repolarının Otomatik Yönetimi"
         visibility  = "public"
       },
 
@@ -94,7 +91,8 @@ projects = {
   }
 
   "kovan" = {
-    lead            = "hakanceran64"
+    project_lead    = "hakanceran64"
+    team_name       = "Kovan"
     team_permission = "push"
     repositories = [
       {
@@ -128,7 +126,8 @@ projects = {
   }
 
   "project-test" = {
-    lead            = "ismailaricioglu"
+    project_lead    = "ismailaricioglu"
+    team_name       = "Project Test"
     team_permission = "push"
     repositories = [
       {
@@ -153,7 +152,8 @@ projects = {
     ]
   },
   "project-test-ismail" = {
-    lead            = "ismailaricioglu"
+    project_lead    = "ismailaricioglu"
+    team_name       = "Project Test Ismail"
     team_permission = "push"
     repositories = [
       {
@@ -182,8 +182,9 @@ projects = {
     ]
   },
   "project-test-lutfiye" = {
-    lead            = "lerkush"
+    project_lead    = "lerkush"
     team_permission = "push"
+    team_name       = "Project Test Lutfiye"
     repositories = [
       {
         name        = "project-test-lutfiye"

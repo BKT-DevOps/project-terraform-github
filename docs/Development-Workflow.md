@@ -36,6 +36,7 @@ Bu belge, InfraCoders projesindeki geliştirme süreçleri, standartları ve iş
 
 <br>
 
+
 This document is a guide for development processes, standards, and workflows in the InfraCoders project.
 
 ## Workflow
