@@ -1,39 +1,49 @@
-# Local .terraform directories
-.terraform/
+# Default .gitignore template
+# Bu dosya, kullanıcı gitignore belirtmediğinde otomatik oluşturulur
 
-# .tfstate files
-*.tfstate
-*.tfstate.*
-.terraform.lock.hcl
-tfplan
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# Crash log files
-crash.log
-crash.*.log
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
 
-# Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
-# to change depending on the environment.
-*.tfvars
-*.tfvars.json
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+# Dependencies
+node_modules/
+vendor/
+venv/
+env/
 
-# Ignore transient lock info files created by terraform apply
-.terraform.tfstate.lock.info
+# Build outputs
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+target/
 
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
-
-# Ignore CLI configuration files
-.terraformrc
-terraform.rc
+# Temporary files
+tmp/
+temp/
+*.tmp
