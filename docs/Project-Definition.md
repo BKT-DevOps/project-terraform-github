@@ -1,11 +1,11 @@
-# {{PROJECT_NAME}} Projesi Tanıtım Belgesi
+# InfraCoders Projesi Tanıtım Belgesi
 
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 
 <br>
 
-Bu belge, bu reponun ait olduğu **{{PROJECT_NAME}}** projesinin genel hedeflerini, kapsamını ve liderliğini tanımlar.
+Bu belge, bu reponun ait olduğu **InfraCoders** projesinin genel hedeflerini, kapsamını ve liderliğini tanımlar.
 
 ---
 
@@ -23,7 +23,7 @@ _(Lütfen bu bölümü, projenin çözdüğü temel sorunu veya ulaşmayı hedef
 _(Projenin neleri içerdiğini ve neleri **içermediğini** burada belirtin.)_
 
 ### 👤 Proje Lideri
-Bu projenin teknik ve idari liderliğinden **@{{PROJECT_LEAD}}** sorumludur.
+Bu projenin teknik ve idari liderliğinden **@flovearth** sorumludur.
 
 ### 🔗 İlgili Bağlantılar
 *   **[Takım Bilgileri](Team.md):** Proje ekibi ve rolleri.
@@ -39,7 +39,7 @@ Bu projenin teknik ve idari liderliğinden **@{{PROJECT_LEAD}}** sorumludur.
 
 <br>
 
-This document defines the overall goals, scope, and leadership for the **{{PROJECT_NAME}}** project, to which this repository belongs.
+This document defines the overall goals, scope, and leadership for the **InfraCoders** project, to which this repository belongs.
 
 ---
 
@@ -57,7 +57,7 @@ Example: "This project aims to develop a modern and fast API service that allows
 _(Define what is included and what is **not** included in the project's scope here.)_
 
 ### 👤 Project Lead
-**@{{PROJECT_LEAD}}** is responsible for the technical and administrative leadership of this project.
+**@flovearth** is responsible for the technical and administrative leadership of this project.
 
 ### 🔗 Related Links
 *   **[Team Information](Team.md):** The project team and their roles.
