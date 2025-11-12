@@ -250,9 +250,9 @@ resource "github_repository_file" "docs_project" {
     github_repository_collaborator.project_lead
   ]
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 # Architecture Overview dokümanı
 resource "github_repository_file" "docs_architecture" {
@@ -273,9 +273,9 @@ resource "github_repository_file" "docs_architecture" {
     github_team_repository.access,
     github_repository_collaborator.project_lead
   ]
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Development Workflow dokümanı
@@ -319,9 +319,9 @@ resource "github_repository_file" "docs_verified_commits" {
     github_repository_collaborator.project_lead
   ]
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Team sayfası için dinamik içerik
@@ -368,9 +368,9 @@ resource "github_repository_file" "team" {
     github_repository_collaborator.project_lead
   ]
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Create comprehensive README for each repository
@@ -402,9 +402,9 @@ resource "github_repository_file" "readme" {
 
   overwrite_on_create = true # This will overwrite the auto-generated README
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # --- Code of Conduct dosyasını her repoya ekle ---
@@ -441,9 +441,9 @@ resource "github_repository_file" "wiki_home" {
   commit_message      = "initial commit"
   overwrite_on_create = true
 
-  lifecycle {
-    ignore_changes = [content]
-  }
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
 }
 
 # Local values for processing complex data structures
