@@ -1,6 +1,12 @@
 # Default .gitignore template
 # Bu dosya, kullanıcı gitignore belirtmediğinde otomatik oluşturulur
 
+# terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+tfplan
 # Operating System Files
 .DS_Store
 Thumbs.db
