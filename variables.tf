@@ -15,10 +15,11 @@ variable "projects" {
     lead            = string
     team_permission = string
     repositories = list(object({
-      name        = string
-      description = string
-      visibility  = string
-      license     = optional(string)
+      name               = string
+      description        = string
+      visibility         = string
+      license            = optional(string)
+      gitignore_template = optional(string, "")
     }))
     members = list(object({
       username = string
