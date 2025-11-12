@@ -180,6 +180,31 @@ projects = {
         role     = "member"
       }
     ]
+  },
+  "project-test-lutfiye" = {
+    lead            = "lerkush"
+    team_permission = "push"
+    repositories = [
+      {
+        name        = "project-test-lutfiye"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+      }
+    ]
+    members = [
+      {
+        username = "hulyaoner"
+        role     = "member"
+      },
+      {
+        username = "onurceylan"
+        role     = "member"
+      },
+      {
+        username = "flovearth"
+        role     = "member"
+      }
+    ]
   }
 }
 
