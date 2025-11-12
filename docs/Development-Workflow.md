@@ -1,9 +1,9 @@
-# Geliştirme Akışı
+ü# Geliştirme Akışı
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
 
-Bu belge, InfraCoders projesindeki geliştirme süreçleri, standartları ve iş akışları için bir rehberdir.
+Bu belge, {{PROJECT_NAME}} projesindeki geliştirme süreçleri, standartları ve iş akışları için bir rehberdir.
 
 ## İş Akışı
 
@@ -37,7 +37,7 @@ Bu belge, InfraCoders projesindeki geliştirme süreçleri, standartları ve iş
 <br>
 
 
-This document is a guide for development processes, standards, and workflows in the InfraCoders project.
+This document is a guide for development processes, standards, and workflows in the {{PROJECT_NAME}} project.
 
 ## Workflow
 

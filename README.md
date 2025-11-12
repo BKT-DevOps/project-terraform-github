@@ -152,9 +152,10 @@ github_organization = "YourOrganization"
 
 projects = {
   "YourProject" = {
-    team_name       = "your-team"
-    project_lead    = "your-github-username"
-    team_permission = "push"
+    project_display_name = "Your Project Display Name"  # Opsiyonel: İnsan tarafından okunabilir proje adı
+    team_name            = "your-team"
+    project_lead         = "your-github-username"
+    team_permission      = "push"
     repositories = [
       {
         name        = "your-repo-name"
@@ -511,9 +512,10 @@ github_organization = "YourOrganization"
 
 projects = {
   "YourProject" = {
-    team_name       = "your-team"
-    project_lead    = "your-github-username"
-    team_permission = "push"
+    project_display_name = "Your Project Display Name"  # Optional: Human-readable project name
+    team_name            = "your-team"
+    project_lead         = "your-github-username"
+    team_permission      = "push"
     repositories = [
       {
         name        = "your-repo-name"

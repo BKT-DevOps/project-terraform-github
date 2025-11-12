@@ -1,18 +1,18 @@
-# InfraCoders Takımı ve Rolleri
+# {{PROJECT_NAME}} Takımı ve Rolleri
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
 Bu projedeki güncel ekip üyelerini ve rollerini görmek için lütfen GitHub'ın kendi takım sayfasını ziyaret edin. Oradaki liste **her zaman günceldir**.
-### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/BKT-DevOps/teams/InfraCoders)
+### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
 ---
 ## 📊 Takım İstatistikleri
 
-- **Proje Adı:** InfraCoders
-- **Takım Adı:** InfraCoders
-- **Proje Lideri:** @flovearth
-- **Toplam Üye Sayısı:** 11
-- **Maintainer Sayısı:** 0
-- **Member Sayısı:** 11
+- **Proje Adı:** {{PROJECT_NAME}}
+- **Takım Adı:** {{TEAM_NAME}}
+- **Proje Lideri:** @{{PROJECT_LEAD}}
+- **Toplam Üye Sayısı:** {{MEMBER_COUNT}}
+- **Maintainer Sayısı:** {{MAINTAINER_COUNT}}
+- **Member Sayısı:** {{REGULAR_MEMBER_COUNT}}
 
 ---
 
@@ -44,18 +44,18 @@ Bu dokümanın amacı ise projedeki rolleri ve sorumlulukları tanımlamaktır.
 
 To see the current members and roles of this project, please visit the official GitHub Team page. The list there is **always up-to-date**.
 
-### ➡️ [Click Here for the Current Team List](https://github.com/orgs/BKT-DevOps/teams/InfraCoders)
+### ➡️ [Click Here for the Current Team List](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
 
 ---
 
 ## 📊 Team Statistics
 
-- **Project Name:** InfraCoders
-- **Team Name:** InfraCoders
-- **Project Lead:** @flovearth
-- **Total Members:** 11
-- **Maintainers:** 0
-- **Members:** 11
+- **Project Name:** {{PROJECT_NAME}}
+- **Team Name:** {{TEAM_NAME}}
+- **Project Lead:** @{{PROJECT_LEAD}}
+- **Total Members:** {{MEMBER_COUNT}}
+- **Maintainers:** {{MAINTAINER_COUNT}}
+- **Members:** {{REGULAR_MEMBER_COUNT}}
 
 ---
 
