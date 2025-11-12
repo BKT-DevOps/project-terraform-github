@@ -191,7 +191,7 @@ projects = {
     ]
   },
   "project-test-lutfiye" = {
-    project_display_name = "Project Test Lutfiye"
+    //project_display_name = "Project Test Lutfiye"
     project_lead         = "lerkush"
     team_permission      = "push"
     team_name            = "Project Test Lutfiye"
