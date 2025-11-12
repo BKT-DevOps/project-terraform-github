@@ -2,7 +2,7 @@
 github_organization = "BKT-DevOps"
 
 # Example Project Configuration
-# "project-alpha" = {  # "project-alpha" takım ismi olacaktır
+# "project-alpha" = {  # "project-alpha" takım ismi olacaktır.
 #   lead            = "flovearth" # proje lideri
 #   team_permission = "push" # takım izni
 #   repositories = [ # proje repoları
