@@ -398,7 +398,7 @@ WIP
 - [ ] Kullanım örnekleri eklendi
 
 ## 🔗 İlişkili Issue'lar
-Closes #123
+Task Ticket Number #123
 Relates to #456
 
 ## ✅ Checklist
@@ -1276,7 +1276,7 @@ Examples:
 - [ ] Usage examples added
 
 ## 🔗 Related Issues
-Closes #123
+Task Ticket Number #123
 Relates to #456
 
 ## ✅ Checklist
