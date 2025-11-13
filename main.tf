@@ -119,7 +119,7 @@ resource "github_branch_protection" "main" {
   enforce_admins         = false
   allows_deletions       = false
   allows_force_pushes    = false
-  require_signed_commits = true
+  require_signed_commits = false
 
   depends_on = [
     github_repository.repo,
