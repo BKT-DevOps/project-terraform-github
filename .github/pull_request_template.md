@@ -5,7 +5,7 @@
 
 ## 🎯 İlgili Görev (Task)
 
-Closes #
+Task Ticket Number #
 
 
 ## 📝 Açıklama
@@ -28,7 +28,7 @@ Closes #
 
 ## 🎯 Related Task
 
-Closes #
+Task Ticket Number #
 
 
 ## 📝 Description

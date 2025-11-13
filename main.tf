@@ -27,8 +27,9 @@ resource "github_repository" "repo" {
   delete_branch_on_merge = true
   auto_init              = true
 
-  # Optional License
-  license_template = each.value.license
+  # Lisans ayarı: "none" veya "" ise null, yoksa belirtilen lisansı kullan
+  license_template = (each.value.license == "none" || each.value.license == "") ? null : each.value.license
+
 
   # gitignore_template -itignore_template - eğer kullanıcı belirtmişse onu kullan
   gitignore_template = each.value.gitignore_template != "" ? each.value.gitignore_template : null
