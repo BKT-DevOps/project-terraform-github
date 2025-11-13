@@ -27,8 +27,9 @@ resource "github_repository" "repo" {
   delete_branch_on_merge = true
   auto_init              = true
 
-  # Optional License
-  license_template = each.value.license
+ # Lisans ayarı: "none" veya "" ise null, yoksa belirtilen lisansı kullan
+  license_template = (each.value.license == "none" || each.value.license == "") ? null : each.value.license
+
 
   # gitignore_template -itignore_template - eğer kullanıcı belirtmişse onu kullan
   gitignore_template = each.value.gitignore_template != "" ? each.value.gitignore_template : null
@@ -464,7 +465,8 @@ locals {
         visibility         = repo.visibility
         project_lead       = project.project_lead
         team_permission    = project.team_permission
-        license            = try(repo.license, "mit")
+        # Boş string veya belirtilmemiş ise "mit" kullan
+        license            = try(repo.license, "mit") == "" ? "mit" : try(repo.license, "mit")
         gitignore_template = try(repo.gitignore_template, "")
       }
     ]

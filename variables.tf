@@ -19,13 +19,33 @@ variable "projects" {
       name        = string           # Repository adı
       description = string           # Repository açıklaması
       visibility  = string           # Repository görünürlüğü (public, private)
-      license     = optional(string) # Repository lisansı (opsiyonel, default: mit)
+      license     = optional(string, "mit")  # Default: "mit"
     }))
     members = list(object({
       username = string # GitHub kullanıcı adı
       role     = string # Takım rolü (member, maintainer)
     }))
   }))
+
+  # Lisans doğrulama
+validation {
+  condition = alltrue([
+    for project_name, project in var.projects :
+    alltrue([
+      for repo in project.repositories :
+      (
+        try(repo.license, "mit") == "none" ||
+        try(repo.license, "mit") == "" ||
+        contains([
+          "mit", "apache-2.0", "gpl-3.0", "agpl-3.0", "lgpl-3.0",
+          "mpl-2.0", "bsd-2-clause", "bsd-3-clause", "bsl-1.0",
+          "cc0-1.0", "epl-2.0", "gpl-2.0", "isc", "unlicense"
+        ], lower(try(repo.license, "mit")))
+      )
+    ])
+  ])
+  error_message = "License must be empty (''), 'none', or one of the valid GitHub license identifiers: mit, apache-2.0, gpl-3.0, agpl-3.0, lgpl-3.0, mpl-2.0, bsd-2-clause, bsd-3-clause, bsl-1.0, cc0-1.0, epl-2.0, gpl-2.0, isc, unlicense"
+}
 
   validation {
     condition = alltrue([
