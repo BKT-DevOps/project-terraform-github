@@ -1,7 +1,7 @@
 # 🌍 Terraform Kurulum Rehberi | Terraform Installation Guide
 
 <details open>
-<summary><h2>🇹🇷 Türkçe</h2></summary>
+<summary><h2>🇹🇷 TÜRKÇE </h2></summary>
 
 Bu doküman, **Terraform**'un Windows, Linux ve macOS işletim sistemlerine nasıl kurulacağını adım adım açıklar.  
 Terraform, altyapıyı kodla yönetmeyi sağlayan (Infrastructure as Code – IaC) güçlü bir araçtır.
@@ -297,13 +297,12 @@ Bu rehberde:
 - ✅ Güvenli bir şekilde token yönetimini öğrendik
 - ✅ Terraform komutlarıyla altyapıyı kod olarak yönettik
 
-
 </details>
 
 ---
 
 <details>
-<summary><h2>🇬🇧 English</h2></summary>
+<summary><h2>🇬🇧 ENGLISH</h2></summary>
 
 This document explains step-by-step how to install **Terraform** on Windows, Linux, and macOS operating systems.  
 Terraform is a powerful tool that enables Infrastructure as Code (IaC) management.
@@ -598,6 +597,5 @@ In this guide we:
 - ✅ Created a project for GitHub integration
 - ✅ Learned secure token management
 - ✅ Managed infrastructure as code with Terraform commands
-
 
 </details>
