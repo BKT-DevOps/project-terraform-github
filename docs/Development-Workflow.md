@@ -9,7 +9,7 @@ Bu belge, InfraCoders projesindeki geliştirme süreçleri, standartları ve iş
 
 1.  **Issues:** Tüm işler (yeni özellikler, hatalar, görevler) GitHub Issues üzerinden takip edilmelidir. Her iş için bir issue oluşturulmalıdır.
 2.  **Branches:** Her issue için `main` branch'inden yeni bir özellik (feature) branch'i oluşturulmalıdır. Branch isimlendirme kuralı: `feature/issue-no-kisa-aciklama` (Örn: `feature/123-add-user-login`).
-3.  **Pull Requests (PRs):** Tüm kod değişiklikleri PR üzerinden `main` branch'ine birleştirilmelidir. PR açarken ilgili issue'yu referans gösterin (`Closes #123`).
+3.  **Pull Requests (PRs):** Tüm kod değişiklikleri PR üzerinden `main` branch'ine birleştirilmelidir. PR açarken ilgili issue'yu referans gösterin (`Task Ticket Number #123`).
 4.  **Kod İnceleme (Code Review):** Her PR, proje lideri veya belirlenmiş en az bir kıdemli geliştirici tarafından onaylanmalıdır.
 
 ## Kod Standartları
@@ -43,7 +43,7 @@ This document is a guide for development processes, standards, and workflows in 
 
 1.  **Issues:** All work (new features, bugs, tasks) should be tracked through GitHub Issues. An issue should be created for each piece of work.
 2.  **Branches:** A new feature branch should be created from the `main` branch for each issue. Branch naming convention: `feature/issue-no-short-description` (e.g., `feature/123-add-user-login`).
-3.  **Pull Requests (PRs):** All code changes must be merged into the `main` branch through PRs. When opening a PR, reference the related issue (`Closes #123`).
+3.  **Pull Requests (PRs):** All code changes must be merged into the `main` branch through PRs. When opening a PR, reference the related issue (`Task Ticket Number #123`).
 4.  **Code Review:** Each PR must be approved by the project lead or at least one designated senior developer.
 
 ## Coding Standards
