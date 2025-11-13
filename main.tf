@@ -27,7 +27,7 @@ resource "github_repository" "repo" {
   delete_branch_on_merge = true
   auto_init              = true
 
- # Lisans ayarı: "none" veya "" ise null, yoksa belirtilen lisansı kullan
+  # Lisans ayarı: "none" veya "" ise null, yoksa belirtilen lisansı kullan
   license_template = (each.value.license == "none" || each.value.license == "") ? null : each.value.license
 
 
@@ -459,12 +459,12 @@ locals {
   all_repos = flatten([
     for project_name, project in var.projects : [
       for repo in project.repositories : {
-        project_name       = project_name
-        repo_name          = repo.name
-        description        = repo.description
-        visibility         = repo.visibility
-        project_lead       = project.project_lead
-        team_permission    = project.team_permission
+        project_name    = project_name
+        repo_name       = repo.name
+        description     = repo.description
+        visibility      = repo.visibility
+        project_lead    = project.project_lead
+        team_permission = project.team_permission
         # Boş string veya belirtilmemiş ise "mit" kullan
         license            = try(repo.license, "mit") == "" ? "mit" : try(repo.license, "mit")
         gitignore_template = try(repo.gitignore_template, "")
