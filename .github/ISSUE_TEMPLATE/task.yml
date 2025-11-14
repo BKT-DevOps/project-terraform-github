@@ -1,25 +1,17 @@
 name: Görev
 description: Yeni bir görev oluştur
-title: "[Görev] <başlık>"
-labels: ["görev"]
+title: "[Görev]"
+labels: ["görev", "needs-triage"]
 assignees: []
 
 body:
-  - type: input
-    id: title
-    attributes:
-      label: Başlık
-      description: Görev için kısa bir başlık girin
-      placeholder: "Giriş özelliğini uygula"
-    validations:
-      required: true
-
   - type: textarea
     id: description
     attributes:
       label: Açıklama
       description: Görev hakkında detaylı bir açıklama girin
       placeholder: "Görevi detaylı bir şekilde açıklayın..."
+      render: markdown
     validations:
       required: true
 

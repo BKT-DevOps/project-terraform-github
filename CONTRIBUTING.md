@@ -7,7 +7,7 @@ Lütfen Türkçe veya İngilizce dil seçeneklerinden birini seçiniz.
 
 ---
 
-<details>
+<details open>
 <summary><strong>🇹🇷 Türkçe Rehber</strong></summary>
 
 ## 💫 Neden Katkıda Bulunmalısınız?
