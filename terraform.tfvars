@@ -190,6 +190,26 @@ projects = {
         name        = "project-test-lutfiye"
         description = "Test repository for demo purposes"
         visibility  = "public"
+        license     = ""
+
+      },
+      {
+        name        = "test_le_frontend-uygulama"
+        description = "Frontend uygulaması"
+        visibility  = "public"
+        # MIT lisansı otomatik olarak kullanılacak
+      },
+      {
+        name        = "test_le_mobil_app"
+        description = "Frontend uygulaması"
+        visibility  = "public"
+        license     = "apache-2.0"
+      },
+      {
+        name        = "test_le_uygulama"
+        description = "Frontend uygulaması"
+        visibility  = "public"
+        license     = "none"
       }
     ]
     members = [
