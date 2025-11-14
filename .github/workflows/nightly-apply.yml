@@ -2,7 +2,7 @@ name: Nightly Terraform Apply
 
 on:
   schedule:
-    - cron: '0 22 * * *'  # 10 PM UTC = midnight Turkey time 
+    - cron: '0 21 * * *'  # 9 PM UTC = midnight Turkey time (UTC+3 currently)
   workflow_dispatch:       # Manual trigger
 
 permissions:
@@ -11,6 +11,10 @@ permissions:
 
 env:
   AWS_TF_ROLE_ARN: ${{ vars.AWS_TF_ROLE_ARN }}
+ 
+  TF_VAR_github_organization: "BKT-DevOps"
+  TF_VAR_github_token: ${{ secrets.ORG_PAT }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   terraform-nightly-apply:
@@ -35,10 +39,6 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        env:
-          TF_VAR_github_organization: "BKT-DevOps"
-          TF_VAR_github_token: ${{ secrets.ORG_PAT }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Terraform Validate
         id: validate
@@ -47,15 +47,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
-        env:
-          TF_VAR_github_organization: "BKT-DevOps"
-          TF_VAR_github_token: ${{ secrets.ORG_PAT }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
-        env:
-          TF_VAR_github_organization: "BKT-DevOps"
-          TF_VAR_github_token: ${{ secrets.ORG_PAT }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
