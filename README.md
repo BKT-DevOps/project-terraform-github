@@ -12,7 +12,7 @@
 <!-- LÜTFEN BU ALANI DOLDURUN: Bu reponun ne işe yaradığını anlatan bir veya iki cümlelik kısa bir açıklama ekleyin. -->
 
 ---
-
+ 
 ### 🛠️ Yerel Geliştirme Ortamı Kurulumu
 
 #### Ön Gereksinimler
