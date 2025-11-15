@@ -548,7 +548,7 @@ resource "github_repository_file" "issue_template_config" {
   )
   commit_message      = "Configure issue templates"
   overwrite_on_create = true
-  
+
   depends_on = [github_repository.repo]
 }
 
@@ -571,7 +571,7 @@ resource "github_repository_file" "report_abuse_template" {
   )
   commit_message      = "Add abuse report template"
   overwrite_on_create = true
-  
+
   depends_on = [github_repository.repo]
 
   lifecycle {
@@ -589,7 +589,7 @@ resource "github_repository_file" "task_template" {
   content             = file("${path.module}/.github/ISSUE_TEMPLATE/task.yml")
   commit_message      = "Add task template"
   overwrite_on_create = true
-  
+
   depends_on = [github_repository.repo]
 
   lifecycle {
@@ -607,7 +607,7 @@ resource "github_repository_file" "bug_report_template" {
   content             = file("${path.module}/.github/ISSUE_TEMPLATE/bug-report.yml")
   commit_message      = "Add bug report template"
   overwrite_on_create = true
-  
+
   depends_on = [github_repository.repo]
 
   lifecycle {
@@ -625,7 +625,7 @@ resource "github_repository_file" "feature_request_template" {
   content             = file("${path.module}/.github/ISSUE_TEMPLATE/feature-request.yml")
   commit_message      = "Add feature request template"
   overwrite_on_create = true
-  
+
   depends_on = [github_repository.repo]
 
   lifecycle {
