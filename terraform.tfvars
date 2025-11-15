@@ -98,9 +98,9 @@ projects = {
 
   "kovan" = {
     project_display_name = "Kovan Project"
-    project_lead    = "hakanceran64"
-    team_name       = "Kovan"
-    team_permission = "push"
+    project_lead         = "hakanceran64"
+    team_name            = "Kovan"
+    team_permission      = "push"
     repositories = [
       {
         name        = "communication-service"
@@ -134,9 +134,9 @@ projects = {
 
   "project-test" = {
     project_display_name = "Project Test"
-    project_lead    = "ismailaricioglu"
-    team_name       = "Project Test"
-    team_permission = "push"
+    project_lead         = "ismailaricioglu"
+    team_name            = "Project Test"
+    team_permission      = "push"
     repositories = [
       {
         name        = "test-repo"
@@ -161,9 +161,9 @@ projects = {
   },
   "project-test-ismail" = {
     project_display_name = "Project Test Ismail"
-    project_lead    = "ismailaricioglu"
-    team_name       = "Project Test Ismail"
-    team_permission = "push"
+    project_lead         = "ismailaricioglu"
+    team_name            = "Project Test Ismail"
+    team_permission      = "push"
     repositories = [
       {
         name        = "test-repo-34"
@@ -192,9 +192,9 @@ projects = {
   },
   "project-test-lutfiye" = {
     project_display_name = "Project Test Lutfiye"
-    project_lead    = "lerkush"
-    team_permission = "push"
-    team_name       = "Project Test Lutfiye"
+    project_lead         = "lerkush"
+    team_permission      = "push"
+    team_name            = "Project Test Lutfiye"
     repositories = [
       {
         name        = "project-test-lutfiye"
