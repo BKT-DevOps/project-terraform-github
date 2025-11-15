@@ -5,7 +5,7 @@
 
 <br>
 
-> **ÖNEMLİ:** Bu repodaki kodlar, daha büyük bir proje olan **{{PROJECT_NAME}}** projesinin bir parçasıdır. Projenin genel hedefleri hakkında bilgi için [`docs/PROJECT.md`](docs/PROJECT.md) belgesini inceleyin.
+> **ÖNEMLİ:** Bu repodaki kodlar, daha büyük bir proje olan **{{PROJECT_NAME}}** projesinin bir parçasıdır. Projenin genel hedefleri hakkında bilgi için [`docs/PROJECT.md`](docs/Project-Definition.md) belgesini inceleyin.
 
 <!-- LÜTFEN BU ALANI DOLDURUN: Bu reponun ne işe yaradığını anlatan bir veya iki cümlelik kısa bir açıklama ekleyin. -->
 
