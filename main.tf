@@ -427,6 +427,25 @@ resource "github_repository_file" "code_of_conduct" {
   }
 }
 
+# --- Contributing Guide dosyasını her repoya ekle ---
+resource "github_repository_file" "contributing" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository     = github_repository.repo[each.key].name
+  branch         = "main"
+  file           = "CONTRIBUTING.md"
+  content        = file("${path.module}/CONTRIBUTING.md")
+  commit_message = "Add CONTRIBUTING.md file"
+
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
 resource "github_repository_file" "wiki_home" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 

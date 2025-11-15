@@ -54,8 +54,8 @@ output "documentation_pages" {
   description = "Documentation pages created for each project"
   value = {
     for project_name, _ in var.projects : project_name => {
-      repository = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}"
-      project    = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/projects"
+      repository     = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}"
+      project        = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/projects"
       team_and_roles = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/Team.md"
     }
   }

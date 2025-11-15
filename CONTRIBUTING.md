@@ -1,1767 +1,952 @@
 # 🤝 Katkıda Bulunma Rehberi | Contributing Guide
+ 
 
-> **Hoş geldiniz!** Bu rehber, BKT-DevOps topluluğuna katkıda bulunmak isteyen herkes için hazırlanmıştır. Sizi aramızda görmekten mutluluk duyuyoruz! 🎉
-Lütfen Türkçe veya İngilizce dil seçeneklerinden birini seçiniz.
+## 📋 İçindekiler | Table of Contents
 
-> **Welcome!** This guide is designed for anyone who wants to contribute to the BKT-DevOps community. We're happy to have you join us! 🎉Please choose between Turkish or English.
+- [Neden Katkıda Bulunmalısınız?](#-neden-katkıda-bulunmalısınız)
+- [Katkı Türleri](#-katkı-türleri)
+- [Başlamadan Önce](#-başlamadan-önce)
+- [Katkı Süreci](#-katkı-süreci)
+- [Kod Standartları](#-kod-standartları)
+- [İletişim](#-iletişim)
 
 ---
-
 <details open>
-<summary><strong>🇹🇷 Türkçe Rehber</strong></summary>
+
+ <summary><strong>🇹🇷 Türkçe Rehber</strong></summary>
+
+<p><br>
+<strong>Hoş geldiniz!</strong> Bu rehber, BKT-DevOps topluluğuna katkıda bulunmak isteyen herkes için hazırlanmıştır. Sizi aramızda görmekten mutluluk duyuyoruz!
 
 ## 💫 Neden Katkıda Bulunmalısınız?
 
-Açık kaynak topluluğuna katkıda bulunmak:
-- 🚀 **Becerilerinizi geliştirir** - Gerçek projelerde çalışarak öğrenirsiniz
-- 🤝 **Bağlantılar kurarsınız** - Benzer ilgi alanlarına sahip insanlarla tanışırsınız
-- 📚 **Deneyim kazanırsınız** - CV'nize ekleyebileceğiniz somut projeler
-- 💪 **Topluluğa katkı sağlarsınız** - Herkesin faydalanacağı bir şey inşa edersiniz
+BKT-DevOps topluluğuna katkıda bulunmak:
+- 🚀 **Profesyonel gelişim** - Gerçek dünya projeleri üzerinde çalışarak deneyim kazanırsınız
+- 🤝 **Networking** - Alanında uzman kişilerle tanışır, profesyonel ağınızı genişletirsiniz
+- 📚 **Portfolyo** - CV'nize ekleyebileceğiniz somut ve ölçülebilir katkılar
+- 💪 **Topluluk etkisi** - Binlerce kişinin faydalanacağı çözümler geliştirirsiniz
+- 🎓 **Mentorluk** - Deneyimli geliştiricilerden geri bildirim ve rehberlik alırsınız
 
-**İlk katkınızı yapmaya hazır mısınız? Hadi başlayalım!** 🎯
+## 🎨 Katkı Türleri
 
----
+### 🐛 Hata Bildirimi (Bug Report)
+Projede bir hata mı keşfettiniz? Bildirerek topluluğa önemli bir katkı sağlarsınız.
 
-## 🎨 Nasıl Katkıda Bulunabilirsiniz?
+**Nasıl bildirilir:**
+1. [Issues](../../issues) sayfasına gidin
+2. "Bug Report" şablonunu seçin
+3. Hatayı detaylı açıklayın:
+   - Hangi adımlar sonucu oluştu
+   - Beklenen davranış neydi
+   - Gerçekleşen davranış ne oldu
+   - Sistem bilgileriniz (OS, sürüm vb.)
 
-### 🐛 Hata Buldum!
-Projede bir hata mı buldunuz? Harika! İşte yapmanız gerekenler:
+### ✨ Özellik Önerisi (Feature Request)
+Yeni bir özellik mi hayal ediyorsunuz? Fikirlerinizi paylaşın!
 
-1. **Hemen bir issue açın** - Başkaları da aynı sorunla karşılaşmış olabilir
-2. **Sorunu detaylı açıklayın** - Ne bekliyordunuz, ne oldu?
-3. **Düzeltmeyi deneyin** - Kodlamaya aşina iseniz, PR gönderin!
+**Nasıl önerilir:**
+1. [Discussions](../../discussions) alanını kontrol edin (benzer öneriler var mı?)
+2. "Feature Request" şablonuyla yeni bir issue açın
+3. Önerinizi detaylandırın:
+   - Hangi problemi çözüyor
+   - Nasıl çalışmalı
+   - Kimler faydalanacak
 
-**Örnek:** "Repository oluşturma sırasında hata alıyorum"
-```
-Adımlar:
-1. terraform init çalıştırıyorum
-2. terraform plan diyorum
-3. "token hatası" alıyorum
+### 📖 Dokümantasyon
+Dokümantasyon iyileştirmeleri en değerli katkılardandır!
 
-Beklenen: Plan başarılı olmalı
-Gerçekleşen: Token hatası veriyor
-```
+**Neler yapabilirsiniz:**
+- README dosyalarını iyileştirin
+- Kullanım örnekleri ekleyin
+- Teknik dokümantasyon yazın
+- Typo ve gramer hatalarını düzeltin
+- Türkçe çeviri desteği sağlayın
 
-### ✨ Fikrim Var!
-Yeni bir özellik mi istiyorsunuz? Süper!
+### 💻 Kod Katkısı
+Kodla katkıda bulunmak istiyorsanız:
 
-1. **Önce Discussions'a bakın** - Belki başkaları da aynı şeyi istiyor
-2. **Feature Request açın** - Fikrinizi detaylı anlatın
-3. **Toplulukla tartışın** - Geri bildirim alın, fikri geliştirin
-4. **Kodlamaya başlayın** - Onay aldıktan sonra PR gönderin
+**İdeal başlangıç:**
+- `good-first-issue` etiketi olan konular
+- `help-wanted` işaretli görevler
+- Dokümantasyonda belirtilen TODO'lar
 
-**Örnek:** "Otomatik wiki sayfası oluşturma özelliği"
-```
-Motivasyon:
-Her yeni repo için manuel wiki oluşturmak zaman alıyor.
-
-Önerim:
-Terraform ile otomatik wiki page template oluşturma
-
-Faydası:
-- Zaman tasarrufu
-- Standart dokümantasyon
-- Daha az manuel iş
-```
-
-### 📖 Dokümantasyon İyileştirmesi
-Kod yazmak zorunda değilsiniz! Dokümantasyon da çok değerli:
-
-- **README'yi iyileştirin** - Daha açık, daha anlaşılır
-- **Örnekler ekleyin** - Nasıl kullanılır gösterin
-- **Typo düzeltin** - Küçük ama önemli
-- **Türkçe çeviri** - Anadil desteği harika!
-
-### 🎯 İlk Katkı İçin İdeal
-Yeni başlıyorsanız, bu işlerle başlayın:
-
-- 🏷️ `good-first-issue` etiketi olan issue'lar
-- 📝 Dokümantasyon iyileştirmeleri
-- 🐛 Basit hata düzeltmeleri
-- 💬 Başkalarının PR'larını inceleme
+### 👥 Topluluk Desteği
+Kod yazmadan da katkıda bulunabilirsiniz:
+- Başkalarının sorularını yanıtlayın
+- Code review yapın
+- Discussions'da fikir paylaşın
+- Yeni üyelere yardımcı olun
 
 ---
 
-## 🚀 Hızlı Başlangıç (5 Dakikada!)
+## 🚀 Başlamadan Önce
 
-### 1️⃣ Repository'yi Hazırlayın
-```bash
-# Repository'yi fork edin (GitHub'da "Fork" butonuna tıklayın)
+### ✅ Ön Koşullar
+- GitHub hesabınız olmalı
+- Git temel bilgisine sahip olmalısınız
+- [Davranış Kurallarımızı](CODE_OF_CONDUCT.md) okumuş olmalısınız
+- Projeye özgü gereksinimleri kontrol edin
 
-# Bilgisayarınıza klonlayın
-git clone https://github.com/KULLANICI-ADINIZ/project-terraform-github.git
-cd 01-github-infra
-
-# Ana repo'yu upstream olarak ekleyin
-git remote add upstream https://github.com/BKT-DevOps/project-terraform-github.git
-
-```
-
-### 2️⃣ Terraform'u Kurun
-```bash
-# Terraform'u indirin: https://www.terraform.io/downloads.html
-
-# Başlatın
-terraform init
-
-# Token'ınızı ayarlayın (nasıl alacağınız aşağıda ⬇️)
-export TF_VAR_github_token="ghp_SIZIN_TOKENINIZ"
-```
-
-### 3️⃣ Branch Oluşturun
-```bash
-# Yeni bir branch oluşturun
-git checkout -b feature/benim-harika-ozelligim
-
-# Değişikliklerinizi yapın
-# ... kod düzenlemeleri ...
-
-# Test edin
-terraform fmt
-terraform validate
-terraform plan
-```
-
-### 4️⃣ Değişiklikleri Gönderin
-```bash
-# Commit yapın
-git add .
-git commit -m "feat: harika yeni özellik eklendi"
-
-# GitHub'a gönderin
-git push origin feature/benim-harika-ozelligim
-
-# GitHub'da Pull Request açın 🎉
-```
-
-**Tebrikler! İlk katkınızı yaptınız!** 🎊
+### 📚 Önerilen Okumalar
+1. [README.md](README.md) - Proje hakkında genel bilgi
+2. [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Topluluk kuralları
+3. [LICENSE](LICENSE) - Lisans bilgisi
+4. Proje dokümantasyonu (docs/ klasörü)
 
 ---
 
-## 🔧 Detaylı Kurulum Rehberi
+## 🔄 Katkı Süreci
 
-### GitHub Token Nasıl Alınır?
+### 1️⃣ Issue Oluşturun veya Seçin
 
-GitHub token, Terraform'un GitHub'a erişmesi için gerekli:
+**Mevcut issue'lara göz atın:**
+```
+1. Issues sekmesine gidin
+2. Etiketlere göre filtreleyin
+3. İlgilendiğiniz konuyu bulun
+4. Yorum yaparak çalışmak istediğinizi belirtin
+```
 
-**Adımlar:**
-1. GitHub'da sağ üst köşe → **Settings**
-2. En altta **Developer settings**
-3. **Personal access tokens** → **Tokens (classic)**
-4. **Generate new token** (classic)
-5. Token'a isim verin: `BKT-DevOps-Token`
-6. **İzinleri seçin:**
-   ```
-   ✅ repo (tümü)
-   ✅ admin:org
-   ✅ delete_repo
-   ```
-7. **Generate token** → Token'ı kopyalayın! 📋
+**Yeni issue açın:**
+- Önce benzer bir issue olmadığından emin olun
+- Uygun şablonu kullanın
+- Detaylı ve net bir açıklama yazın
 
-**Token'ı Kaydedin:**
+### 2️⃣ Repository'yi Fork Edin
+
 ```bash
-# Linux / macOS
-echo 'export TF_VAR_github_token="ghp_..."' >> ~/.bashrc
-source ~/.bashrc
+# GitHub'da "Fork" butonuna tıklayın
+# Ardından forkladığınız repo'yu klonlayın
+git clone https://github.com/KULLANICI-ADINIZ/REPO-ADI.git
+cd REPO-ADI
 
-# Windows (PowerShell)
-[Environment]::SetEnvironmentVariable("TF_VAR_github_token", "ghp_...", "User")
+# Upstream remote ekleyin
+git remote add upstream https://github.com/BKT-DevOps/REPO-ADI.git
 ```
 
-> **⚠️ Önemli:** Token'ı kimseyle paylaşmayın! Git'e commit etmeyin!
+### 3️⃣ Yeni Branch Oluşturun
 
-### Terraform Kurulumu
-
-**1. İndirin:**
-- Web: https://www.terraform.io/downloads.html
-- macOS: `brew install terraform`
-- Linux: `sudo apt install terraform` veya `yum install terraform`
-- Windows: Chocolatey → `choco install terraform`
-
-**2. Kontrol Edin:**
+**Branch isimlendirme kuralları:**
 ```bash
-terraform version
-# Terraform v1.0 veya üzeri olmalı
-```
+# Yeni özellik
+git checkout -b feature/kisaca-aciklama
 
-**3. VS Code Eklentileri (Önerilen):**
-- HashiCorp Terraform
-- Terraform doc snippets
-
----
-
-## 📝 Katkı Akışı (Workflow)
-
-### Adım 1: Bir Issue Seçin veya Oluşturun
-
-**Mevcut Issue'lara Bakın:**
-- [Issues sayfası](https://github.com/BKT-DevOps/project-terraform-github/issues)
-- `good-first-issue` etiketi → Yeni başlayanlar için
-- `help-wanted` etiketi → Yardım gereken konular
-
-**Issue'ya Yorum Yapın:**
-```
-Merhaba! Bu issue üzerinde çalışmak istiyorum. 
-Yaklaşık [X gün/hafta] içinde PR göndereceğim.
-```
-
-**Yeni Issue Açın:**
-
-**Hata Bildirimi Şablonu:**
-```markdown
-## 🐛 Hata Açıklaması
-Kısa ve net açıklama
-
-## 📋 Adımlar
-1. Bu komutu çalıştır
-2. Şu dosyayı düzenle
-3. Hatayı gör
-
-## ✅ Beklenen Davranış
-Ne olmasını bekliyordunuz?
-
-## ❌ Gerçekleşen Davranış
-Ne oldu?
-
-## 💻 Ortam
-- OS: [örn. macOS 13, Ubuntu 22.04]
-- Terraform: [örn. v1.5.0]
-- Provider: [örn. hashicorp/github v5.0.0]
-
-## 📎 Ekler
-- Hata mesajı
-- Ekran görüntüsü
-- Terraform plan çıktısı
-```
-
-**Özellik İsteği Şablonu:**
-```markdown
-## ✨ Özellik İsteği
-Ne istiyorsunuz?
-
-## 🎯 Motivasyon
-Neden bu özellik gerekli?
-Hangi problemi çözüyor?
-
-## 💡 Önerilen Çözüm
-Nasıl implement edilebilir?
-
-## 🔄 Alternatifler
-Başka çözümler düşündünüz mü?
-
-## 📚 Ek Bağlam
-Başka eklemek istediğiniz var mı?
-```
-
-### Adım 2: Branch Oluşturun ve Çalışın
-
-**Branch İsimlendirme:**
-```bash
-# Özellik eklerken
-git checkout -b feature/wiki-automation
-
-# Hata düzeltirken
-git checkout -b bugfix/team-permission-fix
+# Hata düzeltme
+git checkout -b bugfix/kisaca-aciklama
 
 # Dokümantasyon
-git checkout -b docs/update-contributing-guide
+git checkout -b docs/kisaca-aciklama
 
-# Refactoring
-git checkout -b refactor/simplify-variables
+# Performans iyileştirme
+git checkout -b perf/kisaca-aciklama
 ```
 
-**Çalışma Döngüsü:**
+**Örnekler:**
 ```bash
-# 1. Kod yazın
-vim main.tf
-
-# 2. Format edin
-terraform fmt
-
-# 3. Doğrulayın
-terraform validate
-
-# 4. Test edin
-terraform plan
-
-# 5. Tekrar 1'e dönün (gerekirse)
+git checkout -b feature/add-user-authentication
+git checkout -b bugfix/fix-login-validation
+git checkout -b docs/update-api-documentation
 ```
 
-**Küçük Commitler Yapın:**
+### 4️⃣ Değişikliklerinizi Yapın
+
+**En İyi Pratikler:**
+- ✅ Küçük ve odaklı değişiklikler yapın
+- ✅ Her mantıksal değişiklik için ayrı commit atın
+- ✅ Kod standartlarına uyun
+- ✅ Test ekleyin (varsa test framework'ü)
+- ✅ Dokümantasyonu güncelleyin
+
+**Değişiklik döngüsü:**
 ```bash
-# Her mantıksal değişiklik için ayrı commit
-git add main.tf
-git commit -m "feat: add wiki resource"
+# 1. Değişiklikleri yapın
+# ... kod editörünüzde çalışın ...
 
-git add variables.tf
-git commit -m "feat: add wiki configuration variables"
+# 2. Değişiklikleri kontrol edin
+git status
+git diff
 
-git add README.md
-git commit -m "docs: document wiki feature"
+# 3. Test edin (projeye göre değişir)
+# npm test
+# pytest
+# vb.
+
+# 4. Commit yapın (detaylar aşağıda)
 ```
 
-### Adım 3: Commit Mesajları
+### 5️⃣ Commit Mesajları
 
 **Format:**
 ```
-<tip>(<kapsam>): <konu>
+<tip>(<kapsam>): <özet>
 
-<detay>
+<detaylı açıklama (opsiyonel)>
 
-<footer>
+<footer (opsiyonel)>
 ```
 
-**Tipler:**
-- `feat:` → Yeni özellik
-- `fix:` → Hata düzeltme
-- `docs:` → Dokümantasyon
-- `style:` → Format (kod davranışı değişmez)
-- `refactor:` → Kod iyileştirme
-- `test:` → Test ekleme
-- `chore:` → Yapı, konfigürasyon
+**Tip başlıkları:**
+- `feat:` - Yeni özellik
+- `fix:` - Hata düzeltme
+- `docs:` - Dokümantasyon değişikliği
+- `style:` - Kod formatı (logic değişmeyen)
+- `refactor:` - Kod iyileştirme
+- `test:` - Test ekleme/düzeltme
+- `chore:` - Build, konfigürasyon vb.
+- `perf:` - Performans iyileştirme
 
-**✅ İyi Örnekler:**
+**✅ İyi commit örnekleri:**
 ```bash
-feat: add automatic wiki page creation
+feat(auth): add JWT token validation
 
-docs: update README with wiki usage examples
-
-fix: resolve team permission conflict on private repos
+fix(api): resolve null pointer exception in user service
 Fixes #123
 
-refactor: extract repository config to module
+docs(readme): update installation instructions
 
-test: add validation for repository names
+refactor(utils): simplify date formatting function
 
-chore: update GitHub provider to v6.0
+test(auth): add unit tests for login endpoint
 ```
 
-**❌ Kötü Örnekler:**
+**❌ Kaçınılması gereken:**
 ```bash
-update
-# Çok genel, ne güncellendiği belli değil
-
+update code
 fixed bug
-# Hangi bug? Nasıl düzeltildi?
-
-added stuff
-# Ne eklendi? Neden?
-
+changes
 WIP
-# Commit history'de WIP kalmamalı
+asdfgh
 ```
 
-### Adım 4: Pull Request Gönderin
+### 6️⃣ Değişiklikleri Push Edin
 
-**PR Oluşturma:**
-1. GitHub'da repository'nize gidin
-2. Sarı banner'da **Compare & pull request**
-3. Veya: **Pull requests** → **New pull request** → **compare across forks**
+```bash
+# Değişiklikleri staging area'ya ekleyin
+git add .
 
-**PR Başlığı:**
+# Commit yapın
+git commit -m "feat: açıklayıcı mesaj"
+
+# Kendi fork'unuza push edin
+git push origin feature/branch-adi
 ```
-[TİP] Açıklayıcı başlık
+
+### 7️⃣ Pull Request (PR) Oluşturun
+
+**PR açma adımları:**
+1. GitHub'da fork'unuza gidin
+2. "Compare & pull request" butonuna tıklayın
+3. Base repository: `BKT-DevOps/repo-adi` `main`
+4. Head repository: `kullanici-adi/repo-adi` `feature-branch`
+
+**PR başlığı:**
+```
+[TİP] Kısa ve açıklayıcı başlık
 
 Örnekler:
-[FEATURE] Add automatic wiki page creation
-[BUGFIX] Fix team permission on private repos
-[DOCS] Update installation guide with examples
+[FEATURE] Add user authentication system
+[BUGFIX] Fix memory leak in data processor
+[DOCS] Update API documentation
 ```
 
-**PR Açıklaması Şablonu:**
+**PR açıklaması şablonu:**
+
 ```markdown
-## 🎯 Bu PR Ne Yapıyor?
-[Kısa özet - 1-2 cümle]
+## 📝 Açıklama
+<!-- Bu PR'ın amacını kısaca açıklayın -->
 
-## 💡 Neden?
-[Bu değişiklik neden gerekli? Hangi problemi çözüyor?]
-
-## 🔧 Değişiklikler
-- [ ] Değişiklik 1
-- [ ] Değişiklik 2
-- [ ] Değişiklik 3
-
-## 🧪 Nasıl Test Edildi?
-- [ ] Lokal olarak test edildi
-- [ ] terraform fmt çalıştırıldı
-- [ ] terraform validate başarılı
-- [ ] terraform plan incelendi
-- [ ] Manuel test senaryoları yapıldı
-
-## 📸 Ekran Görüntüleri
-[Varsa ekran görüntüleri, terraform plan çıktısı]
-
-## 📚 Dokümantasyon
-- [ ] README güncellendi
-- [ ] Kod yorumları eklendi
-- [ ] CHANGELOG güncellendi
-- [ ] Kullanım örnekleri eklendi
-
-## 🔗 İlişkili Issue'lar
-Task Ticket Number #123
+## 🎯 İlgili Issue
+<!-- Issue numarasını belirtin -->
+Closes #123
 Relates to #456
 
-## ✅ Checklist
-- [ ] Kod formatlandı (terraform fmt)
-- [ ] Testler geçti
-- [ ] Dokümantasyon tamamlandı
-- [ ] Breaking change yok (varsa belirtildi)
-- [ ] Commit mesajları anlamlı
+## 🔄 Değişiklik Türü
+<!-- İlgili kutucukları işaretleyin -->
+- [ ] Bug fix (kod değişikliği - mevcut hatayı düzeltir)
+- [ ] New feature (kod değişikliği - yeni özellik ekler)
+- [ ] Breaking change (mevcut özellikleri etkiler)
+- [ ] Documentation update
 
-## 💬 Notlar
-[Gözden geçirenler için özel notlar, sorular, vs.]
+## 📋 Değişiklikler
+<!-- Yaptığınız değişiklikleri listeleyin -->
+- Değişiklik 1
+- Değişiklik 2
+- Değişiklik 3
+
+## ✅ Kontrol Listesi
+<!-- Tamamladığınız adımları işaretleyin -->
+- [ ] Kod kendi kendini açıklıyor ve yorum eklendi
+- [ ] Dokümantasyon güncellendi
+- [ ] Testler eklendi/güncellendi
+- [ ] Tüm testler başarılı
+- [ ] Commit mesajları standartlara uygun
+- [ ] Branch güncel (main ile merge edilmiş)
+
+## 🧪 Test Edildi
+<!-- Nasıl test ettiniz? -->
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Manual tests
+
+## 📸 Ekran Görüntüleri (varsa)
+<!-- UI değişikliği varsa ekran görüntüsü ekleyin -->
+
+## 💬 Ek Notlar
+<!-- Gözden geçirenler için özel notlar -->
 ```
 
-### Adım 5: Code Review Süreci
+### 8️⃣ Code Review Süreci
 
-**Ne Olur:**
-1. ✅ **Otomatik Kontroller** - CI/CD pipeline çalışır
-2. 👀 **Maintainer İncelemesi** - Kod gözden geçirilir
-3. 💬 **Geri Bildirim** - Öneriler ve sorular gelir
-4. 🔄 **Güncelleme** - Gerekli değişiklikleri yaparsınız
-5. ✨ **Onay** - Kod onaylanır
-6. 🎉 **Merge** - Ana branch'e eklenir
+**Ne bekleyebilirsiniz:**
+1. ✅ **Otomatik kontroller** - CI/CD pipeline çalışır
+2. 👀 **İnceleme** - Maintainer'lar kodu gözden geçirir
+3. 💬 **Geri bildirim** - Sorular ve öneriler gelir
+4. 🔄 **İterasyon** - Gerekli değişiklikleri yaparsınız
+5. ✨ **Onay** - PR onaylanır
+6. 🎉 **Merge** - Kodunuz ana branch'e eklenir
 
-**Geri Bildirime Nasıl Yanıt Verilir:**
+**Geri bildirimlere yanıt verme:**
+- 🙏 Nazik ve profesyonel olun
+- 💭 Önerileri dikkate alın
+- 🤔 Anlamadığınız noktaları sorun
+- 🔄 İstenen değişiklikleri hızlıca yapın
 
-**Örnek Feedback:**
-```
-Maintainer: "Bu fonksiyonu daha basit yazabilir miyiz?"
-
-Siz: "Haklısınız! Şöyle değiştirsem daha iyi olur mu:
-[kod örneği]
-
-Veya başka bir öneriniz var mı?"
-```
-
-**Değişiklikleri Uygulama:**
+**Değişiklik yapma:**
 ```bash
-# Feedbackleri uygulayın
+# Geri bildirimlere göre değişiklik yapın
 git add .
-git commit -m "refactor: simplify function per review feedback"
+git commit -m "refactor: apply code review suggestions"
 
-# Aynı branch'e push edin
-git push origin feature/your-branch
-
-# PR otomatik güncellenir!
+# Aynı branch'e push edin (PR otomatik güncellenir)
+git push origin feature/branch-adi
 ```
-
-**İyi PR Davranışları:**
-- 🤝 Saygılı ve yapıcı olun
-- 🙏 Geri bildirimlere teşekkür edin
-- 💬 Anlamadığınız şeyleri sorun
-- 🎯 Önerileri deneyin ve deneyimizi paylaşın
-- ⏱️ Yanıt vermekte acele etmeyin, düşünün
 
 ---
 
-## 📚 Kod Standartları
+## 📏 Kod Standartları
 
-### Terraform Stili
-
-**✅ İyi Kod:**
-```hcl
-# 1. Temiz ve okunaklı
-resource "github_repository" "docs" {
-  name        = "documentation"
-  description = "Project documentation and guides"
-  visibility  = "public"
-  
-  # Feature flags
-  has_wiki   = true
-  has_issues = true
-  
-  # Templates
-  template {
-    owner      = "BKT-DevOps"
-    repository = "template-docs"
-  }
-}
-
-# 2. Açıklayıcı değişkenler
-variable "enable_branch_protection" {
-  description = "Enable branch protection rules for main branch"
-  type        = bool
-  default     = true
-}
-
-# 3. Input validation
-variable "repository_name" {
-  description = "Name of the repository (lowercase, hyphens only)"
-  type        = string
-  
-  validation {
-    condition     = can(regex("^[a-z0-9-]+$", var.repository_name))
-    error_message = "Repository name must be lowercase with hyphens only."
-  }
-}
-
-# 4. Mantıklı yorumlar
-# Create team with read access for all organization members
-# This ensures everyone can view the repository
-resource "github_team" "readers" {
-  name        = "readers"
-  description = "Read-only access for all members"
-  privacy     = "closed"
-}
-```
-
-**❌ Kötü Kod:**
-```hcl
-# Kötü format, okunamaz
-resource "github_repository" "r" {
-name="test"
-description="test repo"
-visibility="public"
-has_wiki=true
-has_issues=true}
-
-# Belirsiz değişken
-variable "x" {
-  type = bool
-}
-
-# Validation yok
-variable "name" {
-  type = string
-}
-
-# Yorum yok (karmaşık kod için)
-resource "github_team" "t" {
-  count = var.create ? 1 : 0
-  name  = element(concat(var.names, [""]), count.index)
-}
-```
+### Genel Kurallar
+- ✅ **Okunabilirlik:** Kod kendini açıklamalı
+- ✅ **DRY:** Don't Repeat Yourself
+- ✅ **KISS:** Keep It Simple, Stupid
+- ✅ **YAGNI:** You Aren't Gonna Need It
+- ✅ **Tutarlılık:** Projenin mevcut stilini takip edin
 
 ### Dosya Organizasyonu
-
-**Proje Yapısı:**
 ```
-project-terraform-github/
-├── main.tf              # Ana kaynaklar
-├── variables.tf         # Input değişkenleri
-├── outputs.tf           # Output değerleri
-├── versions.tf          # Provider versiyonları
-├── README.md            # Proje dokümantasyonu
-├── CONTRIBUTING.md      # Bu dosya!
-├── CHANGELOG.md         # Değişiklik geçmişi
-├── .gitignore           # Git ignore kuralları
-├── examples/            # Kullanım örnekleri
-│   ├── basic/
-│   │   ├── main.tf
-│   │   └── README.md
-│   └── advanced/
-│       ├── main.tf
-│       └── README.md
-└── modules/             # Reusable modüller
-    ├── repository/
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   ├── outputs.tf
-    │   └── README.md
-    └── team/
-        ├── main.tf
-        ├── variables.tf
-        ├── outputs.tf
-        └── README.md
+project-root/
+├── docs/              # Dokümantasyon
+├── src/               # Kaynak kod
+├── tests/             # Test dosyaları
+├── .github/           # GitHub workflows, templates
+├── README.md          # Proje açıklaması
+├── CONTRIBUTING.md    # Bu dosya
+├── CODE_OF_CONDUCT.md # Davranış kuralları
+├── LICENSE            # Lisans
+└── .gitignore         # Git ignore kuralları
+```
+
+### Yorum ve Dokümantasyon
+```javascript
+// ✅ İYİ: Açıklayıcı yorum
+// Calculate the total price including taxes and discounts
+// @param basePrice - Original price before calculations
+// @param taxRate - Tax rate as decimal (e.g., 0.18 for 18%)
+function calculateTotal(basePrice, taxRate) {
+  return basePrice * (1 + taxRate);
+}
+
+// ❌ KÖTÜ: Gereksiz yorum
+// This function adds two numbers
+function add(a, b) {
+  return a + b; // return the sum
+}
+```
+
+### Hata Yönetimi
+```javascript
+// ✅ İYİ: Açıklayıcı hata mesajları
+if (!user) {
+  throw new Error('User not found: Invalid user ID provided');
+}
+
+// ❌ KÖTÜ: Belirsiz hatalar
+if (!user) {
+  throw new Error('Error');
+}
 ```
 
 ---
 
-## 🧪 Test ve Doğrulama
+## 📞 İletişim
 
-### Pre-Commit Checklist
+### 💬 Nerede Konuşuruz?
 
-**Her commit öncesi:**
-```bash
-# 1. Format
-terraform fmt -recursive
+**GitHub Discussions** (Tercih edilen)
+- Genel sorular ve tartışmalar
+- Özellik önerileri
+- Yardım istekleri
 
-# 2. Validate
-terraform validate
+**GitHub Issues**
+- Hata bildirimleri
+- Görev takibi
+- Özellik istekleri (detaylı)
 
-# 3. Plan (dry-run)
-terraform plan
+**Pull Requests**
+- Kod incelemeleri
+- Teknik tartışmalar
 
-# 4. Git durum kontrolü
-git status
-git diff
-```
+### 📧 Doğrudan İletişim
+- Güvenlik açıkları: [Sorumluluk bildirimi prosedürünü takip edin]
+- Özel konular: Maintainer'lara mention yapın
 
-### PR Öncesi Final Check
-
-```bash
-# Ana branch'den güncelleyin
-git checkout main
-git pull upstream main
-git checkout your-branch
-git rebase main
-
-# Son kontroller
-terraform fmt -check -recursive
-terraform validate
-terraform plan
-
-# Commitlerde sorun var mı?
-git log --oneline
-
-# Push
-git push origin your-branch
-```
-
-### Manuel Test Senaryoları
-
-**Yeni Özellik İçin:**
-1. ✅ Feature açık/kapalı durumlarda çalışıyor mu?
-2. ✅ Mevcut özellikleri bozmuyor mu?
-3. ✅ Hata durumları handle ediliyor mu?
-4. ✅ Dokümantasyon doğru mu?
-
-**Hata Düzeltmesi İçin:**
-1. ✅ Hata tekrarlanabiliyor muydu?
-2. ✅ Artık hata oluşmuyor mu?
-3. ✅ Benzer durumlar da düzeltildi mi?
-4. ✅ Test senaryosu eklendi mi?
-
----
-
-## 💡 İpuçları ve Best Practices
-
-### Yeni Başlayanlar İçin
-
-**🌱 Küçük Başlayın:**
-- İlk PR'ınız typo düzeltmesi olabilir
-- README'ye örnek ekleyebilirsiniz
-- Kod yorumu ekleyebilirsiniz
-- Bunlar da değerli katkılardır!
-
-**📖 Öğrenin:**
-- Başkalarının PR'larını inceleyin
-- Discussions'ları takip edin
-- Sorular sorun, utanmayın!
-
-**🎯 Odaklanın:**
-- Bir seferde bir şey yapın
-- Küçük, anlaşılır PR'lar gönderin
-- Büyük değişiklikler için önce issue açın
-
-### İleri Seviye İçin
-
-**🏗️ Mimari Kararlar:**
-- Breaking change önerecekseniz önce tartışın
-- RFC (Request for Comments) açın
-- Topluluk görüşünü alın
-
-**♻️ Sürdürülebilirlik:**
-- Geriye dönük uyumluluk düşünün
-- Deprecation plan yapın
-- Migration guide yazın
-
-**📊 Performans:**
-- Terraform plan sürelerini test edin
-- Resource sayısını optimize edin
-- State file boyutunu kontrol edin
+### ⏱️ Yanıt Süreleri
+- Issues: 2-5 iş günü
+- Pull Requests: 3-7 iş günü
+- Security issues: 24-48 saat
 
 ---
 
 ## ❓ Sık Sorulan Sorular
 
-### 🆕 Yeni Başlayanlar
+### Genel
 
-**S: Hiç açık kaynak katkısı yapmadım, nereden başlamalıyım?**
+**S: İlk katkımı nereden yapmalıyım?**
+> `good-first-issue` etiketli konulardan başlayın. Dokümantasyon iyileştirmeleri de harika bir başlangıçtır.
 
-A: Harika bir başlangıç noktası! Şunları öneririz:
-1. `good-first-issue` etiketli issue'ları inceleyin
-2. Dokümantasyonda typo düzeltin
-3. README'ye kullanım örneği ekleyin
-4. Toplulukla Discussions'da sohbet edin
+**S: Programlama bilmiyorum, katkıda bulunabilir miyim?**
+> Elbette! Dokümantasyon, çeviri, hata tespiti ve topluluk desteği çok değerlidir.
 
-**S: Terraform bilmiyorum, öğrenmem gerek mi?**
-
-A: Kodlamadan da katkıda bulunabilirsiniz:
-- Dokümantasyon iyileştirmeleri
-- Hata tespiti ve raporlama
-- Kullanım senaryoları önerme
-- Topluluk desteği sağlama
-
-Terraform öğrenmek isterseniz, küçük değişikliklerle başlayın!
+**S: PR'm ne kadar sürede incelenir?**
+> Genellikle 3-7 iş günü içinde. Sabırlı olun, maintainer'lar gönüllü çalışır.
 
 **S: PR'm reddedilirse ne olur?**
+> Endişelenmeyin! Maintainer'lar neden reddedildiğini açıklar. Geri bildirimleri değerlendirip tekrar deneyebilirsiniz.
 
-A: Endişelenmeyin! Bu normal:
-- Maintainer'lar açıklama yapar
-- Nedenini anlayın, öğrenin
-- Düzeltip tekrar deneyin
-- Veya başka bir konu seçin
+### Teknik
 
-Reddedilme olumsuz bir şey değil, öğrenme sürecinin parçası!
-
-### 🔧 Teknik Konular
-
-**S: "Token invalid" hatası alıyorum?**
-
-A: Token kontrolü:
+**S: Git conflict nasıl çözülür?**
 ```bash
-# 1. Token ayarlı mı?
-echo $TF_VAR_github_token
-
-# 2. Token doğru mu? (GitHub'da kontrol edin)
-
-# 3. İzinler yeterli mi?
-# repo, admin:org, delete_repo gerekli
-
-# 4. Yeniden ayarlayın
-export TF_VAR_github_token="ghp_YENI_TOKEN"
-terraform init
-```
-
-**S: Git conflict çözemiyorum?**
-
-A: Adım adım:
-```bash
-# 1. Main'i güncelleyin
 git checkout main
 git pull upstream main
-
-# 2. Branch'inize dönün
 git checkout your-branch
-
-# 3. Rebase yapın
 git rebase main
-
-# 4. Conflict çıkarsa:
-git status  # Hangi dosyalarda?
-
-# 5. Dosyayı düzenleyin, conflict işaretlerini silin
-# <<<<<<< HEAD
-# =======
-# >>>>>>> branch
-
-# 6. Çözümü ekleyin
-git add conflicted-file.tf
+# Conflictleri manuel çözün
+git add .
 git rebase --continue
-
-# 7. Push (force gerekebilir)
 git push origin your-branch --force-with-lease
 ```
 
-Hala sorun varsa, issue'da yardım isteyin!
-
-**S: Terraform plan çok uzun, normal mi?**
-
-A: Optimize edin:
+**S: Yanlış branch'e commit yaptım?**
 ```bash
-# 1. Target kullanın (test için)
-terraform plan -target=github_repository.specific
+# Commit'i geri al (değişiklikleri tut)
+git reset --soft HEAD~1
 
-# 2. Parallelism azaltın
-terraform plan -parallelism=5
+# Doğru branch'e geç
+git checkout correct-branch
 
-# 3. Cache'i temizleyin
-rm -rf .terraform
-terraform init
-
-# 4. State'i kontrol edin
-terraform state list
-```
-
-### 🤝 İşbirliği
-
-**S: Aynı issue üzerinde başkası da çalışıyor?**
-
-A: İletişime geçin:
-```
-Merhaba @kullanici! Ben de bu issue üzerinde çalışıyorum.
-İşbirliği yapabilir miyiz? Ben [X kısmı] üzerinde 
-çalışıyordum, siz [Y kısmı]nı alabilir misiniz?
-```
-
-**S: Maintainer ne kadar sürede yanıt verir?**
-
-A: Genelde 2-5 iş günü. Acil değilse sabırlı olun.
-Acilse: Discussions'da veya Discord'da etiketleyin.
-
-**S: PR'ım merge edildi, ne yapmalıyım?**
-
-A: Tebrikler! 🎉
-```bash
-# 1. Lokal'i güncelleyin
-git checkout main
-git pull upstream main
-
-# 2. Branch'i silin (opsiyonel)
-git branch -d feature/your-branch
-git push origin --delete feature/your-branch
-
-# 3. Yeni katkıya başlayın!
+# Tekrar commit yap
+git commit -m "your message"
 ```
 
 ---
 
-## 🆘 Yardım ve Destek
+## 🎉 Teşekkür
 
-### Nasıl Yardım Alırsınız?
+Her katkınız, ne kadar küçük olursa olsun, topluluğumuz için değerlidir:
+- ✨ Kod yazanlar
+- 📖 Dokümantasyon yapanlar
+- 🐛 Hata rapor edenler
+- 💡 Fikir önerenler
+- 🎨 Tasarım yapanlar
+- 👥 Topluluğu destekleyenler
 
-**💬 GitHub Discussions** (En iyi yol!)
-- [Genel sorular](https://github.com/BKT-DevOps/project-terraform-github/discussions/categories/q-a)
-- [Fikirler](https://github.com/BKT-DevOps/project-terraform-github/discussions/categories/ideas)
-- [Yardım istekleri](https://github.com/BKT-DevOps/project-terraform-github/discussions/categories/help)
-
-**🐛 GitHub Issues**
-- Hata bildirimi
-- Özellik istekleri
-- Teknik sorunlar
-
-**📧 Doğrudan İletişim**
-- Acil güvenlik sorunları
-- Özel durumlar
-- Maintainer'lara direkt mesaj
-
-### Ne Zaman Yardım İsteyin?
-
-Şu durumlarda çekinmeyin:
-- ⚠️ Hata mesajını anlamıyorsanız
-- ⚠️ Git sorunları yaşıyorsanız
-- ⚠️ Yaklaşımınızdan emin değilseniz
-- ⚠️ Test nasıl yapılır bilmiyorsanız
-- ⚠️ PR sürecinde takıldıysanız
-- ⚠️ Herhangi bir şeyi anlamadıysanız
-
-> **💡 Unutmayın:** Aptalca soru yoktur! Sormak öğrenmenin ilk adımıdır.
-
-### Topluluk Kuralları
-
-**🤝 Saygılı Olun**
-- Farklı görüşlere açık olun
-- Yapıcı eleştiri yapın
-- Kişisel saldırıdan kaçının
-
-**💡 Yardımsever Olun**
-- Yeni gelenlere destek olun
-- Bilginizi paylaşın
-- Sabırlı olun
-
-**🎯 Odaklanın**
-- Konu dışına çıkmayın
-- Profesyonel bir dil kullanın
-- Spam yapmayın
+**Siz de bu ailenin bir parçası olduğunuz için teşekkür ederiz!** 💚
 
 ---
 
-## 🎉 Katkınız Kabul Edildi!
-
-### Sonrası Ne Olur?
-
-**✅ Merge Edildikten Sonra:**
-1. **Kutlayın!** 🎊 İlk (veya bir sonraki) açık kaynak katkınız!
-2. **Profil:** GitHub profilinizde görünür
-3. **Contributors:** Proje contributors listesinde yeriniz var
-4. **Deneyim:** CV'nize ekleyebileceğiniz somut bir proje
-
-**🔄 Devam Edin:**
-- Daha fazla issue'ya göz atın
-- Başkalarının PR'larını inceleyin
-- Yeni özellikler önerin
-- Mentorluk yapın (yeni gelenlere yardım edin)
-
-### Teşekkürler! 🙏
-
-Her katkı, ne kadar küçük olursa olsun değerlidir:
-- ✨ Kod yazmak
-- 📖 Dokümantasyon
-- 🐛 Hata bildirimi
-- 💡 Fikir önerisi
-- 💬 Tartışmalara katılım
-- 🎨 Tasarım önerileri
-
-**Hepsi topluluğumuzu güçlendirir!**
 </details>
 
 ---
 
-
 <details>
 <summary><strong>🇬🇧 English Guide</strong></summary>
+<p><strong>Welcome!</strong> This guide is designed for anyone who wants to contribute to the BKT-DevOps community. We're happy to have you join us!</p>
 
-# 🤝 Contributing Guide
+## 📋 İçindekiler | Table of Contents
 
-> **Welcome!** This guide is prepared for everyone who wants to contribute to the BKT-DevOps community. We're happy to see you here! 🎉
+- [Why Contribute?](#-why-contribute)
+- [Types of Contributions](#-types-of-contributions)
+- [Before You Start](#-before-you-start)
+- [Contribution Process](#-contribution-process)
+- [Code Standards](#-code-standards)
+- [Communication](#-communication)
 
----
+## 💫 Why Contribute?
 
-## 💫 Why Should You Contribute?
+Contributing to BKT-DevOps community:
+- 🚀 **Professional growth** - Gain experience working on real-world projects
+- 🤝 **Networking** - Connect with experts and expand your professional network
+- 📚 **Portfolio** - Build tangible and measurable contributions for your CV
+- 💪 **Community impact** - Develop solutions that benefit thousands
+- 🎓 **Mentorship** - Receive feedback and guidance from experienced developers
 
-Contributing to open source community:
-- 🚀 **Develops your skills** - You learn by working on real projects
-- 🤝 **Build connections** - Meet people with similar interests
-- 📚 **Gain experience** - Concrete projects you can add to your CV
-- 💪 **Contribute to community** - Build something everyone will benefit from
+## 🎨 Types of Contributions
 
-**Ready to make your first contribution? Let's get started!** 🎯
+### 🐛 Bug Reports
+Discovered a bug in the project? Reporting it is a valuable contribution!
 
----
+**How to report:**
+1. Go to [Issues](../../issues) page
+2. Select "Bug Report" template
+3. Describe the bug in detail:
+   - Steps to reproduce
+   - Expected behavior
+   - Actual behavior
+   - System information (OS, version, etc.)
 
-## 🎨 How Can You Contribute?
+### ✨ Feature Requests
+Have an idea for a new feature? Share it with us!
 
-### 🐛 I Found a Bug!
-Did you find a bug in the project? Great! Here's what you need to do:
+**How to suggest:**
+1. Check [Discussions](../../discussions) (are there similar suggestions?)
+2. Open a new issue with "Feature Request" template
+3. Detail your proposal:
+   - What problem does it solve
+   - How should it work
+   - Who will benefit
 
-1. **Open an issue immediately** - Others may have encountered the same problem
-2. **Explain the problem in detail** - What did you expect, what happened?
-3. **Try to fix it** - If you're familiar with coding, send a PR!
+### 📖 Documentation
+Documentation improvements are among the most valuable contributions!
 
-**Example:** "Getting error while creating repository"
-```
-Steps:
-1. I run terraform init
-2. I say terraform plan
-3. I get "token error"
+**What you can do:**
+- Improve README files
+- Add usage examples
+- Write technical documentation
+- Fix typos and grammar errors
+- Provide Turkish translation support
 
-Expected: Plan should be successful
-Actual: Gives token error
-```
+### 💻 Code Contributions
+If you want to contribute with code:
 
-### ✨ I Have an Idea!
-Do you want a new feature? Super!
+**Ideal start:**
+- Topics labeled `good-first-issue`
+- Tasks marked `help-wanted`
+- TODOs mentioned in documentation
 
-1. **Check Discussions first** - Maybe others want the same thing
-2. **Open a Feature Request** - Explain your idea in detail
-3. **Discuss with community** - Get feedback, develop the idea
-4. **Start coding** - Send a PR after approval
-
-**Example:** "Automatic wiki page creation feature"
-```
-Motivation:
-Creating manual wiki for each new repo takes time.
-
-My suggestion:
-Automatic wiki page template creation with Terraform
-
-Benefits:
-- Time saving
-- Standard documentation
-- Less manual work
-```
-
-### 📖 Documentation Improvement
-You don't have to write code! Documentation is also very valuable:
-
-- **Improve README** - Clearer, more understandable
-- **Add examples** - Show how to use it
-- **Fix typos** - Small but important
-- **Turkish translation** - Native language support is great!
-
-### 🎯 Ideal for First Contribution
-If you're just starting, start with these tasks:
-
-- 🏷️ Issues with `good-first-issue` label
-- 📝 Documentation improvements
-- 🐛 Simple bug fixes
-- 💬 Reviewing others' PRs
+### 👥 Community Support
+You can contribute without writing code:
+- Answer others' questions
+- Perform code reviews
+- Share ideas in Discussions
+- Help newcomers
 
 ---
 
-## 🚀 Quick Start (In 5 Minutes!)
+## 🚀 Before You Start
 
-### 1️⃣ Prepare the Repository
-```bash
-# Fork the repository (click "Fork" button on GitHub)
+### ✅ Prerequisites
+- You must have a GitHub account
+- Basic knowledge of Git
+- Read our [Code of Conduct](CODE_OF_CONDUCT.md)
+- Check project-specific requirements
 
-# Clone to your computer
-git clone https://github.com/YOUR-USERNAME/project-terraform-github.git
-cd project-terraform-github
-
-# Add main repo as upstream
-git remote add upstream https://github.com/BKT-DevOps/project-terraform-github.git
-```
-
-### 2️⃣ Install Terraform
-```bash
-# Download Terraform: https://www.terraform.io/downloads.html
-
-# Initialize
-terraform init
-
-# Set your token (how to get it below ⬇️)
-export TF_VAR_github_token="ghp_YOUR_TOKEN"
-```
-
-### 3️⃣ Create a Branch
-```bash
-# Create a new branch
-git checkout -b feature/my-awesome-feature
-
-# Make your changes
-# ... code edits ...
-
-# Test
-terraform fmt
-terraform validate
-terraform plan
-```
-
-### 4️⃣ Send Changes
-```bash
-# Commit
-git add .
-git commit -m "feat: add awesome new feature"
-
-# Push to GitHub
-git push origin feature/my-awesome-feature
-
-# Open Pull Request on GitHub 🎉
-```
-
-**Congratulations! You made your first contribution!** 🎊
+### 📚 Recommended Reading
+1. [README.md](README.md) - General information about the project
+2. [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Community rules
+3. [LICENSE](LICENSE) - License information
+4. Project documentation (docs/ folder)
 
 ---
 
-## 🔧 Detailed Setup Guide
+## 🔄 Contribution Process
 
-### How to Get GitHub Token?
+### 1️⃣ Create or Select an Issue
 
-GitHub token is required for Terraform to access GitHub:
+**Browse existing issues:**
+```
+1. Go to Issues tab
+2. Filter by labels
+3. Find a topic you're interested in
+4. Comment stating you want to work on it
+```
 
-**Steps:**
-1. GitHub top right corner → **Settings**
-2. At the bottom **Developer settings**
-3. **Personal access tokens** → **Tokens (classic)**
-4. **Generate new token** (classic)
-5. Name the token: `BKT-DevOps-Token`
-6. **Select permissions:**
-   ```
-   ✅ repo (all)
-   ✅ admin:org
-   ✅ delete_repo
-   ```
-7. **Generate token** → Copy the token! 📋
+**Open a new issue:**
+- Make sure a similar issue doesn't exist
+- Use the appropriate template
+- Write a detailed and clear description
 
-**Save the Token:**
+### 2️⃣ Fork the Repository
+
 ```bash
-# Linux / macOS
-echo 'export TF_VAR_github_token="ghp_..."' >> ~/.bashrc
-source ~/.bashrc
+# Click "Fork" button on GitHub
+# Then clone your forked repo
+git clone https://github.com/YOUR-USERNAME/REPO-NAME.git
+cd REPO-NAME
 
-# Windows (PowerShell)
-[Environment]::SetEnvironmentVariable("TF_VAR_github_token", "ghp_...", "User")
+# Add upstream remote
+git remote add upstream https://github.com/BKT-DevOps/REPO-NAME.git
 ```
 
-> **⚠️ Important:** Don't share the token with anyone! Don't commit to Git!
+### 3️⃣ Create a New Branch
 
-### Terraform Installation
-
-**1. Download:**
-- Web: https://www.terraform.io/downloads.html
-- macOS: `brew install terraform`
-- Linux: `sudo apt install terraform` or `yum install terraform`
-- Windows: Chocolatey → `choco install terraform`
-
-**2. Check:**
+**Branch naming conventions:**
 ```bash
-terraform version
-# Should be Terraform v1.0 or higher
-```
+# New feature
+git checkout -b feature/brief-description
 
-**3. VS Code Extensions (Recommended):**
-- HashiCorp Terraform
-- Terraform doc snippets
-
----
-
-## 📝 Contribution Workflow
-
-### Step 1: Choose or Create an Issue
-
-**Check Existing Issues:**
-- [Issues page](https://github.com/BKT-DevOps/project-terraform-github/issues)
-- `good-first-issue` label → For beginners
-- `help-wanted` label → Topics needing help
-
-**Comment on Issue:**
-```
-Hello! I want to work on this issue. 
-I will send PR in approximately [X days/weeks].
-```
-
-**Open New Issue:**
-
-**Bug Report Template:**
-```markdown
-## 🐛 Bug Description
-Short and clear description
-
-## 📋 Steps
-1. Run this command
-2. Edit that file
-3. See the error
-
-## ✅ Expected Behavior
-What did you expect to happen?
-
-## ❌ Actual Behavior
-What happened?
-
-## 💻 Environment
-- OS: [e.g. macOS 13, Ubuntu 22.04]
-- Terraform: [e.g. v1.5.0]
-- Provider: [e.g. hashicorp/github v5.0.0]
-
-## 📎 Attachments
-- Error message
-- Screenshot
-- Terraform plan output
-```
-
-**Feature Request Template:**
-```markdown
-## ✨ Feature Request
-What do you want?
-
-## 🎯 Motivation
-Why is this feature necessary?
-What problem does it solve?
-
-## 💡 Proposed Solution
-How can it be implemented?
-
-## 🔄 Alternatives
-Have you thought of other solutions?
-
-## 📚 Additional Context
-Anything else you want to add?
-```
-
-### Step 2: Create Branch and Work
-
-**Branch Naming:**
-```bash
-# When adding feature
-git checkout -b feature/wiki-automation
-
-# When fixing bug
-git checkout -b bugfix/team-permission-fix
+# Bug fix
+git checkout -b bugfix/brief-description
 
 # Documentation
-git checkout -b docs/update-contributing-guide
+git checkout -b docs/brief-description
 
-# Refactoring
-git checkout -b refactor/simplify-variables
+# Performance improvement
+git checkout -b perf/brief-description
 ```
 
-**Work Cycle:**
+**Examples:**
 ```bash
-# 1. Write code
-vim main.tf
-
-# 2. Format
-terraform fmt
-
-# 3. Validate
-terraform validate
-
-# 4. Test
-terraform plan
-
-# 5. Go back to 1 (if needed)
+git checkout -b feature/add-user-authentication
+git checkout -b bugfix/fix-login-validation
+git checkout -b docs/update-api-documentation
 ```
 
-**Make Small Commits:**
+### 4️⃣ Make Your Changes
+
+**Best Practices:**
+- ✅ Make small and focused changes
+- ✅ Make separate commits for each logical change
+- ✅ Follow code standards
+- ✅ Add tests (if test framework exists)
+- ✅ Update documentation
+
+**Change cycle:**
 ```bash
-# Separate commit for each logical change
-git add main.tf
-git commit -m "feat: add wiki resource"
+# 1. Make changes
+# ... work in your code editor ...
 
-git add variables.tf
-git commit -m "feat: add wiki configuration variables"
+# 2. Check changes
+git status
+git diff
 
-git add README.md
-git commit -m "docs: document wiki feature"
+# 3. Test (varies by project)
+# npm test
+# pytest
+# etc.
+
+# 4. Commit (details below)
 ```
 
-### Step 3: Commit Messages
+### 5️⃣ Commit Messages
 
 **Format:**
 ```
 <type>(<scope>): <subject>
 
-<body>
+<body (optional)>
 
-<footer>
+<footer (optional)>
 ```
 
-**Types:**
-- `feat:` → New feature
-- `fix:` → Bug fix
-- `docs:` → Documentation
-- `style:` → Format (code behavior doesn't change)
-- `refactor:` → Code improvement
-- `test:` → Add tests
-- `chore:` → Build, configuration
+**Type prefixes:**
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation change
+- `style:` - Code formatting (no logic change)
+- `refactor:` - Code improvement
+- `test:` - Adding/fixing tests
+- `chore:` - Build, configuration, etc.
+- `perf:` - Performance improvement
 
-**✅ Good Examples:**
+**✅ Good commit examples:**
 ```bash
-feat: add automatic wiki page creation
+feat(auth): add JWT token validation
 
-docs: update README with wiki usage examples
-
-fix: resolve team permission conflict on private repos
+fix(api): resolve null pointer exception in user service
 Fixes #123
 
-refactor: extract repository config to module
+docs(readme): update installation instructions
 
-test: add validation for repository names
+refactor(utils): simplify date formatting function
 
-chore: update GitHub provider to v6.0
+test(auth): add unit tests for login endpoint
 ```
 
-**❌ Bad Examples:**
+**❌ What to avoid:**
 ```bash
-update
-# Too general, not clear what was updated
-
+update code
 fixed bug
-# Which bug? How was it fixed?
-
-added stuff
-# What was added? Why?
-
+changes
 WIP
-# WIP shouldn't remain in commit history
+asdfgh
 ```
 
-### Step 4: Send Pull Request
+### 6️⃣ Push Changes
 
-**Create PR:**
-1. Go to your repository on GitHub
-2. Yellow banner **Compare & pull request**
-3. Or: **Pull requests** → **New pull request** → **compare across forks**
+```bash
+# Add changes to staging area
+git add .
 
-**PR Title:**
+# Commit
+git commit -m "feat: descriptive message"
+
+# Push to your fork
+git push origin feature/branch-name
 ```
-[TYPE] Descriptive title
+
+### 7️⃣ Create Pull Request (PR)
+
+**Steps to open PR:**
+1. Go to your fork on GitHub
+2. Click "Compare & pull request" button
+3. Base repository: `BKT-DevOps/repo-name` `main`
+4. Head repository: `username/repo-name` `feature-branch`
+
+**PR title:**
+```
+[TYPE] Short and descriptive title
 
 Examples:
-[FEATURE] Add automatic wiki page creation
-[BUGFIX] Fix team permission on private repos
-[DOCS] Update installation guide with examples
+[FEATURE] Add user authentication system
+[BUGFIX] Fix memory leak in data processor
+[DOCS] Update API documentation
 ```
 
-**PR Description Template:**
+**PR description template:**
+
 ```markdown
-## 🎯 What Does This PR Do?
-[Short summary - 1-2 sentences]
+## 📝 Description
+<!-- Briefly explain the purpose of this PR -->
 
-## 💡 Why?
-[Why is this change necessary? What problem does it solve?]
-
-## 🔧 Changes
-- [ ] Change 1
-- [ ] Change 2
-- [ ] Change 3
-
-## 🧪 How Was It Tested?
-- [ ] Tested locally
-- [ ] terraform fmt executed
-- [ ] terraform validate successful
-- [ ] terraform plan reviewed
-- [ ] Manual test scenarios performed
-
-## 📸 Screenshots
-[If any screenshots, terraform plan output]
-
-## 📚 Documentation
-- [ ] README updated
-- [ ] Code comments added
-- [ ] CHANGELOG updated
-- [ ] Usage examples added
-
-## 🔗 Related Issues
-Task Ticket Number #123
+## 🎯 Related Issue
+<!-- Specify issue number -->
+Closes #123
 Relates to #456
 
+## 🔄 Change Type
+<!-- Check relevant boxes -->
+- [ ] Bug fix (code change - fixes existing bug)
+- [ ] New feature (code change - adds new functionality)
+- [ ] Breaking change (affects existing features)
+- [ ] Documentation update
+
+## 📋 Changes
+<!-- List your changes -->
+- Change 1
+- Change 2
+- Change 3
+
 ## ✅ Checklist
-- [ ] Code formatted (terraform fmt)
-- [ ] Tests passed
-- [ ] Documentation completed
-- [ ] No breaking changes (or noted if yes)
-- [ ] Meaningful commit messages
+<!-- Check completed steps -->
+- [ ] Code is self-explanatory with comments added
+- [ ] Documentation updated
+- [ ] Tests added/updated
+- [ ] All tests pass
+- [ ] Commit messages follow standards
+- [ ] Branch is up to date (merged with main)
 
-## 💬 Notes
-[Special notes for reviewers, questions, etc.]
+## 🧪 Tested
+<!-- How did you test? -->
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Manual tests
+
+## 📸 Screenshots (if applicable)
+<!-- Add screenshots if UI changes -->
+
+## 💬 Additional Notes
+<!-- Special notes for reviewers -->
 ```
 
-### Step 5: Code Review Process
+### 8️⃣ Code Review Process
 
-**What Happens:**
-1. ✅ **Automated Checks** - CI/CD pipeline runs
-2. 👀 **Maintainer Review** - Code is reviewed
-3. 💬 **Feedback** - Suggestions and questions come
-4. 🔄 **Update** - You make necessary changes
-5. ✨ **Approval** - Code gets approved
-6. 🎉 **Merge** - Added to main branch
+**What to expect:**
+1. ✅ **Automated checks** - CI/CD pipeline runs
+2. 👀 **Review** - Maintainers review the code
+3. 💬 **Feedback** - Questions and suggestions arrive
+4. 🔄 **Iteration** - You make necessary changes
+5. ✨ **Approval** - PR gets approved
+6. 🎉 **Merge** - Your code is added to main branch
 
-**How to Respond to Feedback:**
+**Responding to feedback:**
+- 🙏 Be polite and professional
+- 💭 Consider suggestions
+- 🤔 Ask about points you don't understand
+- 🔄 Implement requested changes promptly
 
-**Example Feedback:**
-```
-Maintainer: "Can we write this function simpler?"
-
-You: "You're right! Would it be better if I change it like this:
-[code example]
-
-Or do you have another suggestion?"
-```
-
-**Applying Changes:**
+**Making changes:**
 ```bash
-# Apply feedback
+# Make changes based on feedback
 git add .
-git commit -m "refactor: simplify function per review feedback"
+git commit -m "refactor: apply code review suggestions"
 
-# Push to same branch
-git push origin feature/your-branch
-
-# PR updates automatically!
+# Push to same branch (PR updates automatically)
+git push origin feature/branch-name
 ```
-
-**Good PR Behaviors:**
-- 🤝 Be respectful and constructive
-- 🙏 Thank for feedback
-- 💬 Ask what you don't understand
-- 🎯 Try suggestions and share your experience
-- ⏱️ Don't rush to respond, think about it
 
 ---
 
-## 📚 Code Standards
+## 📏 Code Standards
 
-### Terraform Style
-
-**✅ Good Code:**
-```hcl
-# 1. Clean and readable
-resource "github_repository" "docs" {
-  name        = "documentation"
-  description = "Project documentation and guides"
-  visibility  = "public"
-  
-  # Feature flags
-  has_wiki   = true
-  has_issues = true
-  
-  # Templates
-  template {
-    owner      = "BKT-DevOps"
-    repository = "template-docs"
-  }
-}
-
-# 2. Descriptive variables
-variable "enable_branch_protection" {
-  description = "Enable branch protection rules for main branch"
-  type        = bool
-  default     = true
-}
-
-# 3. Input validation
-variable "repository_name" {
-  description = "Name of the repository (lowercase, hyphens only)"
-  type        = string
-  
-  validation {
-    condition     = can(regex("^[a-z0-9-]+$", var.repository_name))
-    error_message = "Repository name must be lowercase with hyphens only."
-  }
-}
-
-# 4. Meaningful comments
-# Create team with read access for all organization members
-# This ensures everyone can view the repository
-resource "github_team" "readers" {
-  name        = "readers"
-  description = "Read-only access for all members"
-  privacy     = "closed"
-}
-```
-
-**❌ Bad Code:**
-```hcl
-# Bad format, unreadable
-resource "github_repository" "r" {
-name="test"
-description="test repo"
-visibility="public"
-has_wiki=true
-has_issues=true}
-
-# Unclear variable
-variable "x" {
-  type = bool
-}
-
-# No validation
-variable "name" {
-  type = string
-}
-
-# No comment (for complex code)
-resource "github_team" "t" {
-  count = var.create ? 1 : 0
-  name  = element(concat(var.names, [""]), count.index)
-}
-```
+### General Rules
+- ✅ **Readability:** Code should be self-explanatory
+- ✅ **DRY:** Don't Repeat Yourself
+- ✅ **KISS:** Keep It Simple, Stupid
+- ✅ **YAGNI:** You Aren't Gonna Need It
+- ✅ **Consistency:** Follow the project's existing style
 
 ### File Organization
-
-**Project Structure:**
 ```
-project-terraform-github/
-├── main.tf              # Main resources
-├── variables.tf         # Input variables
-├── outputs.tf           # Output values
-├── versions.tf          # Provider versions
-├── README.md            # Project documentation
-├── CONTRIBUTING.md      # This file!
-├── CHANGELOG.md         # Change history
-├── .gitignore           # Git ignore rules
-├── examples/            # Usage examples
-│   ├── basic/
-│   │   ├── main.tf
-│   │   └── README.md
-│   └── advanced/
-│       ├── main.tf
-│       └── README.md
-└── modules/             # Reusable modules
-    ├── repository/
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   ├── outputs.tf
-    │   └── README.md
-    └── team/
-        ├── main.tf
-        ├── variables.tf
-        ├── outputs.tf
-        └── README.md
+project-root/
+├── docs/              # Documentation
+├── src/               # Source code
+├── tests/             # Test files
+├── .github/           # GitHub workflows, templates
+├── README.md          # Project description
+├── CONTRIBUTING.md    # This file
+├── CODE_OF_CONDUCT.md # Code of conduct
+├── LICENSE            # License
+└── .gitignore         # Git ignore rules
+```
+
+### Comments and Documentation
+```javascript
+// ✅ GOOD: Descriptive comment
+// Calculate the total price including taxes and discounts
+// @param basePrice - Original price before calculations
+// @param taxRate - Tax rate as decimal (e.g., 0.18 for 18%)
+function calculateTotal(basePrice, taxRate) {
+  return basePrice * (1 + taxRate);
+}
+
+// ❌ BAD: Unnecessary comment
+// This function adds two numbers
+function add(a, b) {
+  return a + b; // return the sum
+}
+```
+
+### Error Handling
+```javascript
+// ✅ GOOD: Descriptive error messages
+if (!user) {
+  throw new Error('User not found: Invalid user ID provided');
+}
+
+// ❌ BAD: Vague errors
+if (!user) {
+  throw new Error('Error');
+}
 ```
 
 ---
 
-## 🧪 Testing and Validation
+## 📞 Communication
 
-### Pre-Commit Checklist
+### 💬 Where Do We Talk?
 
-**Before each commit:**
-```bash
-# 1. Format
-terraform fmt -recursive
+**GitHub Discussions** (Preferred)
+- General questions and discussions
+- Feature proposals
+- Help requests
 
-# 2. Validate
-terraform validate
+**GitHub Issues**
+- Bug reports
+- Task tracking
+- Feature requests (detailed)
 
-# 3. Plan (dry-run)
-terraform plan
+**Pull Requests**
+- Code reviews
+- Technical discussions
 
-# 4. Git status check
-git status
-git diff
-```
+### 📧 Direct Contact
+- Security vulnerabilities: [Follow responsible disclosure procedure]
+- Private matters: Mention maintainers
 
-### Final Check Before PR
-
-```bash
-# Update from main branch
-git checkout main
-git pull upstream main
-git checkout your-branch
-git rebase main
-
-# Final checks
-terraform fmt -check -recursive
-terraform validate
-terraform plan
-
-# Any issues in commits?
-git log --oneline
-
-# Push
-git push origin your-branch
-```
-
-### Manual Test Scenarios
-
-**For New Feature:**
-1. ✅ Does it work when feature is on/off?
-2. ✅ Does it break existing features?
-3. ✅ Are error cases handled?
-4. ✅ Is documentation correct?
-
-**For Bug Fix:**
-1. ✅ Was the bug reproducible?
-2. ✅ Does the error no longer occur?
-3. ✅ Were similar cases also fixed?
-4. ✅ Was test scenario added?
-
----
-
-## 💡 Tips and Best Practices
-
-### For Beginners
-
-**🌱 Start Small:**
-- Your first PR can be a typo fix
-- You can add an example to README
-- You can add code comments
-- These are also valuable contributions!
-
-**📖 Learn:**
-- Review others' PRs
-- Follow Discussions
-- Ask questions, don't be shy!
-
-**🎯 Focus:**
-- Do one thing at a time
-- Send small, understandable PRs
-- Open an issue first for big changes
-
-### For Advanced Users
-
-**🏗️ Architectural Decisions:**
-- Discuss first if suggesting breaking change
-- Open RFC (Request for Comments)
-- Get community opinion
-
-**♻️ Sustainability:**
-- Consider backward compatibility
-- Make deprecation plan
-- Write migration guide
-
-**📊 Performance:**
-- Test Terraform plan times
-- Optimize resource count
-- Check state file size
+### ⏱️ Response Times
+- Issues: 2-5 business days
+- Pull Requests: 3-7 business days
+- Security issues: 24-48 hours
 
 ---
 
 ## ❓ Frequently Asked Questions
 
-### 🆕 Beginners
+### General
 
-**Q: I've never contributed to open source, where should I start?**
+**Q: Where should I make my first contribution?**
+> Start with issues labeled `good-first-issue`. Documentation improvements are also a great start.
 
-A: Great starting point! We recommend:
-1. Check issues with `good-first-issue` label
-2. Fix typo in documentation
-3. Add usage example to README
-4. Chat with community in Discussions
+**Q: I don't know programming, can I contribute?**
+> Absolutely! Documentation, translation, bug reporting, and community support are very valuable.
 
-**Q: I don't know Terraform, do I need to learn it?**
+**Q: How long does it take to review my PR?**
+> Typically within 3-7 business days. Be patient, maintainers work voluntarily.
 
-A: You can contribute without coding:
-- Documentation improvements
-- Bug detection and reporting
-- Suggesting use cases
-- Providing community support
+**Q: What if my PR is rejected?**
+> Don't worry! Maintainers will explain why. You can consider the feedback and try again.
 
-If you want to learn Terraform, start with small changes!
+### Technical
 
-**Q: What happens if my PR is rejected?**
-
-A: Don't worry! This is normal:
-- Maintainers will explain
-- Understand the reason, learn
-- Fix and try again
-- Or choose another topic
-
-Rejection is not negative, it's part of the learning process!
-
-### 🔧 Technical Issues
-
-**Q: I'm getting "Token invalid" error?**
-
-A: Token check:
+**Q: How to resolve Git conflicts?**
 ```bash
-# 1. Is token set?
-echo $TF_VAR_github_token
-
-# 2. Is token correct? (check on GitHub)
-
-# 3. Are permissions sufficient?
-# repo, admin:org, delete_repo required
-
-# 4. Reset
-export TF_VAR_github_token="ghp_NEW_TOKEN"
-terraform init
-```
-
-**Q: I can't resolve Git conflict?**
-
-A: Step by step:
-```bash
-# 1. Update main
 git checkout main
 git pull upstream main
-
-# 2. Return to your branch
 git checkout your-branch
-
-# 3. Rebase
 git rebase main
-
-# 4. If conflict occurs:
-git status  # Which files?
-
-# 5. Edit file, remove conflict markers
-# <<<<<<< HEAD
-# =======
-# >>>>>>> branch
-
-# 6. Add solution
-git add conflicted-file.tf
+# Manually resolve conflicts
+git add .
 git rebase --continue
-
-# 7. Push (may need force)
 git push origin your-branch --force-with-lease
 ```
 
-Still having issues? Ask for help in the issue!
-
-**Q: Terraform plan is very long, is this normal?**
-
-A: Optimize:
+**Q: I committed to the wrong branch?**
 ```bash
-# 1. Use target (for testing)
-terraform plan -target=github_repository.specific
+# Undo commit (keep changes)
+git reset --soft HEAD~1
 
-# 2. Reduce parallelism
-terraform plan -parallelism=5
+# Switch to correct branch
+git checkout correct-branch
 
-# 3. Clean cache
-rm -rf .terraform
-terraform init
-
-# 4. Check state
-terraform state list
-```
-
-### 🤝 Collaboration
-
-**Q: Someone else is also working on the same issue?**
-
-A: Get in touch:
-```
-Hello @user! I'm also working on this issue.
-Can we collaborate? I was working on [X part], 
-could you take [Y part]?
-```
-
-**Q: How long does maintainer respond?**
-
-A: Usually 2-5 business days. Be patient if not urgent.
-If urgent: Tag in Discussions or Discord.
-
-**Q: My PR was merged, what should I do?**
-
-A: Congratulations! 🎉
-```bash
-# 1. Update local
-git checkout main
-git pull upstream main
-
-# 2. Delete branch (optional)
-git branch -d feature/your-branch
-git push origin --delete feature/your-branch
-
-# 3. Start new contribution!
+# Commit again
+git commit -m "your message"
 ```
 
 ---
 
-## 🆘 Help and Support
+## 🎉 Thank You
 
-### How to Get Help?
+Every contribution, no matter how small, is valuable to our community:
+- ✨ Code writers
+- 📖 Documentation creators
+- 🐛 Bug reporters
+- 💡 Idea proposers
+- 🎨 Designers
+- 👥 Community supporters
 
-**💬 GitHub Discussions** (Best way!)
-- [General questions](https://github.com/BKT-DevOps/project-terraform-github/discussions/categories/q-a)
-- [Ideas](https://github.com/BKT-DevOps/project-terraform-github/discussions/categories/ideas)
-- [Help requests](https://github.com/BKT-DevOps/project-terraform-github/discussions/categories/help)
-
-**🐛 GitHub Issues**
-- Bug reports
-- Feature requests
-- Technical problems
-
-**📧 Direct Contact**
-- Urgent security issues
-- Private matters
-- Direct message to maintainers
-
-### When to Ask for Help?
-
-Don't hesitate in these situations:
-- ⚠️ If you don't understand the error message
-- ⚠️ If you're having Git problems
-- ⚠️ If you're unsure about your approach
-- ⚠️ If you don't know how to test
-- ⚠️ If you're stuck in PR process
-- ⚠️ If you don't understand anything
-
-> **💡 Remember:** There are no stupid questions! Asking is the first step of learning.
-
-### Community Rules
-
-**🤝 Be Respectful**
-- Be open to different opinions
-- Give constructive criticism
-- Avoid personal attacks
-
-**💡 Be Helpful**
-- Support newcomers
-- Share your knowledge
-- Be patient
-
-**🎯 Stay Focused**
-- Don't go off-topic
-- Use professional language
-- Don't spam
+**Thank you for being part of this family!** 💚
 
 ---
 
-## 🎉 Your Contribution Was Accepted!
-
-### What Happens Next?
-
-**✅ After Merge:**
-1. **Celebrate!** 🎊 Your first (or next) open source contribution!
-2. **Profile:** Visible on your GitHub profile
-3. **Contributors:** You have a place in project contributors list
-4. **Experience:** A concrete project you can add to your CV
-
-**🔄 Continue:**
-- Check out more issues
-- Review others' PRs
-- Suggest new features
-- Mentor (help newcomers)
-
-### Thank You! 🙏
-
-Every contribution, no matter how small, is valuable:
-- ✨ Writing code
-- 📖 Documentation
-- 🐛 Bug reporting
-- 💡 Idea suggestions
-- 💬 Participating in discussions
-- 🎨 Design suggestions
-
-**All of them strengthen our community!**
+</details>
 
 ---
 
-## 📜 License
+## 📜 Lisans | License
 
-All contributions you make to this project will be published under the license specified in the `LICENSE` file in the repository. By contributing, you agree to this license.
+**🇹🇷** Bu projeye yaptığınız tüm katkılar, repository'deki `LICENSE` dosyasında belirtilen lisans altında yayınlanacaktır. Katkıda bulunarak bu lisansı kabul etmiş olursunuz.
+
+**🇬🇧** All contributions you make to this project will be published under the license specified in the `LICENSE` file in the repository. By contributing, you agree to this license.
 
 ---
 
-**Last updated:** November 10, 2025
+<div align="center">
 
-**Happy coding!** 🚀
+**Son güncelleme | Last updated:** Kasım 2025 | November 2025
+
+Made with ❤️ by [BKT-DevOps](https://github.com/BKT-DevOps) Community
+
+[![GitHub](https://img.shields.io/badge/GitHub-BKT--DevOps-181717?style=for-the-badge&logo=github)](https://github.com/BKT-DevOps)
+
+</div>
