@@ -1,52 +1,81 @@
 # project-terraform-github
 
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-BKT-DevOps-181717?style=flat-square&logo=github)](https://github.com/BKT-DevOps/project-terraform-github)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
+**Part of [Infrastructure as Code Project](docs/Project-Definition.md)**
+
+</div>
+
+---
+
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 
 <br>
 
-> **ÖNEMLİ:** Bu repo **InfraCoders** projesinine ait kodları içermektedir.
->
-> Proje detayları ve hedefleri ile ilgili detaylı biligi için [`Proje Tanıtımı`](docs/Project-Definition.md) belgesini inceleyiniz.
+> **ÖNEMLİ:** Bu repository **Infrastructure as Code Project** projesinin bir parçasıdır. Proje hakkında detaylı bilgi için [`docs/Project-Definition.md`](docs/Project-Definition.md) dosyasına bakın.
 
-<!-- LÜTFEN BU ALANI DOLDURUN: Bu reponun ne işe yaradığını anlatan bir veya iki cümlelik kısa bir açıklama ekleyin. -->
+## 📖 Hakkında
+
+<!-- Bu repository'nin ne yaptığını buraya yazın -->
+
+## 🚀 Kurulum
+
+### Gereksinimler
+
+- Gerekli araçları buraya listeleyin
+
+### Başlangıç
+
+```bash
+git clone https://github.com/BKT-DevOps/project-terraform-github.git
+cd project-terraform-github
+
+# Kurulum adımlarını buraya ekleyin
+```
+
+## 💻 Kullanım
+
+```bash
+# Uygulamayı çalıştırma komutunu buraya ekleyin
+```
+
+## 📁 Proje Yapısı
+
+```
+project-terraform-github/
+├── src/          # Kaynak kodlar
+├── tests/        # Testler
+├── docs/         # Dokümantasyon
+└── README.md     # Bu dosya
+```
+
+## 🧪 Test
+
+```bash
+# Test komutlarını buraya ekleyin
+```
+
+## 🤝 Katkıda Bulunma
+
+Katkıda bulunmak için lütfen [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasını inceleyin.
+
+## 📚 Dokümantasyon
+
+- [Proje Tanımı](docs/Project-Definition.md)
+- [Mimari Genel Bakış](docs/Architecture-Overview.md)
+- [Geliştirme Akışı](docs/Development-Workflow.md)
+
+## 📄 Lisans
+
+Bu proje MIT Lisansı ile lisanslanmıştır - detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ---
 
-### 🛠️ Yerel Geliştirme Ortamı Kurulumu
-
-#### Ön Gereksinimler
-
-<!-- Doldur: Bu projeyi çalıştırmak için geliştiricinin bilgisayarında hangi araçların (örn: Node.js v18+) kurulu olması gerektiğini listeleyin. -->
-*   Aracın Adı `(versiyon)`
-
-#### Kurulum
-
-1.  **Repoyu Klonlayın:**
-    ```bash
-    git clone https://github.com/BKT-DevOps/project-terraform-github.git
-    cd project-terraform-github
-    ```
-2.  **Bağımlılıkları Yükleyin:**
-    <!-- Doldur: Bağımlılıkları kurmak için gereken komutu buraya yazın (Örnek: npm install). -->
-    
-3.  **Ortam Değişkenlerini Ayarlayın:**
-    <!-- Doldur: Gerekliyse, .env.example dosyasını .env olarak kopyalamalarını söyleyin. -->
-
-#### Uygulamayı Çalıştırma
-<!-- Doldur: Geliştirme sunucusunu başlatan komutu buraya yazın (Örnek: npm run dev). -->
-
-#### Testleri Çalıştırma
-<!-- Doldur: Testleri çalıştıran komutu buraya yazın (Örnek: npm test). -->
-
-### 🤝 Katkıda Bulunma
-Projeye katkıda bulunmak isterseniz, lütfen [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasını inceleyin.
-
-### 📄 Lisans
-Bu proje **MIT Lisansı** ile lisanslanmıştır. Detaylar için [`LICENSE`](LICENSE) dosyasına bakınız.
-
-### 📄 Davranış Kuralları
-Lütfen davranış kurralarına uyunuz. Detaylar için [`Davranış Kuralları`](CODE_OF_CONDUCT.md) dosyasına bakınız.
+**Proje Lideri:** [@flovearth](https://github.com/flovearth)
 
 </details>
 
@@ -55,46 +84,65 @@ Lütfen davranış kurralarına uyunuz. Detaylar için [`Davranış Kuralları`]
 
 <br>
 
-> **IMPORTANT:** This repository includes code base of **InfraCoders**.
->
-> For detailed info about project and goals, please check the [`Project Definition`](docs/Project-Definition.md) document.
+> **IMPORTANT:** This repository is part of **Infrastructure as Code Project** project. See [`docs/Project-Definition.md`](docs/Project-Definition.md) for details.
 
-<!-- PLEASE FILL THIS IN: Add a short, one-sentence description of what this repository does. -->
+## 📖 About
+
+<!-- Describe what this repository does -->
+
+## 🚀 Installation
+
+### Requirements
+
+- List required tools here
+
+### Getting Started
+
+```bash
+git clone https://github.com/BKT-DevOps/project-terraform-github.git
+cd project-terraform-github
+
+# Add installation steps here
+```
+
+## 💻 Usage
+
+```bash
+# Add command to run the application
+```
+
+## 📁 Project Structure
+
+```
+project-terraform-github/
+├── src/          # Source code
+├── tests/        # Tests
+├── docs/         # Documentation
+└── README.md     # This file
+```
+
+## 🧪 Testing
+
+```bash
+# Add test commands here
+```
+
+## 🤝 Contributing
+
+Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution guidelines.
+
+## 📚 Documentation
+
+- [Project Definition](docs/Project-Definition.md)
+- [Architecture Overview](docs/Architecture-Overview.md)
+- [Development Workflow](docs/Development-Workflow.md)
+
+## 📄 License
+
+This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-### 🛠️ Local Development Setup
-
-#### Prerequisites
-<!-- Fill in: List the tools a developer must have installed (e.g., Node.js v18+). -->
-*   Tool Name `(version)`
-
-#### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/BKT-DevOps/project-terraform-github.git
-    cd project-terraform-github
-    ```
-2.  **Install dependencies:**
-    <!-- Fill in: Provide the command to install dependencies (Example: npm install). -->
-    
-3.  **Set up environment variables:**
-    <!-- Fill in: If necessary, instruct users to copy .env.example to .env. -->
-
-#### Running the Application
-<!-- Fill in: Provide the command to start the development server (Example: npm run dev). -->
-
-#### Running Tests
-<!-- Fill in: Provide the command to run the tests (Example: npm test). -->
-
-### 🤝 Contributing
-If you wish to contribute, please review the [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
-
-### 📄 License
-This project is licensed under the **MIT License**. See the [`LICENSE`](LICENSE) file for details.
-
-### 📄 Code of Conduct
-Please always follow the Code of Conduct. See details: [`Code of Conduct`](CODE_OF_CONDUCT.md)
+**Project Lead:** [@flovearth](https://github.com/flovearth)
 
 </details>
