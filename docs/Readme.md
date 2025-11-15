@@ -5,7 +5,9 @@
 
 <br>
 
-> **ÖNEMLİ:** Bu repodaki kodlar, daha büyük bir proje olan **{{PROJECT_NAME}}** projesinin bir parçasıdır. Projenin genel hedefleri hakkında bilgi için [`docs/PROJECT.md`](docs/Project-Definition.md) belgesini inceleyin.
+> **ÖNEMLİ:** Bu repo **{{PROJECT_NAME}}** projesinine ait kodları içermektedir.
+>
+> Proje detayları ve hedefleri ile ilgili detaylı biligi için [`Proje Tanıtımı`](docs/Project-Definition.md) belgesini inceleyiniz.
 
 <!-- LÜTFEN BU ALANI DOLDURUN: Bu reponun ne işe yaradığını anlatan bir veya iki cümlelik kısa bir açıklama ekleyin. -->
 
@@ -50,7 +52,9 @@ Bu proje **MIT Lisansı** ile lisanslanmıştır. Detaylar için [`LICENSE`](LIC
 
 <br>
 
-> **IMPORTANT:** This repository is part of a larger project: **{{PROJECT_NAME}}**. For project goals, please review the [`docs/PROJECT.md`](docs/PROJECT.md) document.
+> **IMPORTANT:** This repository includes code base of **{{PROJECT_NAME}}**.
+>
+> For detailed info about project and goals, please check the [`Project Definition`](docs/Project-Definition.md) document.
 
 <!-- PLEASE FILL THIS IN: Add a short, one-sentence description of what this repository does. -->
 
