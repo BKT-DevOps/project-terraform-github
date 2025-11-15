@@ -45,6 +45,9 @@ Projeye katkıda bulunmak isterseniz, lütfen [`CONTRIBUTING.md`](CONTRIBUTING.m
 ### 📄 Lisans
 Bu proje **MIT Lisansı** ile lisanslanmıştır. Detaylar için [`LICENSE`](LICENSE) dosyasına bakınız.
 
+### 📄 Davranış Kuralları
+Lütfen davranış kurralarına uyunuz. Detaylar için [`Davranış Kuralları`](CODE_OF_CONDUCT.md) dosyasına bakınız.
+
 </details>
 
 <details>
@@ -90,5 +93,8 @@ If you wish to contribute, please review the [`CONTRIBUTING.md`](CONTRIBUTING.md
 
 ### 📄 License
 This project is licensed under the **MIT License**. See the [`LICENSE`](LICENSE) file for details.
+
+### 📄 Code of Conduct
+Please always follow the Code of Conduct. See details: [`Code of Conduct`](CODE_OF_CONDUCT.md)
 
 </details>
