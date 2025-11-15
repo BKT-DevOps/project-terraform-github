@@ -20,9 +20,38 @@
 
 ## 📖 Hakkında
 
----
- 
-### 🛠️ Yerel Geliştirme Ortamı Kurulumu
+<!-- Bu repository'nin ne yaptığını buraya yazın -->
+
+## 🚀 Kurulum
+
+### Gereksinimler
+
+- Gerekli araçları buraya listeleyin
+
+### Başlangıç
+
+```bash
+git clone https://github.com/BKT-DevOps/project-terraform-github.git
+cd project-terraform-github
+
+# Kurulum adımlarını buraya ekleyin
+```
+
+## 💻 Kullanım
+
+```bash
+# Uygulamayı çalıştırma komutunu buraya ekleyin
+```
+
+## 📁 Proje Yapısı
+
+```
+project-terraform-github/
+├── src/          # Kaynak kodlar
+├── tests/        # Testler
+├── docs/         # Dokümantasyon
+└── README.md     # Bu dosya
+```
 
 ## 🧪 Test
 
