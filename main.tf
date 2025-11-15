@@ -237,7 +237,7 @@ resource "github_repository_file" "docs_project" {
   content = replace(
     replace(
       file("${path.module}/docs/Project-Definition.md"),
-      "{{PROJECT_NAME}}", each.value.project_name
+      "{{PROJECT_NAME}}", each.value.project_display_name
     ),
     "{{PROJECT_LEAD}}", each.value.project_lead
   )
@@ -263,7 +263,7 @@ resource "github_repository_file" "docs_architecture" {
   file       = "docs/Architecture-Overview.md"
   content = replace(
     file("${path.module}/docs/Architecture-Overview.md"),
-    "{{PROJECT_NAME}}", each.value.project_name
+    "{{PROJECT_NAME}}", each.value.project_display_name
   )
   commit_message = "Add Architecture Overview document"
 
@@ -287,7 +287,7 @@ resource "github_repository_file" "docs_workflow" {
   file       = "docs/Development-Workflow.md"
   content = replace(
     file("${path.module}/docs/Development-Workflow.md"),
-    "{{PROJECT_NAME}}", each.value.project_name
+    "{{PROJECT_NAME}}", each.value.project_display_name
   )
   commit_message = "Add Development Workflow document"
 
@@ -308,7 +308,7 @@ resource "github_repository_file" "docs_verified_commits" {
   file       = "docs/Verified-Commits-Guide.md"
   content = replace(
     file("${path.module}/docs/Verified-Commits-Guide.md"),
-    "{{PROJECT_NAME}}", each.value.project_name
+    "{{PROJECT_NAME}}", each.value.project_display_name
   )
   commit_message = "Add Verified Commits Guide document"
 
@@ -340,7 +340,7 @@ resource "github_repository_file" "team" {
             replace(
               replace(
                 file("${path.module}/docs/Team.md"),
-                "{{PROJECT_NAME}}", each.value.project_name
+                "{{PROJECT_NAME}}", each.value.project_display_name
               ),
               "{{TEAM_NAME}}", var.projects[each.value.project_name].team_name
             ),
@@ -385,7 +385,7 @@ resource "github_repository_file" "readme" {
       replace(
         replace(
           file("${path.module}/docs/Readme.md"),
-          "{{PROJECT_NAME}}", each.value.project_name
+          "{{PROJECT_NAME}}", each.value.project_display_name
         ),
         "{{PROJECT_LEAD}}", each.value.project_lead
       ),
@@ -435,7 +435,7 @@ resource "github_repository_file" "wiki_home" {
   content = replace(
     replace(
       file("${path.module}/docs/Wiki-Home.md"),
-      "{{PROJECT_NAME}}", each.value.project_name
+      "{{PROJECT_NAME}}", each.value.project_display_name
     ),
     "{{PROJECT_LEAD}}", each.value.project_lead
   )
@@ -459,15 +459,15 @@ locals {
   all_repos = flatten([
     for project_name, project in var.projects : [
       for repo in project.repositories : {
-        project_name    = project_name
-        repo_name       = repo.name
-        description     = repo.description
-        visibility      = repo.visibility
-        project_lead    = project.project_lead
-        team_permission = project.team_permission
-        # Boş string veya belirtilmemiş ise "mit" kullan
-        license            = try(repo.license, "mit") == "" ? "mit" : try(repo.license, "mit")
-        gitignore_template = try(repo.gitignore_template, "")
+        project_name         = project_name                                    # Key (map key)
+        project_display_name = try(project.project_display_name, project_name) # Display name
+        repo_name            = repo.name
+        description          = repo.description
+        visibility           = repo.visibility
+        project_lead         = project.project_lead
+        team_permission      = project.team_permission
+        license              = try(repo.license, "mit")
+        gitignore_template   = try(repo.gitignore_template, "")
       }
     ]
   ])
@@ -483,6 +483,7 @@ locals {
     ]
   ])
 }
+
 
 # Create default pull request template
 resource "github_repository_file" "pr_template" {
@@ -711,4 +712,5 @@ resource "github_issue_label" "task" {
     ignore_changes = [repository, name, color, description]
   }
 }
+
 
