@@ -3,7 +3,7 @@
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
 
-Bu belge, {{PROJECT_NAME}} projesindeki geliştirme süreçleri, standartları ve iş akışları için bir rehberdir.
+Bu belge, Infrastructure as Code Project projesindeki geliştirme süreçleri, standartları ve iş akışları için bir rehberdir.
 
 ## İş Akışı
 
@@ -37,7 +37,7 @@ Bu belge, {{PROJECT_NAME}} projesindeki geliştirme süreçleri, standartları v
 <br>
 
 
-This document is a guide for development processes, standards, and workflows in the {{PROJECT_NAME}} project.
+This document is a guide for development processes, standards, and workflows in the Infrastructure as Code Project project.
 
 ## Workflow
 

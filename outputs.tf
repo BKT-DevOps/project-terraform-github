@@ -58,7 +58,7 @@ output "documentation_pages" {
       repository = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}"
       project    = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/projects"
 
-      team_and_roles = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/TEAM.md"
+      team_and_roles = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/Team.md"
     }
   }
 }

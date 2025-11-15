@@ -1,11 +1,11 @@
-# {{PROJECT_NAME}} - Proje Tanımı / Project Definition
+# Infrastructure as Code Project - Proje Tanımı / Project Definition
 
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 
 <br>
 
-Bu belge **{{PROJECT_NAME}}** projesinin amacını, hedeflerini ve kapsamını tanımlar.
+Bu belge **Infrastructure as Code Project** projesinin amacını, hedeflerini ve kapsamını tanımlar.
 
 ---
 
@@ -37,7 +37,7 @@ Bu belge **{{PROJECT_NAME}}** projesinin amacını, hedeflerini ve kapsamını t
 
 ## 👥 Proje Ekibi
 
-**Proje Lideri:** @{{PROJECT_LEAD}}
+**Proje Lideri:** @flovearth
 
 **Takım Üyeleri:**
 <!-- Takım üyelerini buraya ekleyin -->
@@ -59,7 +59,7 @@ Bu belge **{{PROJECT_NAME}}** projesinin amacını, hedeflerini ve kapsamını t
 
 <br>
 
-This document defines the purpose, goals, and scope of **{{PROJECT_NAME}}** project.
+This document defines the purpose, goals, and scope of **Infrastructure as Code Project** project.
 
 ---
 
@@ -91,7 +91,7 @@ This document defines the purpose, goals, and scope of **{{PROJECT_NAME}}** proj
 
 ## 👥 Project Team
 
-**Project Lead:** @{{PROJECT_LEAD}}
+**Project Lead:** @flovearth
 
 **Team Members:**
 <!-- Add team members here -->

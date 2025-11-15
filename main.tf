@@ -484,34 +484,7 @@ locals {
   ])
 }
 
-# --- Raporlamayı etkinleştirmek için sorun şablonu yapılandırmasını ekle ---
-resource "github_repository_file" "issue_template_config" {
-  for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
-  repository          = github_repository.repo[each.key].name
-  branch              = "main"
-  file                = ".github/ISSUE_TEMPLATE/config.yml"
-  content             = file("${path.module}/.github/ISSUE_TEMPLATE/config.yml")
-  commit_message      = "initial commit"
-  overwrite_on_create = true
-  depends_on          = [github_repository.repo]
-}
-
-resource "github_repository_file" "report_abuse_template" {
-  for_each = { for repo in local.all_repos : repo.repo_name => repo }
-
-  repository          = github_repository.repo[each.key].name
-  branch              = "main"
-  file                = ".github/ISSUE_TEMPLATE/report-abuse.yml"
-  content             = file("${path.module}/.github/ISSUE_TEMPLATE/report-abuse.yml")
-  commit_message      = "initial commit"
-  overwrite_on_create = true
-  depends_on          = [github_repository.repo]
-
-  lifecycle {
-    ignore_changes = [content]
-  }
-}
 # Create default pull request template
 resource "github_repository_file" "pr_template" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
@@ -555,3 +528,189 @@ resource "github_repository_file" "gitignore" {
     ignore_changes = [content]
   }
 }
+
+# ============================================
+# REPORTED CONTENT & ISSUE TEMPLATES SYSTEM
+# ============================================
+
+# Configuration for issue templates
+resource "github_repository_file" "issue_template_config" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  branch     = "main"
+  file       = ".github/ISSUE_TEMPLATE/config.yml"
+  content = replace(
+    replace(
+      file("${path.module}/.github/ISSUE_TEMPLATE/config.yml"),
+      "{{GITHUB_ORG}}", var.github_organization
+    ),
+    "{{REPO_NAME}}", each.key
+  )
+  commit_message      = "Configure issue templates"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+}
+
+# Abuse report template
+resource "github_repository_file" "report_abuse_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  branch     = "main"
+  file       = ".github/ISSUE_TEMPLATE/report-abuse.yml"
+  content = replace(
+    replace(
+      replace(
+        file("${path.module}/.github/ISSUE_TEMPLATE/report-abuse.yml"),
+        "{{PROJECT_LEAD}}", each.value.project_lead
+      ),
+      "{{GITHUB_ORG}}", var.github_organization
+    ),
+    "{{REPO_NAME}}", each.key
+  )
+  commit_message      = "Add abuse report template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# Task template
+resource "github_repository_file" "task_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository          = github_repository.repo[each.key].name
+  branch              = "main"
+  file                = ".github/ISSUE_TEMPLATE/task.yml"
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/task.yml")
+  commit_message      = "Add task template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# Bug report template
+resource "github_repository_file" "bug_report_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository          = github_repository.repo[each.key].name
+  branch              = "main"
+  file                = ".github/ISSUE_TEMPLATE/bug-report.yml"
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/bug-report.yml")
+  commit_message      = "Add bug report template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# Feature request template
+resource "github_repository_file" "feature_request_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository          = github_repository.repo[each.key].name
+  branch              = "main"
+  file                = ".github/ISSUE_TEMPLATE/feature-request.yml"
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/feature-request.yml")
+  commit_message      = "Add feature request template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# ============================================
+# LABELS FOR REPORTED CONTENT SYSTEM
+# ============================================
+
+resource "github_issue_label" "report_abuse" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "report:abuse"
+  color       = "d93f0b"
+  description = "Davranış kuralları ihlali bildirimi"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "needs_triage" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "needs-triage"
+  color       = "fbca04"
+  description = "İlk inceleme gerekiyor"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "bug" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "bug"
+  color       = "d73a4a"
+  description = "Bir şeyler çalışmıyor"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "enhancement" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "enhancement"
+  color       = "a2eeef"
+  description = "Yeni özellik veya iyileştirme"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "task" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "görev"
+  color       = "0e8a16"
+  description = "Proje yönetimi görevi"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+

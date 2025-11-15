@@ -3,7 +3,7 @@
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
 
-Bu sayfa, {{PROJECT_NAME}} projesinin yüksek seviyeli mimarisini, ana bileşenlerini ve bu bileşenlerin birbiriyle olan ilişkilerini açıklamaktadır.
+Bu sayfa, Infrastructure as Code Project projesinin yüksek seviyeli mimarisini, ana bileşenlerini ve bu bileşenlerin birbiriyle olan ilişkilerini açıklamaktadır.
 
 ---
 
@@ -40,7 +40,7 @@ Bu sayfa, {{PROJECT_NAME}} projesinin yüksek seviyeli mimarisini, ana bileşenl
 
 <br>
 
-This page describes the high-level architecture of the {{PROJECT_NAME}} project, its main components, and the relationships between these components.
+This page describes the high-level architecture of the Infrastructure as Code Project project, its main components, and the relationships between these components.
 
 ---
 

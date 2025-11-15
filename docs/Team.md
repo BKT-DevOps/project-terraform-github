@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}} Takımı ve Rolleri
+# Infrastructure as Code Project Takımı ve Rolleri
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
@@ -7,12 +7,12 @@ Bu projedeki güncel ekip üyelerini ve rollerini görmek için lütfen GitHub'�
 ---
 ## 📊 Takım İstatistikleri
 
-- **Proje Adı:** {{PROJECT_NAME}}
-- **Takım Adı:** {{TEAM_NAME}}
-- **Proje Lideri:** @{{PROJECT_LEAD}}
-- **Toplam Üye Sayısı:** {{MEMBER_COUNT}}
-- **Maintainer Sayısı:** {{MAINTAINER_COUNT}}
-- **Member Sayısı:** {{REGULAR_MEMBER_COUNT}}
+- **Proje Adı:** Infrastructure as Code Project
+- **Takım Adı:** InfraCoders
+- **Proje Lideri:** @flovearth
+- **Toplam Üye Sayısı:** 11
+- **Maintainer Sayısı:** 0
+- **Member Sayısı:** 11
 
 ---
 
@@ -50,12 +50,12 @@ To see the current members and roles of this project, please visit the official 
 
 ## 📊 Team Statistics
 
-- **Project Name:** {{PROJECT_NAME}}
-- **Team Name:** {{TEAM_NAME}}
-- **Project Lead:** @{{PROJECT_LEAD}}
-- **Total Members:** {{MEMBER_COUNT}}
-- **Maintainers:** {{MAINTAINER_COUNT}}
-- **Members:** {{REGULAR_MEMBER_COUNT}}
+- **Project Name:** Infrastructure as Code Project
+- **Team Name:** InfraCoders
+- **Project Lead:** @flovearth
+- **Total Members:** 11
+- **Maintainers:** 0
+- **Members:** 11
 
 ---
 
