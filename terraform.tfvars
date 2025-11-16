@@ -187,7 +187,7 @@ projects = {
 
     ]
   },
-  "lutfiye_test_projects " = {
+  "lutfiye_test_projects" = {
     project_display_name = "Test Projects of Lutfiye"
     project_lead         = "lerkush"
     team_permission      = "push"
