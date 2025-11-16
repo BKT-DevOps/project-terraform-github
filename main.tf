@@ -418,9 +418,9 @@ resource "github_repository_file" "readme" {
 resource "github_repository_file" "contributing" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
-  repository = github_repository.repo[each.key].name
-  file       = "CONTRIBUTING.md"
-  content = file("${path.module}/docs/CONTRIBUTING.md")
+  repository     = github_repository.repo[each.key].name
+  file           = "CONTRIBUTING.md"
+  content        = file("${path.module}/docs/CONTRIBUTING.md")
   commit_message = "initial commit"
 
   depends_on = [
