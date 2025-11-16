@@ -27,9 +27,10 @@ resource "github_repository" "repo" {
   delete_branch_on_merge = true
   auto_init              = true
 
- # Lisans ayarı: "none" veya "" ise null, yoksa belirtilen lisansı kullan
-  license_template = (each.value.license == "none" || each.value.license == "") ? null : each.value.license
-
+ # Lisans template ayarı:
+# - "none" ise: null (repo oluşturulurken lisans eklenmez)
+# - Diğer durumda: belirtilen lisans template kullanılır
+license_template = each.value.license == "none" ? null : each.value.license
 
   # gitignore_template -itignore_template - eğer kullanıcı belirtmişse onu kullan
   gitignore_template = each.value.gitignore_template != "" ? each.value.gitignore_template : null
@@ -449,6 +450,26 @@ resource "github_repository_file" "wiki_home" {
 
 # Local values for processing complex data structures
 locals {
+    # Geçerli yılı otomatik al
+  current_year = formatdate("YYYY", timestamp())
+
+  # Lisans template mapping - hangi lisans için hangi dosya kullanılacak
+  license_templates = {
+    "mit"          = "MIT.template"
+    "apache-2.0"   = "APACHE-2.0.template"
+    "gpl-3.0"      = "GPL-3.0.template"
+    "agpl-3.0"     = "AGPL-3.0.template"
+    "lgpl-3.0"     = "LGPL-3.0.template"
+    "mpl-2.0"      = "MPL-2.0.template"
+    "bsd-2-clause" = "BSD-2-CLAUSE.template"
+    "bsd-3-clause" = "BSD-3-CLAUSE.template"
+    "bsl-1.0"      = "BSL-1.0.template"
+    "cc0-1.0"      = "CC0-1.0.template"
+    "epl-2.0"      = "EPL-2.0.template"
+    "gpl-2.0"      = "GPL-2.0.template"
+    "isc"          = "ISC.template"
+    "unlicense"    = "UNLICENSE.template"
+  }
   # Map project names to their first repository (main repo)
   project_main_repos = {
     for project_name, project in var.projects :
@@ -482,7 +503,28 @@ locals {
       }
     ]
   ])
+
+  # Her repo için lisans içeriği oluştur
+  license_files = {
+    for repo in local.all_repos : repo.repo_name => (
+      # Lisans "none" ise null döndür (dosya oluşturma)
+      repo.license == "none" ? null : replace(
+        replace(
+          file("${path.module}/license-templates/${local.license_templates[lower(repo.license)]}"),
+          "{{YEAR}}", local.current_year
+        ),
+        "{{GITHUB_ORG}}", var.github_organization
+      )
+    )
+  }
+
+  # Lisans dosyası oluşturulacak repolar (sadece none olmayanlar)
+  repos_with_license = {
+    for repo_name, content in local.license_files : repo_name => content
+    if content != null
+  }
 }
+
 
 # --- Raporlamayı etkinleştirmek için sorun şablonu yapılandırmasını ekle ---
 resource "github_repository_file" "issue_template_config" {
@@ -545,6 +587,68 @@ resource "github_repository_file" "gitignore" {
   content        = file("${path.module}/.gitignore.default")
   commit_message = "Add default .gitignore file"
 
+  overwrite_on_create = true
+
+  depends_on = [
+    github_repository.repo
+  ]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# ============================================
+# OTOMATIK LİSANS YÖNETİMİ
+# ============================================
+# Bu resource repolara otomatik lisans dosyası ekler ve günceller.
+# 
+# DAVRANIŞLAR:
+# 1. Yeni repo: license belirtilmemişse veya "" ise → MIT lisansı oluşturulur
+# 2. Yeni repo: license = "none" ise → Lisans dosyası oluşturulmaz
+# 3. Yeni repo: Geçerli bir lisans belirtilmişse → Belirtilen lisans oluşturulur
+# 4. Mevcut repo: Kullanıcı lisans içeriğini manuel değiştirebilir (lifecycle ignore_changes)
+# 5. Mevcut repo: Lisans türü değiştirilirse → Yeni lisans dosyası oluşturulur (overwrite_on_create)
+# 
+# NOT: Bu resource sadece lisans türü "none" olmayanlar için çalışır
+
+resource "github_repository_file" "license" {
+  for_each = local.repos_with_license
+
+  repository = github_repository.repo[each.key].name
+  branch     = "main"
+  file       = "LICENSE"
+  content    = each.value
+
+  commit_message      = "Add LICENSE file"
+  overwrite_on_create = true # Lisans türü değiştiğinde yeni içerik yazılır
+
+  depends_on = [
+    github_repository.repo,
+    github_branch.develop,
+    github_branch.release
+  ]
+
+  # Kullanıcı lisans içeriğini manuel olarak düzenleyebilir
+  # Terraform buna müdahale etmez (sadece ilk oluşturma veya lisans türü değişikliğinde)
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# ============================================
+# LİSANS REHBERİ DOSYASI
+# ============================================
+# Her repoya lisans seçim rehberi eklenir
+
+resource "github_repository_file" "license_guide" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository          = github_repository.repo[each.key].name
+  branch              = "main"
+  file                = "docs/license_selection_guide.md"
+  content             = file("${path.module}/docs/license_selection_guide.md")
+  commit_message      = "Add license selection guide"
   overwrite_on_create = true
 
   depends_on = [

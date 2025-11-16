@@ -1,0 +1,102 @@
+# Eclipse Public License - v 2.0
+
+Copyright (c) [Yıl] [İsim veya Organizasyon]
+
+THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE
+PUBLIC LICENSE ("AGREEMENT"). ANY USE, REPRODUCTION OR DISTRIBUTION
+OF THE PROGRAM CONSTITUTES RECIPIENT'S ACCEPTANCE OF THIS AGREEMENT.
+
+## 1. DEFINITIONS
+
+"Contribution" means:
+
+  a) in the case of the initial Contributor, the initial content
+     Distributed under this Agreement, and
+
+  b) in the case of each subsequent Contributor:
+     i) changes to the Program, and
+     ii) additions to the Program;
+     where such changes and/or additions to the Program originate from
+     and are Distributed by that particular Contributor. A Contribution
+     "originates" from a Contributor if it was added to the Program by
+     such Contributor itself or anyone acting on such Contributor's
+     behalf.
+
+"Contributor" means any person or entity that Distributes the Program.
+
+"Licensed Patents" means patent claims licensable by a Contributor
+that are necessarily infringed by the use or sale of its Contribution
+alone or when combined with the Program.
+
+"Program" means the Contributions Distributed in accordance with
+this Agreement.
+
+"Recipient" means anyone who receives the Program under this Agreement
+or any Secondary License (as applicable), including Contributors.
+
+## 2. GRANT OF RIGHTS
+
+a) Subject to the terms of this Agreement, each Contributor grants
+   Recipient a non-exclusive, worldwide, royalty-free copyright license
+   to reproduce, prepare derivative works of, publicly display,
+   publicly perform, sublicense, and distribute the Contribution of
+   such Contributor, if any, and such derivative works.
+
+b) Subject to the terms of this Agreement, each Contributor grants
+   Recipient a non-exclusive, worldwide, royalty-free patent license
+   under Licensed Patents to make, use, sell, offer to sell, import
+   and otherwise transfer the Contribution and derivative works.
+
+c) The patent license granted by a Contributor is limited to the
+   Licensed Patents that would be infringed by their Contribution
+   alone or when combined with the Program.
+
+d) If Recipient institutes patent litigation against any entity
+   alleging that the Program infringes its patent(s), the patent
+   licenses granted to Recipient under this Agreement shall terminate
+   as of the date such litigation is filed.
+
+## 3. REQUIREMENTS
+
+3.1 If a Contributor Distributes the Program in an Executable form,
+    it must also make the Source Code available under this Agreement.
+
+3.2 Modifications must be indicated clearly.
+
+3.3 If the Program is distributed under a Secondary License (such as
+    GPL-compatible licenses), the conditions in the appendix of this
+    Agreement apply.
+
+## 4. COMMERCIAL DISTRIBUTION
+
+Commercial distributors may include warranties or additional
+liabilities, provided they do so in their own name, not in the name of
+the Contributors.
+
+## 5. DISCLAIMER OF WARRANTY
+
+THE PROGRAM IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+
+## 6. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL CONTRIBUTORS BE LIABLE FOR ANY DAMAGES, WHETHER IN
+CONTRACT, TORT OR OTHERWISE, ARISING FROM THE USE OF THE PROGRAM.
+
+## 7. GENERAL
+
+If any provision of this Agreement is invalid, the remaining
+provisions shall remain in full force and effect.
+
+## APPENDIX: HOW TO APPLY THE EPL TO YOUR WORK
+
+To apply the EPL to your work, attach the following notice to each
+file:
+
+Copyright (c) {{YEAR}} {{GITHUB_ORG}}
+
+This program and the accompanying materials are made available under
+the terms of the Eclipse Public License 2.0 which is available at
+http://www.eclipse.org/legal/epl-2.0
+
+SPDX-License-Identifier: EPL-2.0

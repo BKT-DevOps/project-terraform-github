@@ -20,6 +20,7 @@ variable "projects" {
       description = string           # Repository açıklaması
       visibility  = string           # Repository görünürlüğü (public, private)
       license     = optional(string, "mit")  # Default: "mit"
+      gitignore_template = optional(string, "")    # Default: "" (özel .gitignore kullanılır)
     }))
     members = list(object({
       username = string # GitHub kullanıcı adı
@@ -27,7 +28,7 @@ variable "projects" {
     }))
   }))
 
-  # Lisans doğrulama
+ # Lisans doğrulama - Sadece geçerli lisansları veya "none" kabul eder
 validation {
   condition = alltrue([
     for project_name, project in var.projects :
@@ -35,16 +36,21 @@ validation {
       for repo in project.repositories :
       (
         try(repo.license, "mit") == "none" ||
-        try(repo.license, "mit") == "" ||
         contains([
           "mit", "apache-2.0", "gpl-3.0", "agpl-3.0", "lgpl-3.0",
           "mpl-2.0", "bsd-2-clause", "bsd-3-clause", "bsl-1.0",
-          "cc0-1.0", "epl-2.0", "gpl-2.0", "isc", "unlicense"
+          "cc0-1.0", "epl-2.0", "gpl-2.0", "isc", "unlicense", ""
         ], lower(try(repo.license, "mit")))
       )
     ])
   ])
-  error_message = "License must be empty (''), 'none', or one of the valid GitHub license identifiers: mit, apache-2.0, gpl-3.0, agpl-3.0, lgpl-3.0, mpl-2.0, bsd-2-clause, bsd-3-clause, bsl-1.0, cc0-1.0, epl-2.0, gpl-2.0, isc, unlicense"
+  error_message = <<-EOT
+    License must be one of:
+    - '' (empty string, defaults to MIT)
+    - 'none' (no license file will be created)
+    - Valid GitHub license identifiers: mit, apache-2.0, gpl-3.0, agpl-3.0, lgpl-3.0, 
+      mpl-2.0, bsd-2-clause, bsd-3-clause, bsl-1.0, cc0-1.0, epl-2.0, gpl-2.0, isc, unlicense
+  EOT
 }
 
   validation {
@@ -100,3 +106,4 @@ validation {
   }
 
 }
+

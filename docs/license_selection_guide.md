@@ -1,6 +1,5 @@
 # License Selection Guide / Lisans Seçim Rehberi
 
-
 <details open>
 <summary><h2>🇹🇷 Türkçe</h2></summary>
 
@@ -151,6 +150,106 @@ projects = {
 
 ---
 
+<details open>
+<summary><h3>🎯 Hangi Lisansı Seçmeliyim?</h3></summary>
+
+#### **MIT** seçin eğer:
+- ✅ Kullanıcılara maksimum özgürlük tanımak istiyorsanız
+- ✅ Türev çalışmaların açık kaynak olması umurumuzda değilse
+- ✅ Basit, iyi anlaşılan bir lisans istiyorsanız
+- ✅ Bir kütüphane veya araç geliştiriyorsanız
+- 📦 **Örnekler:** jQuery, Rails, Node.js
+
+#### **Apache 2.0** seçin eğer:
+- ✅ Patent koruması istiyorsanız
+- ✅ Açık ticari marka koruması gerekiyorsa
+- ✅ Kurumsal ortamda çalışıyorsanız
+- ✅ Katkıda bulunanların patent hakları vermesini istiyorsanız
+- 📦 **Örnekler:** Android, Apache HTTP Server, Kubernetes
+
+#### **GPL 3.0** seçin eğer:
+- ✅ Türev çalışmaların açık kaynak kalmasını istiyorsanız
+- ✅ Özgür yazılım ilkelerine bağlıysanız
+- ✅ Tescilli fork'ları önlemek istiyorsanız
+- ✅ Ağ kullanımı çok önemli değilse
+- 📦 **Örnekler:** Linux, Git, WordPress eklentileri
+
+#### **AGPL 3.0** seçin eğer:
+- ✅ Bir web servisi veya SaaS geliştiriyorsanız
+- ✅ Ağ kullanımının paylaşım gereksinimini tetiklemesini istiyorsanız
+- ✅ Tescilli hosted versiyonları önlemek istiyorsanız
+- ✅ Copyleft'e güçlü şekilde bağlıysanız
+- 📦 **Örnekler:** MongoDB, Mastodon, NextCloud
+
+#### **LGPL 3.0** seçin eğer:
+- ✅ Bir kütüphane geliştiriyorsanız
+- ✅ Kütüphanedeki değişikliklerin açık kaynak olmasını istiyorsanız
+- ✅ Tescilli yazılımların kütüphanenize bağlanmasına izin veriyorsanız
+- ✅ MIT ve GPL arasında orta bir yol istiyorsanız
+- 📦 **Örnekler:** GTK, Qt (çift lisanslı)
+
+#### **MPL 2.0** seçin eğer:
+- ✅ Dosya düzeyinde copyleft istiyorsanız
+- ✅ GPL ile uyumluluk istiyorsanız
+- ✅ Karma lisanslama ile sorun yoksa
+- ✅ İzin verici ve copyleft arasında orta yol istiyorsanız
+- 📦 **Örnekler:** Firefox, Thunderbird
+
+#### **BSD 2-Clause/3-Clause** seçin eğer:
+- ✅ Basit bir izin verici lisans istiyorsanız
+- ✅ Akademide çalışıyorsanız
+- ✅ MIT'ye benzer ama daha eski bir şey istiyorsanız
+- ✅ Adınızın onay için kullanılmasını engellemek istiyorsanız (3-Clause)
+- 📦 **Örnekler:** FreeBSD, OpenBSD
+
+#### **ISC** seçin eğer:
+- ✅ Mümkün olan en basit izin verici lisansı istiyorsanız
+- ✅ MIT'yi seviyorsunuz ama daha basit dil istiyorsanız
+- ✅ İşlevsel olarak MIT ile aynı
+- 📦 **Örnekler:** OpenBSD araçları, Node.js paketleri
+
+#### **Unlicense** seçin eğer:
+- ✅ Çalışmanızı kamu malı yapmak istiyorsanız
+- ✅ Hiçbir kısıtlama istemiyorsanız
+- ✅ Atıf yapılmasını istemiyorsanız
+- ✅ Herkesin kodunuzla her şeyi yapmasıyla sorun yoksa
+- 📦 **Örnekler:** Kamu malı projeler
+
+#### **"none"** seçin eğer:
+- ✅ Kodunuz tescilli/özel
+- ✅ Henüz lisans konusunda karar vermeye hazır değilsiniz
+- ✅ Daha sonra özel bir lisans ekleyeceksiniz
+- ⚠️ **Uyarı:** Lisans olmadan, başkaları kodunuzu kullanma iznine sahip değildir!
+
+### Lisans Kategorileri
+
+#### **İzin Verici Lisanslar** (Daha Fazla Özgürlük)
+Kullanıcıların tescilli türevler oluşturma dahil neredeyse her şeyi yapmasına izin verir.
+- MIT, Apache 2.0, BSD 2-Clause/3-Clause, ISC, Unlicense
+
+#### **Zayıf Copyleft Lisansları** (Orta Yol)
+Lisanslı kodda yapılan değişikliklerin paylaşılmasını gerektirir, ancak tescilli kodla bağlantıya izin verir.
+- LGPL 3.0, MPL 2.0
+
+#### **Güçlü Copyleft Lisansları** (Maksimum Paylaşım)
+Türev çalışmaların aynı lisansı kullanmasını gerektirir.
+- GPL 3.0, AGPL 3.0
+
+### Lisansımı Sonradan Değiştirebilir miyim?
+
+**Evet, ama karmaşık:**
+- ✅ Lisanssız koda her zaman lisans ekleyebilirsiniz
+- ✅ Kodunuzu daha izin verici yapabilirsiniz (GPL → MIT)
+- ⚠️ Kodu daha kısıtlayıcı yapmak zordur (MIT → GPL)
+- ⚠️ Tüm katkıda bulunanlardan izin almanız gerekir
+- ⚠️ Mevcut kopyalar eski lisans altında kalır
+
+**En iyi uygulama:** Baştan dikkatli seçin!
+
+</details>
+
+---
+
 ## Quick Reference / Hızlı Referans
 
 | Scenario / Senaryo | Configuration / Yapılandırma | Result / Sonuç |
@@ -178,8 +277,10 @@ GitHub lisans dokümantasyonu için:
 
 </details>
 
+---
+
 <details>
-<summary><h3>🇬🇧 Click for English</h3></summary>
+<summary><h2>🇬🇧 English</h2></summary>
 
 ### Overview
 When creating repositories through this Terraform configuration, you have full control over licensing. The system automatically handles license file creation based on your specification.
@@ -327,5 +428,103 @@ projects = {
 ```
 
 ---
+
+<details open>
+<summary><h3>🎯 Which License Should I Choose?</h3></summary>
+
+#### Choose **MIT** if:
+- ✅ You want maximum freedom for users
+- ✅ You don't care if derivative works are open source
+- ✅ You want a simple, well-understood license
+- ✅ You're building a library or tool
+- 📦 **Examples:** jQuery, Rails, Node.js
+
+#### Choose **Apache 2.0** if:
+- ✅ You want patent protection
+- ✅ You need explicit trademark protection
+- ✅ You're working in an enterprise environment
+- ✅ You want contributors to grant patent rights
+- 📦 **Examples:** Android, Apache HTTP Server, Kubernetes
+
+#### Choose **GPL 3.0** if:
+- ✅ You want derivative works to remain open source
+- ✅ You're committed to free software principles
+- ✅ You want to prevent proprietary forks
+- ✅ Network use doesn't matter much
+- 📦 **Examples:** Linux, Git, WordPress plugins
+
+#### Choose **AGPL 3.0** if:
+- ✅ You're building a web service or SaaS
+- ✅ You want network use to trigger sharing requirements
+- ✅ You want to prevent proprietary hosted versions
+- ✅ You're strongly committed to copyleft
+- 📦 **Examples:** MongoDB, Mastodon, NextCloud
+
+#### Choose **LGPL 3.0** if:
+- ✅ You're building a library
+- ✅ You want modifications to the library to be open source
+- ✅ You allow proprietary software to link to your library
+- ✅ You want a middle ground between MIT and GPL
+- 📦 **Examples:** GTK, Qt (dual-licensed)
+
+#### Choose **MPL 2.0** if:
+- ✅ You want file-level copyleft
+- ✅ You want compatibility with GPL
+- ✅ You're okay with mixed licensing
+- ✅ You want a middle ground between permissive and copyleft
+- 📦 **Examples:** Firefox, Thunderbird
+
+#### Choose **BSD 2-Clause/3-Clause** if:
+- ✅ You want a simple permissive license
+- ✅ You're in academia
+- ✅ You want something similar to MIT but older
+- ✅ You want to prohibit use of your name for endorsement (3-Clause)
+- 📦 **Examples:** FreeBSD, OpenBSD
+
+#### Choose **ISC** if:
+- ✅ You want the simplest possible permissive license
+- ✅ You like MIT but want even simpler language
+- ✅ Functionally identical to MIT
+- 📦 **Examples:** OpenBSD tools, Node.js packages
+
+#### Choose **Unlicense** if:
+- ✅ You want to dedicate your work to the public domain
+- ✅ You want no restrictions whatsoever
+- ✅ You don't want to be attributed
+- ✅ You're okay with anyone doing anything with your code
+- 📦 **Examples:** Public domain projects
+
+#### Choose **"none"** if:
+- ✅ Your code is proprietary/private
+- ✅ You're not ready to decide on a license yet
+- ✅ You'll add a custom license later
+- ⚠️ **Warning:** Without a license, others have no permission to use your code!
+
+### License Categories
+
+#### **Permissive Licenses** (More Freedom)
+Allow users to do almost anything, including creating proprietary derivatives.
+- MIT, Apache 2.0, BSD 2-Clause/3-Clause, ISC, Unlicense
+
+#### **Weak Copyleft Licenses** (Middle Ground)
+Require sharing modifications to the licensed code, but allow linking with proprietary code.
+- LGPL 3.0, MPL 2.0
+
+#### **Strong Copyleft Licenses** (Maximum Sharing)
+Require derivative works to use the same license.
+- GPL 3.0, AGPL 3.0
+
+### Can I Change My License Later?
+
+**Yes, but it's complicated:**
+- ✅ You can always add a license to unlicensed code
+- ✅ You can make your code more permissive (GPL → MIT)
+- ⚠️ Making code more restrictive is difficult (MIT → GPL)
+- ⚠️ You need permission from all contributors
+- ⚠️ Existing copies remain under the old license
+
+**Best practice:** Choose carefully from the start!
+
 </details>
 
+</details>
