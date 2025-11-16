@@ -5,7 +5,7 @@
 
 <br>
 
-Bu belge **Infrastructure as Code Project** projesinin amacını, hedeflerini ve kapsamını tanımlar.
+Bu belge **{{PROJECT_NAME}}** projesinin amacını, hedeflerini ve kapsamını tanımlar.
 
 ---
 

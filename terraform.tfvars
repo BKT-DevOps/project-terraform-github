@@ -132,61 +132,7 @@ projects = {
     ]
   }
 
-  "project-test" = {
-    project_display_name = "Project Test"
-    project_lead         = "ismailaricioglu"
-    team_name            = "Project Test"
-    team_permission      = "push"
-    repositories = [
-      {
-        name        = "test-repo"
-        description = "Test repository for demo purposes"
-        visibility  = "public"
-      }
-    ]
-    members = [
-      {
-        username = "egeren"
-        role     = "maintainer"
-      },
-      {
-        username = "UsainSasal"
-        role     = "member"
-      },
-      {
-        username = "onurceylan"
-        role     = "member"
-      }
-    ]
-  },
-  "project-test-ismail" = {
-    project_display_name = "Project Test Ismail"
-    project_lead         = "ismailaricioglu"
-    team_name            = "Project Test Ismail"
-    team_permission      = "push"
-    repositories = [
-      {
-        name        = "test-repo-34"
-        description = "Test repository for demo purposes"
-        visibility  = "public"
-      }
-    ]
-    members = [
-      {
-        username = "egeren"
-        role     = "maintainer"
-      },
-      {
-        username = "UsainSasal"
-        role     = "member"
-      },
-      {
-        username = "onurceylan"
-        role     = "member"
-      },
 
-    ]
-  },
   "lutfiye_test_projects" = {
     project_display_name = "Test Projects of Lutfiye"
     project_lead         = "lerkush"
@@ -256,23 +202,44 @@ projects = {
       }
     ]
   }
+
+  "feyz-test" = {
+    project_display_name = "Feedback System"
+    project_lead         = "flovearth"
+    team_name            = "Feedy"
+    team_permission      = "push"
+    repositories = [
+      {
+        name        = "feedback-service"
+        description = "Core service for Project Feedy"
+        visibility  = "public"
+      }
+    ]
+    members = [
+      {
+        username = "flovearth"
+        role     = "maintainer"
+      },
+      {
+        username = "ismailaricioglu"
+        role     = "member"
+      },
+      {
+        username = "hulyaoner"
+        role     = "member"
+      },
+      {
+        username = "slymanmrcan"
+        role     = "member"
+      },
+      {
+        username = "barisbutun"
+        role     = "member"
+      }
+    ]
+  }
+
+
 }
 
-
-# DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
-
-# Organization (Organizasyon) Roller  : github_membership
-# Team (Takım) Roller                 : github_team_membership
-# Environment Protection Rules        : github_repository_environment
-# Actions / Workflow Roller           : github_actions_repository_permissions
-# Branch Protection Roller            : github_branch_protection
-
-# | Kapsam            | Roller / İzinler                               |
-# | ----------------- | ---------------------------------------------- |
-# | Repository        | `admin`, `maintain`, `write`, `triage`, `read` |
-# | Organization      | `admin`, `member`                              |
-# | Team              | `maintainer`, `member`                         |
-# | Environment       | `selected_teams`, `selected_users`, `all`      |
-# | Actions           | `read`, `write`, `none`                        |
-# | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
 

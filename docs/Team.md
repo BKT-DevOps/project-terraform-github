@@ -6,7 +6,7 @@ Bu projedeki güncel ekip üyelerini ve rollerini görmek için lütfen GitHub'�
 
 Oradaki liste **her zaman günceldir**.
 
-### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/{{GITHUB_ORG}}/teams/"{{TEAM_NAME}})"
+### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
 
 ---
 ## 📊 Takım İstatistikleri
