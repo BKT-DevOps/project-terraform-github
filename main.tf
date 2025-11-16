@@ -238,7 +238,7 @@ resource "github_repository_file" "docs_project" {
   content = replace(
     replace(
       file("${path.module}/docs/Project-Definition.md"),
-      "{{PROJECT_NAME}}", each.value.project_name
+      "{{PROJECT_NAME}}", each.value.project_display_name
     ),
     "{{PROJECT_LEAD}}", each.value.project_lead
   )
@@ -264,7 +264,7 @@ resource "github_repository_file" "docs_architecture" {
   file       = "docs/Architecture-Overview.md"
   content = replace(
     file("${path.module}/docs/Architecture-Overview.md"),
-    "{{PROJECT_NAME}}", each.value.project_name
+    "{{PROJECT_NAME}}", each.value.project_display_name
   )
   commit_message = "Add Architecture Overview document"
 
@@ -288,7 +288,7 @@ resource "github_repository_file" "docs_workflow" {
   file       = "docs/Development-Workflow.md"
   content = replace(
     file("${path.module}/docs/Development-Workflow.md"),
-    "{{PROJECT_NAME}}", each.value.project_name
+    "{{PROJECT_NAME}}", each.value.project_display_name
   )
   commit_message = "Add Development Workflow document"
 
@@ -309,7 +309,7 @@ resource "github_repository_file" "docs_verified_commits" {
   file       = "docs/Verified-Commits-Guide.md"
   content = replace(
     file("${path.module}/docs/Verified-Commits-Guide.md"),
-    "{{PROJECT_NAME}}", each.value.project_name
+    "{{PROJECT_NAME}}", each.value.project_display_name
   )
   commit_message = "Add Verified Commits Guide document"
 
@@ -341,7 +341,7 @@ resource "github_repository_file" "team" {
             replace(
               replace(
                 file("${path.module}/docs/Team.md"),
-                "{{PROJECT_NAME}}", each.value.project_name
+                "{{PROJECT_NAME}}", each.value.project_display_name
               ),
               "{{TEAM_NAME}}", var.projects[each.value.project_name].team_name
             ),
@@ -386,7 +386,7 @@ resource "github_repository_file" "readme" {
       replace(
         replace(
           file("${path.module}/docs/Readme.md"),
-          "{{PROJECT_NAME}}", each.value.project_name
+          "{{PROJECT_NAME}}", each.value.project_display_name
         ),
         "{{PROJECT_LEAD}}", each.value.project_lead
       ),
@@ -436,7 +436,7 @@ resource "github_repository_file" "wiki_home" {
   content = replace(
     replace(
       file("${path.module}/docs/Wiki-Home.md"),
-      "{{PROJECT_NAME}}", each.value.project_name
+      "{{PROJECT_NAME}}", each.value.project_display_name
     ),
     "{{PROJECT_LEAD}}", each.value.project_lead
   )
@@ -480,15 +480,15 @@ locals {
   all_repos = flatten([
     for project_name, project in var.projects : [
       for repo in project.repositories : {
-        project_name       = project_name
-        repo_name          = repo.name
-        description        = repo.description
-        visibility         = repo.visibility
-        project_lead       = project.project_lead
-        team_permission    = project.team_permission
-        # Boş string veya belirtilmemiş ise "mit" kullan
-        license            = try(repo.license, "mit") == "" ? "mit" : try(repo.license, "mit")
-        gitignore_template = try(repo.gitignore_template, "")
+        project_name         = project_name                                    # Key (map key)
+        project_display_name = try(project.project_display_name, project_name) # Display name
+        repo_name            = repo.name
+        description          = repo.description
+        visibility           = repo.visibility
+        project_lead         = project.project_lead
+        team_permission      = project.team_permission
+        license              = try(repo.license, "mit")
+        gitignore_template   = try(repo.gitignore_template, "")
       }
     ]
   ])
@@ -539,21 +539,6 @@ resource "github_repository_file" "issue_template_config" {
   depends_on          = [github_repository.repo]
 }
 
-resource "github_repository_file" "report_abuse_template" {
-  for_each = { for repo in local.all_repos : repo.repo_name => repo }
-
-  repository          = github_repository.repo[each.key].name
-  branch              = "main"
-  file                = ".github/ISSUE_TEMPLATE/report-abuse.yml"
-  content             = file("${path.module}/.github/ISSUE_TEMPLATE/report-abuse.yml")
-  commit_message      = "initial commit"
-  overwrite_on_create = true
-  depends_on          = [github_repository.repo]
-
-  lifecycle {
-    ignore_changes = [content]
-  }
-}
 # Create default pull request template
 resource "github_repository_file" "pr_template" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
@@ -631,6 +616,51 @@ resource "github_repository_file" "license" {
 
   # Kullanıcı lisans içeriğini manuel olarak düzenleyebilir
   # Terraform buna müdahale etmez (sadece ilk oluşturma veya lisans türü değişikliğinde)
+# REPORTED CONTENT & ISSUE TEMPLATES SYSTEM
+# ============================================
+
+# Configuration for issue templates
+resource "github_repository_file" "issue_template_config" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  branch     = "main"
+  file       = ".github/ISSUE_TEMPLATE/config.yml"
+  content = replace(
+    replace(
+      file("${path.module}/.github/ISSUE_TEMPLATE/config.yml"),
+      "{{GITHUB_ORG}}", var.github_organization
+    ),
+    "{{REPO_NAME}}", each.key
+  )
+  commit_message      = "Configure issue templates"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+}
+
+# Abuse report template
+resource "github_repository_file" "report_abuse_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  branch     = "main"
+  file       = ".github/ISSUE_TEMPLATE/report-abuse.yml"
+  content = replace(
+    replace(
+      replace(
+        file("${path.module}/.github/ISSUE_TEMPLATE/report-abuse.yml"),
+        "{{PROJECT_LEAD}}", each.value.project_lead
+      ),
+      "{{GITHUB_ORG}}", var.github_organization
+    ),
+    "{{REPO_NAME}}", each.key
+  )
+  commit_message      = "Add abuse report template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
   lifecycle {
     ignore_changes = [content]
   }
@@ -642,6 +672,44 @@ resource "github_repository_file" "license" {
 # Her repoya lisans seçim rehberi eklenir
 
 resource "github_repository_file" "license_guide" {
+# Task template
+resource "github_repository_file" "task_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository          = github_repository.repo[each.key].name
+  branch              = "main"
+  file                = ".github/ISSUE_TEMPLATE/task.yml"
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/task.yml")
+  commit_message      = "Add task template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# Bug report template
+resource "github_repository_file" "bug_report_template" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository          = github_repository.repo[each.key].name
+  branch              = "main"
+  file                = ".github/ISSUE_TEMPLATE/bug-report.yml"
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/bug-report.yml")
+  commit_message      = "Add bug report template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+}
+
+# Feature request template
+resource "github_repository_file" "feature_request_template" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
 
   repository          = github_repository.repo[each.key].name
@@ -654,8 +722,95 @@ resource "github_repository_file" "license_guide" {
   depends_on = [
     github_repository.repo
   ]
+  file                = ".github/ISSUE_TEMPLATE/feature-request.yml"
+  content             = file("${path.module}/.github/ISSUE_TEMPLATE/feature-request.yml")
+  commit_message      = "Add feature request template"
+  overwrite_on_create = true
+
+  depends_on = [github_repository.repo]
 
   lifecycle {
     ignore_changes = [content]
   }
 }
+
+# ============================================
+# LABELS FOR REPORTED CONTENT SYSTEM
+# ============================================
+
+resource "github_issue_label" "report_abuse" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "report:abuse"
+  color       = "d93f0b"
+  description = "Davranış kuralları ihlali bildirimi"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "needs_triage" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "needs-triage"
+  color       = "fbca04"
+  description = "İlk inceleme gerekiyor"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "bug" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "bug"
+  color       = "d73a4a"
+  description = "Bir şeyler çalışmıyor"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "enhancement" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "enhancement"
+  color       = "a2eeef"
+  description = "Yeni özellik veya iyileştirme"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+resource "github_issue_label" "task" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository  = github_repository.repo[each.key].name
+  name        = "görev"
+  color       = "0e8a16"
+  description = "Proje yönetimi görevi"
+
+  depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [repository, name, color, description]
+  }
+}
+
+

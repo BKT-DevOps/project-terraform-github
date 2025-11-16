@@ -12,15 +12,20 @@ variable "github_token" {
 variable "projects" {
   description = "Map of projects with their configuration. Key is the project identifier."
   type = map(object({
-    team_name       = string # GitHub'da oluşturulacak takım adı
-    project_lead    = string # Proje lideri kullanıcı adı
-    team_permission = string # Takımın repolara erişim izni (pull, triage, push, maintain)
+    project_display_name = optional(string) # Proje görünen adı (opsiyonel, key kullanılır)
+    team_name            = string           # GitHub'da oluşturulacak takım adı
+    project_lead         = string           # Proje lideri kullanıcı adı
+    team_permission      = string           # Takımın repolara erişim izni (pull, triage, push, maintain)
     repositories = list(object({
       name        = string           # Repository adı
       description = string           # Repository açıklaması
       visibility  = string           # Repository görünürlüğü (public, private)
       license     = optional(string, "mit")  # Default: "mit"
       gitignore_template = optional(string, "")    # Default: "" (özel .gitignore kullanılır)
+      name        = string                  # Repository adı
+      description = string                  # Repository açıklaması
+      visibility  = string                  # Repository görünürlüğü (public, private)
+      license     = optional(string, "mit") # Default: "mit"
     }))
     members = list(object({
       username = string # GitHub kullanıcı adı

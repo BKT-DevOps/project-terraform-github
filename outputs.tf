@@ -41,10 +41,11 @@ output "project_summary" {
     total_memberships  = length(local.all_memberships)
     projects = {
       for project_name, project in var.projects : project_name => {
-        project_lead = project.project_lead
-        repositories = length(project.repositories)
-        members      = length(project.members)
-        main_repo    = local.project_main_repos[project_name]
+        project_display_name = try(project.project_display_name, project_name)
+        project_lead         = project.project_lead
+        repositories         = length(project.repositories)
+        members              = length(project.members)
+        main_repo            = local.project_main_repos[project_name]
       }
     }
   }
@@ -57,7 +58,7 @@ output "documentation_pages" {
       repository = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}"
       project    = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/projects"
 
-      team_and_roles = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/TEAM.md"
+      team_and_roles = "https://github.com/${github_repository.repo[local.project_main_repos[project_name]].full_name}/blob/main/docs/Team.md"
     }
   }
 }

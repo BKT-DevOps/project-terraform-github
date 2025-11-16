@@ -6,23 +6,28 @@ github_organization = "BKT-DevOps"
 #=============================================================================
 # Bu dosyada her proje şu yapıda tanımlanır:
 # 
-# "proje-identifier" = {           # Proje benzersiz adı (key)
-#   team_name       = "..."        # GitHub'da oluşturulacak takım adı
-#   project_lead    = "..."        # Proje lideri GitHub kullanıcı adı
-#   team_permission = "push"       # Takım izin seviyesi
-#   repositories    = [...]        # Proje altındaki repository'ler
-#   members         = [...]        # Takım üyeleri
-
+# "project-key" = {                # Proje benzersiz anahtarı (UNIQUE, değişmez)
+#   project_display_name = "..."   # Proje görünen adı (opsiyonel, insan okunabilir)
+#   team_name            = "..."   # GitHub'da oluşturulacak takım adı
+#   project_lead         = "..."   # Proje lideri GitHub kullanıcı adı
+#   team_permission      = "push"  # Takım izin seviyesi
+#   repositories         = [...]   # Proje altındaki repository'ler
+#   members              = [...]   # Takım üyeleri
+# }
+#
+# NOT: 
+#   - project-key: Terraform'un kullandığı teknik ID (unique olmalı)
+#   - project_display_name: GitHub dokümantasyonunda görünen isim (verilmezse key kullanılır)
 #
 # TEAM PERMISSION SEVİYELERİ:
 #   - "pull"     → Sadece okuma yetkisi
 #   - "triage"   → Issue/PR düzenleme, kod gönderemez
-#   - "push"     → Yazma yetkisi (kod gönderme)
+#   - "push"     → Yazma yetkisi (kod gönderme) ⭐ Önerilen
 #   - "maintain" → Kod yönetimi + issue + PR kontrolü
 #
 # MEMBER ROLE'LERİ:
 #   - "member"     → Normal takım üyesi
-#   - "maintainer" → Takım yöneticisi
+#   - "maintainer" → Takım yöneticisi (ekip yönetim yetkisi)
 #=============================================================================
 
 # Projects Configuration
@@ -31,9 +36,10 @@ projects = {
   # PROJE: Infrastructure as Code
   # ========================================
   "InfraCoders" = {
-    project_lead    = "flovearth"
-    team_name       = "InfraCoders"
-    team_permission = "push"
+    project_display_name = "Infrastructure as Code Project"
+    project_lead         = "flovearth"
+    team_name            = "InfraCoders"
+    team_permission      = "push"
     repositories = [
       {
         name        = "project-terraform-github"
@@ -91,9 +97,10 @@ projects = {
   }
 
   "kovan" = {
-    project_lead    = "hakanceran64"
-    team_name       = "Kovan"
-    team_permission = "push"
+    project_display_name = "Kovan Project"
+    project_lead         = "hakanceran64"
+    team_name            = "Kovan"
+    team_permission      = "push"
     repositories = [
       {
         name        = "communication-service"
@@ -126,9 +133,10 @@ projects = {
   }
 
   "project-test" = {
-    project_lead    = "ismailaricioglu"
-    team_name       = "Project Test"
-    team_permission = "push"
+    project_display_name = "Project Test"
+    project_lead         = "ismailaricioglu"
+    team_name            = "Project Test"
+    team_permission      = "push"
     repositories = [
       {
         name        = "test-repo"
@@ -152,9 +160,10 @@ projects = {
     ]
   },
   "project-test-ismail" = {
-    project_lead    = "ismailaricioglu"
-    team_name       = "Project Test Ismail"
-    team_permission = "push"
+    project_display_name = "Project Test Ismail"
+    project_lead         = "ismailaricioglu"
+    team_name            = "Project Test Ismail"
+    team_permission      = "push"
     repositories = [
       {
         name        = "test-repo-34"
@@ -182,14 +191,35 @@ projects = {
     ]
   },
   "project-test-lutfiye" = {
-    project_lead    = "lerkush"
-    team_permission = "push"
-    team_name       = "Project Test Lutfiye"
+    project_display_name = "Project Test Lutfiye"
+    project_lead         = "lerkush"
+    team_permission      = "push"
+    team_name            = "Project Test Lutfiye"
     repositories = [
       {
         name        = "project-test-lutfiye"
         description = "Test repository for demo purposes"
         visibility  = "public"
+        license     = ""
+
+      },
+      {
+        name        = "test_le_frontend-uygulama"
+        description = "Frontend uygulaması"
+        visibility  = "public"
+        # MIT lisansı otomatik olarak kullanılacak
+      },
+      {
+        name        = "test_le_mobil_app"
+        description = "Frontend uygulaması"
+        visibility  = "public"
+        license     = "apache-2.0"
+      },
+      {
+        name        = "test_le_uygulama"
+        description = "Frontend uygulaması"
+        visibility  = "public"
+        license     = "none"
       }
     ]
     members = [

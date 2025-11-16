@@ -97,17 +97,6 @@ git remote add upstream https://github.com/BKT-DevOps/project-terraform-github.g
 
 ```
 
-### 2️⃣ Terraform'u Kurun
-```bash
-# Terraform'u indirin: https://www.terraform.io/downloads.html
-
-# Başlatın
-terraform init
-
-# Token'ınızı ayarlayın (nasıl alacağınız aşağıda ⬇️)
-export TF_VAR_github_token="ghp_SIZIN_TOKENINIZ"
-```
-
 ### 3️⃣ Branch Oluşturun
 ```bash
 # Yeni bir branch oluşturun
@@ -115,12 +104,6 @@ git checkout -b feature/benim-harika-ozelligim
 
 # Değişikliklerinizi yapın
 # ... kod düzenlemeleri ...
-
-# Test edin
-terraform fmt
-terraform validate
-terraform plan
-```
 
 ### 4️⃣ Değişiklikleri Gönderin
 ```bash
@@ -136,59 +119,6 @@ git push origin feature/benim-harika-ozelligim
 
 **Tebrikler! İlk katkınızı yaptınız!** 🎊
 
----
-
-## 🔧 Detaylı Kurulum Rehberi
-
-### GitHub Token Nasıl Alınır?
-
-GitHub token, Terraform'un GitHub'a erişmesi için gerekli:
-
-**Adımlar:**
-1. GitHub'da sağ üst köşe → **Settings**
-2. En altta **Developer settings**
-3. **Personal access tokens** → **Tokens (classic)**
-4. **Generate new token** (classic)
-5. Token'a isim verin: `BKT-DevOps-Token`
-6. **İzinleri seçin:**
-   ```
-   ✅ repo (tümü)
-   ✅ admin:org
-   ✅ delete_repo
-   ```
-7. **Generate token** → Token'ı kopyalayın! 📋
-
-**Token'ı Kaydedin:**
-```bash
-# Linux / macOS
-echo 'export TF_VAR_github_token="ghp_..."' >> ~/.bashrc
-source ~/.bashrc
-
-# Windows (PowerShell)
-[Environment]::SetEnvironmentVariable("TF_VAR_github_token", "ghp_...", "User")
-```
-
-> **⚠️ Önemli:** Token'ı kimseyle paylaşmayın! Git'e commit etmeyin!
-
-### Terraform Kurulumu
-
-**1. İndirin:**
-- Web: https://www.terraform.io/downloads.html
-- macOS: `brew install terraform`
-- Linux: `sudo apt install terraform` veya `yum install terraform`
-- Windows: Chocolatey → `choco install terraform`
-
-**2. Kontrol Edin:**
-```bash
-terraform version
-# Terraform v1.0 veya üzeri olmalı
-```
-
-**3. VS Code Eklentileri (Önerilen):**
-- HashiCorp Terraform
-- Terraform doc snippets
-
----
 
 ## 📝 Katkı Akışı (Workflow)
 
@@ -268,23 +198,6 @@ git checkout -b docs/update-contributing-guide
 
 # Refactoring
 git checkout -b refactor/simplify-variables
-```
-
-**Çalışma Döngüsü:**
-```bash
-# 1. Kod yazın
-vim main.tf
-
-# 2. Format edin
-terraform fmt
-
-# 3. Doğrulayın
-terraform validate
-
-# 4. Test edin
-terraform plan
-
-# 5. Tekrar 1'e dönün (gerekirse)
 ```
 
 **Küçük Commitler Yapın:**
@@ -457,7 +370,7 @@ git push origin feature/your-branch
 
 ## 📚 Kod Standartları
 
-### Terraform Stili
+### Terraform Stili (Örnek)
 
 **✅ İyi Kod:**
 ```hcl
@@ -531,82 +444,6 @@ resource "github_team" "t" {
   count = var.create ? 1 : 0
   name  = element(concat(var.names, [""]), count.index)
 }
-```
-
-### Dosya Organizasyonu
-
-**Proje Yapısı:**
-```
-project-terraform-github/
-├── main.tf              # Ana kaynaklar
-├── variables.tf         # Input değişkenleri
-├── outputs.tf           # Output değerleri
-├── versions.tf          # Provider versiyonları
-├── README.md            # Proje dokümantasyonu
-├── CONTRIBUTING.md      # Bu dosya!
-├── CHANGELOG.md         # Değişiklik geçmişi
-├── .gitignore           # Git ignore kuralları
-├── examples/            # Kullanım örnekleri
-│   ├── basic/
-│   │   ├── main.tf
-│   │   └── README.md
-│   └── advanced/
-│       ├── main.tf
-│       └── README.md
-└── modules/             # Reusable modüller
-    ├── repository/
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   ├── outputs.tf
-    │   └── README.md
-    └── team/
-        ├── main.tf
-        ├── variables.tf
-        ├── outputs.tf
-        └── README.md
-```
-
----
-
-## 🧪 Test ve Doğrulama
-
-### Pre-Commit Checklist
-
-**Her commit öncesi:**
-```bash
-# 1. Format
-terraform fmt -recursive
-
-# 2. Validate
-terraform validate
-
-# 3. Plan (dry-run)
-terraform plan
-
-# 4. Git durum kontrolü
-git status
-git diff
-```
-
-### PR Öncesi Final Check
-
-```bash
-# Ana branch'den güncelleyin
-git checkout main
-git pull upstream main
-git checkout your-branch
-git rebase main
-
-# Son kontroller
-terraform fmt -check -recursive
-terraform validate
-terraform plan
-
-# Commitlerde sorun var mı?
-git log --oneline
-
-# Push
-git push origin your-branch
 ```
 
 ### Manuel Test Senaryoları
@@ -698,23 +535,6 @@ Reddedilme olumsuz bir şey değil, öğrenme sürecinin parçası!
 
 ### 🔧 Teknik Konular
 
-**S: "Token invalid" hatası alıyorum?**
-
-A: Token kontrolü:
-```bash
-# 1. Token ayarlı mı?
-echo $TF_VAR_github_token
-
-# 2. Token doğru mu? (GitHub'da kontrol edin)
-
-# 3. İzinler yeterli mi?
-# repo, admin:org, delete_repo gerekli
-
-# 4. Yeniden ayarlayın
-export TF_VAR_github_token="ghp_YENI_TOKEN"
-terraform init
-```
-
 **S: Git conflict çözemiyorum?**
 
 A: Adım adım:
@@ -746,24 +566,6 @@ git push origin your-branch --force-with-lease
 ```
 
 Hala sorun varsa, issue'da yardım isteyin!
-
-**S: Terraform plan çok uzun, normal mi?**
-
-A: Optimize edin:
-```bash
-# 1. Target kullanın (test için)
-terraform plan -target=github_repository.specific
-
-# 2. Parallelism azaltın
-terraform plan -parallelism=5
-
-# 3. Cache'i temizleyin
-rm -rf .terraform
-terraform init
-
-# 4. State'i kontrol edin
-terraform state list
-```
 
 ### 🤝 İşbirliği
 
@@ -828,23 +630,6 @@ git push origin --delete feature/your-branch
 - ⚠️ Herhangi bir şeyi anlamadıysanız
 
 > **💡 Unutmayın:** Aptalca soru yoktur! Sormak öğrenmenin ilk adımıdır.
-
-### Topluluk Kuralları
-
-**🤝 Saygılı Olun**
-- Farklı görüşlere açık olun
-- Yapıcı eleştiri yapın
-- Kişisel saldırıdan kaçının
-
-**💡 Yardımsever Olun**
-- Yeni gelenlere destek olun
-- Bilginizi paylaşın
-- Sabırlı olun
-
-**🎯 Odaklanın**
-- Konu dışına çıkmayın
-- Profesyonel bir dil kullanın
-- Spam yapmayın
 
 ---
 
@@ -975,17 +760,6 @@ cd project-terraform-github
 git remote add upstream https://github.com/BKT-DevOps/project-terraform-github.git
 ```
 
-### 2️⃣ Install Terraform
-```bash
-# Download Terraform: https://www.terraform.io/downloads.html
-
-# Initialize
-terraform init
-
-# Set your token (how to get it below ⬇️)
-export TF_VAR_github_token="ghp_YOUR_TOKEN"
-```
-
 ### 3️⃣ Create a Branch
 ```bash
 # Create a new branch
@@ -993,12 +767,6 @@ git checkout -b feature/my-awesome-feature
 
 # Make your changes
 # ... code edits ...
-
-# Test
-terraform fmt
-terraform validate
-terraform plan
-```
 
 ### 4️⃣ Send Changes
 ```bash
@@ -1013,58 +781,6 @@ git push origin feature/my-awesome-feature
 ```
 
 **Congratulations! You made your first contribution!** 🎊
-
----
-
-## 🔧 Detailed Setup Guide
-
-### How to Get GitHub Token?
-
-GitHub token is required for Terraform to access GitHub:
-
-**Steps:**
-1. GitHub top right corner → **Settings**
-2. At the bottom **Developer settings**
-3. **Personal access tokens** → **Tokens (classic)**
-4. **Generate new token** (classic)
-5. Name the token: `BKT-DevOps-Token`
-6. **Select permissions:**
-   ```
-   ✅ repo (all)
-   ✅ admin:org
-   ✅ delete_repo
-   ```
-7. **Generate token** → Copy the token! 📋
-
-**Save the Token:**
-```bash
-# Linux / macOS
-echo 'export TF_VAR_github_token="ghp_..."' >> ~/.bashrc
-source ~/.bashrc
-
-# Windows (PowerShell)
-[Environment]::SetEnvironmentVariable("TF_VAR_github_token", "ghp_...", "User")
-```
-
-> **⚠️ Important:** Don't share the token with anyone! Don't commit to Git!
-
-### Terraform Installation
-
-**1. Download:**
-- Web: https://www.terraform.io/downloads.html
-- macOS: `brew install terraform`
-- Linux: `sudo apt install terraform` or `yum install terraform`
-- Windows: Chocolatey → `choco install terraform`
-
-**2. Check:**
-```bash
-terraform version
-# Should be Terraform v1.0 or higher
-```
-
-**3. VS Code Extensions (Recommended):**
-- HashiCorp Terraform
-- Terraform doc snippets
 
 ---
 
@@ -1103,7 +819,6 @@ What happened?
 
 ## 💻 Environment
 - OS: [e.g. macOS 13, Ubuntu 22.04]
-- Terraform: [e.g. v1.5.0]
 - Provider: [e.g. hashicorp/github v5.0.0]
 
 ## 📎 Attachments
@@ -1146,23 +861,6 @@ git checkout -b docs/update-contributing-guide
 
 # Refactoring
 git checkout -b refactor/simplify-variables
-```
-
-**Work Cycle:**
-```bash
-# 1. Write code
-vim main.tf
-
-# 2. Format
-terraform fmt
-
-# 3. Validate
-terraform validate
-
-# 4. Test
-terraform plan
-
-# 5. Go back to 1 (if needed)
 ```
 
 **Make Small Commits:**
@@ -1261,9 +959,6 @@ Examples:
 
 ## 🧪 How Was It Tested?
 - [ ] Tested locally
-- [ ] terraform fmt executed
-- [ ] terraform validate successful
-- [ ] terraform plan reviewed
 - [ ] Manual test scenarios performed
 
 ## 📸 Screenshots
@@ -1280,7 +975,6 @@ Task Ticket Number #123
 Relates to #456
 
 ## ✅ Checklist
-- [ ] Code formatted (terraform fmt)
 - [ ] Tests passed
 - [ ] Documentation completed
 - [ ] No breaking changes (or noted if yes)
@@ -1335,7 +1029,7 @@ git push origin feature/your-branch
 
 ## 📚 Code Standards
 
-### Terraform Style
+### Terraform Style (Example)
 
 **✅ Good Code:**
 ```hcl
@@ -1413,53 +1107,9 @@ resource "github_team" "t" {
 
 ### File Organization
 
-**Project Structure:**
-```
-project-terraform-github/
-├── main.tf              # Main resources
-├── variables.tf         # Input variables
-├── outputs.tf           # Output values
-├── versions.tf          # Provider versions
-├── README.md            # Project documentation
-├── CONTRIBUTING.md      # This file!
-├── CHANGELOG.md         # Change history
-├── .gitignore           # Git ignore rules
-├── examples/            # Usage examples
-│   ├── basic/
-│   │   ├── main.tf
-│   │   └── README.md
-│   └── advanced/
-│       ├── main.tf
-│       └── README.md
-└── modules/             # Reusable modules
-    ├── repository/
-    │   ├── main.tf
-    │   ├── variables.tf
-    │   ├── outputs.tf
-    │   └── README.md
-    └── team/
-        ├── main.tf
-        ├── variables.tf
-        ├── outputs.tf
-        └── README.md
-```
-
----
-
 ## 🧪 Testing and Validation
 
 ### Pre-Commit Checklist
-
-**Before each commit:**
-```bash
-# 1. Format
-terraform fmt -recursive
-
-# 2. Validate
-terraform validate
-
-# 3. Plan (dry-run)
-terraform plan
 
 # 4. Git status check
 git status
@@ -1554,16 +1204,6 @@ A: Great starting point! We recommend:
 3. Add usage example to README
 4. Chat with community in Discussions
 
-**Q: I don't know Terraform, do I need to learn it?**
-
-A: You can contribute without coding:
-- Documentation improvements
-- Bug detection and reporting
-- Suggesting use cases
-- Providing community support
-
-If you want to learn Terraform, start with small changes!
-
 **Q: What happens if my PR is rejected?**
 
 A: Don't worry! This is normal:
@@ -1575,23 +1215,6 @@ A: Don't worry! This is normal:
 Rejection is not negative, it's part of the learning process!
 
 ### 🔧 Technical Issues
-
-**Q: I'm getting "Token invalid" error?**
-
-A: Token check:
-```bash
-# 1. Is token set?
-echo $TF_VAR_github_token
-
-# 2. Is token correct? (check on GitHub)
-
-# 3. Are permissions sufficient?
-# repo, admin:org, delete_repo required
-
-# 4. Reset
-export TF_VAR_github_token="ghp_NEW_TOKEN"
-terraform init
-```
 
 **Q: I can't resolve Git conflict?**
 
@@ -1624,24 +1247,6 @@ git push origin your-branch --force-with-lease
 ```
 
 Still having issues? Ask for help in the issue!
-
-**Q: Terraform plan is very long, is this normal?**
-
-A: Optimize:
-```bash
-# 1. Use target (for testing)
-terraform plan -target=github_repository.specific
-
-# 2. Reduce parallelism
-terraform plan -parallelism=5
-
-# 3. Clean cache
-rm -rf .terraform
-terraform init
-
-# 4. Check state
-terraform state list
-```
 
 ### 🤝 Collaboration
 
@@ -1706,23 +1311,6 @@ Don't hesitate in these situations:
 - ⚠️ If you don't understand anything
 
 > **💡 Remember:** There are no stupid questions! Asking is the first step of learning.
-
-### Community Rules
-
-**🤝 Be Respectful**
-- Be open to different opinions
-- Give constructive criticism
-- Avoid personal attacks
-
-**💡 Be Helpful**
-- Support newcomers
-- Share your knowledge
-- Be patient
-
-**🎯 Stay Focused**
-- Don't go off-topic
-- Use professional language
-- Don't spam
 
 ---
 

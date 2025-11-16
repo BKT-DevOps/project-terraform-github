@@ -1,4 +1,4 @@
-# InfraCoders Takımı ve Rolleri
+# Infrastructure as Code Project Takımı ve Rolleri
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
@@ -7,7 +7,7 @@ Bu projedeki güncel ekip üyelerini ve rollerini görmek için lütfen GitHub'�
 ---
 ## 📊 Takım İstatistikleri
 
-- **Proje Adı:** InfraCoders
+- **Proje Adı:** Infrastructure as Code Project
 - **Takım Adı:** InfraCoders
 - **Proje Lideri:** @flovearth
 - **Toplam Üye Sayısı:** 11
@@ -50,7 +50,7 @@ To see the current members and roles of this project, please visit the official 
 
 ## 📊 Team Statistics
 
-- **Project Name:** InfraCoders
+- **Project Name:** Infrastructure as Code Project
 - **Team Name:** InfraCoders
 - **Project Lead:** @flovearth
 - **Total Members:** 11
