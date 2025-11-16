@@ -3,7 +3,7 @@
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
 Bu projedeki güncel ekip üyelerini ve rollerini görmek için lütfen GitHub'ın kendi takım sayfasını ziyaret edin. Oradaki liste **her zaman günceldir**.
-### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
+### ➡️ [Güncel Takım Listesi İçin Tıkla](https://github.com/orgs/BKT-DevOps/teams/InfraCoders)
 ---
 ## 📊 Takım İstatistikleri
 
@@ -44,7 +44,7 @@ Bu dokümanın amacı ise projedeki rolleri ve sorumlulukları tanımlamaktır.
 
 To see the current members and roles of this project, please visit the official GitHub Team page. The list there is **always up-to-date**.
 
-### ➡️ [Click Here for the Current Team List](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
+### ➡️ [Click Here for the Current Team List](https://github.com/orgs/BKT-DevOps/teams/InfraCoders)
 
 ---
 
