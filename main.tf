@@ -247,7 +247,7 @@ resource "github_repository_file" "docs_project" {
     ),
     "{{PROJECT_LEAD}}", each.value.project_lead
   )
-  commit_message = "Add project documentation"
+  commit_message = "initial commit"
 
   overwrite_on_create = true
 
@@ -271,7 +271,7 @@ resource "github_repository_file" "docs_architecture" {
     file("${path.module}/docs/Architecture-Overview.md"),
     "{{PROJECT_NAME}}", each.value.project_display_name
   )
-  commit_message = "Add Architecture Overview document"
+  commit_message = "initial commit"
 
   overwrite_on_create = true
 
@@ -414,6 +414,28 @@ resource "github_repository_file" "readme" {
   # }
 }
 
+# Create comprehensive README for each repository
+resource "github_repository_file" "contributing" {
+  for_each = { for repo in local.all_repos : repo.repo_name => repo }
+
+  repository = github_repository.repo[each.key].name
+  file       = "CONTRIBUTING.md"
+  content = file("${path.module}/docs/CONTRIBUTING.md")
+  commit_message = "initial commit"
+
+  depends_on = [
+    github_repository.repo,
+    github_team_repository.access,
+    github_repository_collaborator.project_lead
+  ]
+
+  overwrite_on_create = true # This will overwrite the auto-generated README
+
+  # lifecycle {
+  #   ignore_changes = [content]
+  # }
+}
+
 # --- Code of Conduct dosyasını her repoya ekle ---
 resource "github_repository_file" "code_of_conduct" {
   for_each = { for repo in local.all_repos : repo.repo_name => repo }
@@ -422,7 +444,7 @@ resource "github_repository_file" "code_of_conduct" {
   branch         = "main"
   file           = "CODE_OF_CONDUCT.md"
   content        = file("${path.module}/CODE_OF_CONDUCT.md")
-  commit_message = "Add CODE_OF_CONDUCT.md file"
+  commit_message = "initial commit"
 
   overwrite_on_create = true
 
@@ -440,10 +462,16 @@ resource "github_repository_file" "wiki_home" {
   file       = "docs/Wiki-Home.md" # Wiki için referans
   content = replace(
     replace(
-      file("${path.module}/docs/Wiki-Home.md"),
-      "{{PROJECT_NAME}}", each.value.project_display_name
+      replace(
+        replace(
+          file("${path.module}/docs/Wiki-Home.md"),
+          "{{PROJECT_NAME}}", each.value.project_display_name
+        ),
+        "{{PROJECT_LEAD}}", each.value.project_lead
+      ),
+      "{{TEAM_NAME}}", var.projects[each.value.project_name].team_name
     ),
-    "{{PROJECT_LEAD}}", each.value.project_lead
+    "{{GITHUB_ORG}}", var.github_organization
   )
   commit_message      = "initial commit"
   overwrite_on_create = true
@@ -498,7 +526,7 @@ resource "github_repository_file" "pr_template" {
   repository     = github_repository.repo[each.key].name
   file           = ".github/pull_request_template.md"
   content        = file("${path.module}/.github/pull_request_template.md")
-  commit_message = "Add default PR template"
+  commit_message = "initial commit"
 
   overwrite_on_create = true
 
@@ -522,7 +550,7 @@ resource "github_repository_file" "gitignore" {
   branch         = "main"
   file           = ".gitignore"
   content        = file("${path.module}/.gitignore.default")
-  commit_message = "Add default .gitignore file"
+  commit_message = "initial commit"
 
   overwrite_on_create = true
 

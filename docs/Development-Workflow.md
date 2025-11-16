@@ -1,4 +1,4 @@
-ü# Geliştirme Akışı
+## Geliştirme Akışı (Örnek)
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>

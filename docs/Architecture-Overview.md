@@ -1,4 +1,4 @@
-# Mimariye Genel Bakış
+# Mimariye Genel Bakış (Örnek)
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 <br>
