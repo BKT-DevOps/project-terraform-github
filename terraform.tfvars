@@ -253,7 +253,7 @@ projects = {
       {
         username = "slymanmrcan"
         role     = "maintainer"
-      # }
+      }
     ]
   }
 }
