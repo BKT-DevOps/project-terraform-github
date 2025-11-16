@@ -1,4 +1,4 @@
-# {{REPO_NAME}}
+# {{REPO_NAME}} (Örnek)
 
 <div align="center">
 

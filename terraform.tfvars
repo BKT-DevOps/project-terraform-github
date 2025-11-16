@@ -35,66 +35,66 @@ projects = {
   # ========================================
   # PROJE: Infrastructure as Code
   # ========================================
-  "InfraCoders" = {
-    project_display_name = "Infrastructure as Code Project"
-    project_lead         = "flovearth"
-    team_name            = "InfraCoders"
-    team_permission      = "push"
-    repositories = [
-      {
-        name        = "project-terraform-github"
-        description = "Terraform ile GitHub Repolarının Otomatik Yönetimi"
-        visibility  = "public"
-      },
+  # "InfraCoders" = {
+  #   project_display_name = "Infrastructure as Code Project"
+  #   project_lead         = "flovearth"
+  #   team_name            = "InfraCoders"
+  #   team_permission      = "push"
+  #   repositories = [
+  #     {
+  #       name        = "project-terraform-github"
+  #       description = "Terraform ile GitHub Repolarının Otomatik Yönetimi"
+  #       visibility  = "public"
+  #     },
 
-    ]
-    members = [
-      {
-        username = "barisbutun"
-        role     = "member"
-      },
-      {
-        username = "hakanceran64"
-        role     = "member"
-      },
-      {
-        username = "hulyaoner"
-        role     = "member"
-      },
-      {
-        username = "ismailaricioglu"
-        role     = "member"
-      },
-      {
-        username = "karalarmehmet"
-        role     = "member"
-      },
-      {
-        username = "kheif"
-        role     = "member"
-      },
-      {
-        username = "purfatih"
-        role     = "member"
-      },
-      {
-        username = "seyid12"
-        role     = "member"
-      },
-      {
-        username = "Shamsiaa"
-        role     = "member"
-      },
-      {
-        username = "slymanmrcan"
-        role     = "member"
-      },
-      {
-        username = "lerkush"
-        role     = "member"
-      }
-    ]
-  }
+  #   ]
+  #   members = [
+  #     {
+  #       username = "barisbutun"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "hakanceran64"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "hulyaoner"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "ismailaricioglu"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "karalarmehmet"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "kheif"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "purfatih"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "seyid12"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "Shamsiaa"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "slymanmrcan"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "lerkush"
+  #       role     = "member"
+  #     }
+  #   ]
+  # }
 
   "kovan" = {
     project_display_name = "Kovan Project"
@@ -184,10 +184,7 @@ projects = {
         username = "onurceylan"
         role     = "member"
       },
-      {
-        username = "flovearth"
-        role     = "member"
-      }
+
     ]
   },
   "project-test-lutfiye" = {
@@ -201,7 +198,6 @@ projects = {
         description = "Test repository for demo purposes"
         visibility  = "public"
         license     = ""
-
       },
       {
         name        = "test_le_frontend-uygulama"
@@ -231,10 +227,10 @@ projects = {
         username = "onurceylan"
         role     = "member"
       },
-      {
-        username = "flovearth"
-        role     = "member"
-      }
+      # {
+      #   username = "flovearth"
+      #   role     = "member"
+      # }
     ]
   }
 }
