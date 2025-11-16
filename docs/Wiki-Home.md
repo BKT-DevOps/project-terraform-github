@@ -4,7 +4,7 @@
 
 Bu alan, **Infrastructure as Code Project** projesinin yaşayan dokümantasyon merkezidir. Projenin mimarisi, tasarım kararları ve uzun vadeli bilgileri burada yer alacaktır.
 
-👤 **Proje Lideri:** @flovearth  
+👤 **Proje Lideri:** @{{PROJECT_LEAD}}  
 👥 **Takım:** [{{TEAM_NAME}}](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
 ---
 
@@ -36,7 +36,7 @@ Bu Wiki, `README.md` dosyasını tamamlayıcı niteliktedir. `README.md` projeni
 This is the living documentation hub for the **Infrastructure as Code Project** project. The project's architecture, design decisions, and long-term information will reside here.
 
 
-👤 **Project Lead:** @flovearth  
+👤 **Project Lead:** @{{PROJECT_LEAD}}  
 👥 **Team:** [{{TEAM_NAME}}](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
 
 ---
