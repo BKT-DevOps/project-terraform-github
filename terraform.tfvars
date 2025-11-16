@@ -187,36 +187,55 @@ projects = {
 
     ]
   },
-  "project-test-lutfiye" = {
-    project_display_name = "Project Test Lutfiye"
+  "lutfiye_test_projects " = {
+    project_display_name = "Test Projects of Lutfiye"
     project_lead         = "lerkush"
     team_permission      = "push"
-    team_name            = "Project Test Lutfiye"
+    team_name            = "Cherish"
     repositories = [
       {
-        name        = "project-test-lutfiye"
+        name        = "test_le_backend"
         description = "Test repository for demo purposes"
         visibility  = "public"
-        license     = ""
+        license     = "" # MIT lisansı olusmalı
       },
       {
-        name        = "test_le_frontend-uygulama"
-        description = "Frontend uygulaması"
+        name        = "test_le_frontend"
+        description = "Test repository for demo purposes"
         visibility  = "public"
         # MIT lisansı otomatik olarak kullanılacak
       },
       {
-        name        = "test_le_mobil_app"
-        description = "Frontend uygulaması"
+        name        = "test_le_web"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+        license     = "mit"
+      },
+      {
+        name        = "test_le_android"
+        description = "Test repository for demo purposes"
         visibility  = "public"
         license     = "apache-2.0"
       },
       {
-        name        = "test_le_uygulama"
-        description = "Frontend uygulaması"
+        name        = "test_le_ios"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+        license     = "lgpl-3.0"
+      },
+      {
+        name        = "test_le_document"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+        license     = "unlicense"
+      },
+      {
+        name        = "test_le_docs"
+        description = "Test repository for demo purposes"
         visibility  = "public"
         license     = "none"
       }
+
     ]
     members = [
       {
@@ -227,10 +246,14 @@ projects = {
         username = "onurceylan"
         role     = "member"
       },
-      # {
-      #   username = "flovearth"
-      #   role     = "member"
-      # }
+      {
+        username = "karalarmehmet"
+        role     = "member"
+      },
+      {
+        username = "slymanmrcan"
+        role     = "maintainer"
+      }
     ]
   }
 }
