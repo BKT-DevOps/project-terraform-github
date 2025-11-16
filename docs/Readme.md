@@ -1,4 +1,4 @@
-# {{REPO_NAME}} (Örnek)
+# {{PROJECT_NAME}} (Örnek)
 
 <div align="center">
 
@@ -61,7 +61,7 @@ cd {{REPO_NAME}}
 
 ## 🤝 Katkıda Bulunma
 
-Katkıda bulunmak için lütfen [`CONTRIBUTING.md`](CONTRIBUTING.md) dosyasını inceleyin.
+Katkıda bulunmak için lütfen [`CONTRIBUTING.md`](.github/CONTRIBUTING.md) dosyasını inceleyin.
 
 ## 📚 Dokümantasyon
 
@@ -129,7 +129,7 @@ cd {{REPO_NAME}}
 
 ## 🤝 Contributing
 
-Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution guidelines.
+Please see [`CONTRIBUTING.md`](.github/CONTRIBUTING.md) for contribution guidelines.
 
 ## 📚 Documentation
 
