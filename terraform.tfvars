@@ -230,7 +230,7 @@ projects = {
         license     = "unlicense"
       },
       {
-        name        = "test_le_document"
+        name        = "test_le_docs"
         description = "Test repository for demo purposes"
         visibility  = "public"
         license     = "none"
