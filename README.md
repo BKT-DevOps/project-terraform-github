@@ -83,7 +83,7 @@ Bu proje MIT Lisansı ile lisanslanmıştır - detaylar için [LICENSE](LICENSE)
 <summary><strong>🇬🇧 English</strong></summary>
 
 <br>
-
+ 
 > **IMPORTANT:** This repository is part of **Infrastructure as Code Project** project. See [`docs/Project-Definition.md`](docs/Project-Definition.md) for details.
 
 ## 📖 About
