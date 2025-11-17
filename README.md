@@ -78,7 +78,7 @@ Bu proje MIT Lisansı ile lisanslanmıştır - detaylar için [LICENSE](LICENSE)
 **Proje Lideri:** [@flovearth](https://github.com/flovearth)
 
 </details>
-
+  
 <details>
 <summary><strong>🇬🇧 English</strong></summary>
 
