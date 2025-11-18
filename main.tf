@@ -542,7 +542,7 @@ resource "github_repository_file" "issue_template_config" {
   file       = ".github/ISSUE_TEMPLATE/config.yml"
   content = replace(
     replace(
-      file("${path.module}/.github/ISSUE_TEMPLATE/config.yml"),
+      file("${path.module}/.github/ISSUE_TEMPLATE/config.yml.tpl"),
       "{{GITHUB_ORG}}", var.github_organization
     ),
     "{{REPO_NAME}}", each.key
@@ -551,6 +551,11 @@ resource "github_repository_file" "issue_template_config" {
   overwrite_on_create = true
 
   depends_on = [github_repository.repo]
+
+  lifecycle {
+    ignore_changes = [content]
+  }
+  
 }
 
 # Abuse report template
