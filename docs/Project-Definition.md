@@ -1,11 +1,11 @@
-# Infrastructure as Code Project - Proje Tanımı / Project Definition
+# Proje Tanımı (Örnek)
 
 <details open>
 <summary><strong>🇹🇷 Türkçe</strong></summary>
 
 <br>
 
-Bu belge **Infrastructure as Code Project** projesinin amacını, hedeflerini ve kapsamını tanımlar.
+Bu belge **{{PROJECT_NAME}}** projesinin amacını, hedeflerini ve kapsamını tanımlar.
 
 ---
 
@@ -37,7 +37,7 @@ Bu belge **Infrastructure as Code Project** projesinin amacını, hedeflerini ve
 
 ## 👥 Proje Ekibi
 
-**Proje Lideri:** @flovearth
+**Proje Lideri:** @{{PROJECT_LEAD}}  
 
 **Takım Üyeleri:**
 <!-- Takım üyelerini buraya ekleyin -->
@@ -91,7 +91,7 @@ This document defines the purpose, goals, and scope of **Infrastructure as Code 
 
 ## 👥 Project Team
 
-**Project Lead:** @flovearth
+**Project Lead:** @{{PROJECT_LEAD}}  
 
 **Team Members:**
 <!-- Add team members here -->

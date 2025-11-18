@@ -1,11 +1,11 @@
-# Infrastructure as Code Project Projesi Wiki'sine Hoş Geldiniz
+# {{PROJECT_NAME}} Projesi Wiki'sine Hoş Geldiniz (Örnek)
 
 <details open> <summary><strong>🇹🇷 Türkçe</strong></summary> <br>
 
-Bu alan, **Infrastructure as Code Project** projesinin yaşayan dokümantasyon merkezidir. Projenin mimarisi, tasarım kararları ve uzun vadeli bilgileri burada yer alacaktır.
+Bu alan, **{{PROJECT_NAME}}** projesinin yaşayan dokümantasyon merkezidir. Projenin mimarisi, tasarım kararları ve uzun vadeli bilgileri burada yer alacaktır.
 
-👤 **Proje Lideri:** @flovearth  
-👥 **Takım:** [{{TEAM_NAME}}](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
+👤 **Proje Lideri:** @{{PROJECT_LEAD}}  
+👥 **Takım:** {{TEAM_NAME}}[https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}}]
 ---
 
 ### 📝 Wiki'yi Kullanma Rehberi
@@ -20,12 +20,12 @@ Bu Wiki, `README.md` dosyasını tamamlayıcı niteliktedir. `README.md` projeni
 
 ### 🗺️ Sayfa Haritası ve Faydalı Linkler
 
-- **[Takım Bilgileri](wiki_team)**: Proje ekibi ve rolleri hakkında güncel bilgi için bu sayfayı ziyaret edin.
+- **[Takım Bilgileri](Team)**: Proje ekibi ve rolleri hakkında güncel bilgi için bu sayfayı ziyaret edin.
 - **[Proje Tanıtım Belgesi](Project-Definition)**: Projenin ana hedefleri ve kapsamı.
 - **[Mimariye Genel Bakış](Architecture-Overview)**: Projenin ana bileşenlerini ve etkileşimlerini anlatan sayfa.
 - **[Geliştirme Akışı](Development-Workflow)**: Detaylı branch stratejisi, kod inceleme ve test süreçleri.
-- **[Issue Takip Panosu](../issues)**: Mevcut görevleri ve hataları görmek için.
-- **[Proje Panosu](../projects)**: Projenin genel yol haritasını görmek için.
+- **[Issue Takip Panosu](https://github.com/{{GITHUB_ORG}}/{{REPO_NAME}}/issues)**: Mevcut görevleri ve hataları görmek için.
+- **[Proje Panosu](https://github.com/{{GITHUB_ORG}}/{{REPO_NAME}}/projects)**: Projenin genel yol haritasını görmek için.
 
 <p align="right"><i>Bu sayfa Terraform tarafından otomatik olarak oluşturulmuştur.</i></p>
 </details>
@@ -33,10 +33,10 @@ Bu Wiki, `README.md` dosyasını tamamlayıcı niteliktedir. `README.md` projeni
 <details> <summary><strong>🇬🇧 English</strong></summary> <br>
 
 
-This is the living documentation hub for the **Infrastructure as Code Project** project. The project's architecture, design decisions, and long-term information will reside here.
+This is the living documentation hub for the **{{PROJECT_NAME}}** project. The project's architecture, design decisions, and long-term information will reside here.
 
 
-👤 **Project Lead:** @flovearth  
+👤 **Project Lead:** @{{PROJECT_LEAD}}  
 👥 **Team:** [{{TEAM_NAME}}](https://github.com/orgs/{{GITHUB_ORG}}/teams/{{TEAM_NAME}})
 
 ---

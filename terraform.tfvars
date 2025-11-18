@@ -35,66 +35,66 @@ projects = {
   # ========================================
   # PROJE: Infrastructure as Code
   # ========================================
-  "InfraCoders" = {
-    project_display_name = "Infrastructure as Code Project"
-    project_lead         = "flovearth"
-    team_name            = "InfraCoders"
-    team_permission      = "push"
-    repositories = [
-      {
-        name        = "project-terraform-github"
-        description = "Terraform ile GitHub Repolarının Otomatik Yönetimi"
-        visibility  = "public"
-      },
+  # "InfraCoders" = {
+  #   project_display_name = "Infrastructure as Code Project"
+  #   project_lead         = "flovearth"
+  #   team_name            = "InfraCoders"
+  #   team_permission      = "push"
+  #   repositories = [
+  #     {
+  #       name        = "project-terraform-github"
+  #       description = "Terraform ile GitHub Repolarının Otomatik Yönetimi"
+  #       visibility  = "public"
+  #     },
 
-    ]
-    members = [
-      {
-        username = "barisbutun"
-        role     = "member"
-      },
-      {
-        username = "hakanceran64"
-        role     = "member"
-      },
-      {
-        username = "hulyaoner"
-        role     = "member"
-      },
-      {
-        username = "ismailaricioglu"
-        role     = "member"
-      },
-      {
-        username = "karalarmehmet"
-        role     = "member"
-      },
-      {
-        username = "kheif"
-        role     = "member"
-      },
-      {
-        username = "purfatih"
-        role     = "member"
-      },
-      {
-        username = "seyid12"
-        role     = "member"
-      },
-      {
-        username = "Shamsiaa"
-        role     = "member"
-      },
-      {
-        username = "slymanmrcan"
-        role     = "member"
-      },
-      {
-        username = "lerkush"
-        role     = "member"
-      }
-    ]
-  }
+  #   ]
+  #   members = [
+  #     {
+  #       username = "barisbutun"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "hakanceran64"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "hulyaoner"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "ismailaricioglu"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "karalarmehmet"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "kheif"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "purfatih"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "seyid12"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "Shamsiaa"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "slymanmrcan"
+  #       role     = "member"
+  #     },
+  #     {
+  #       username = "lerkush"
+  #       role     = "member"
+  #     }
+  #   ]
+  # }
 
   "kovan" = {
     project_display_name = "Kovan Project"
@@ -132,95 +132,56 @@ projects = {
     ]
   }
 
-  "project-test" = {
-    project_display_name = "Project Test"
-    project_lead         = "ismailaricioglu"
-    team_name            = "Project Test"
-    team_permission      = "push"
-    repositories = [
-      {
-        name        = "test-repo"
-        description = "Test repository for demo purposes"
-        visibility  = "public"
-      }
-    ]
-    members = [
-      {
-        username = "egeren"
-        role     = "maintainer"
-      },
-      {
-        username = "UsainSasal"
-        role     = "member"
-      },
-      {
-        username = "onurceylan"
-        role     = "member"
-      }
-    ]
-  },
-  "project-test-ismail" = {
-    project_display_name = "Project Test Ismail"
-    project_lead         = "ismailaricioglu"
-    team_name            = "Project Test Ismail"
-    team_permission      = "push"
-    repositories = [
-      {
-        name        = "test-repo-34"
-        description = "Test repository for demo purposes"
-        visibility  = "public"
-      }
-    ]
-    members = [
-      {
-        username = "egeren"
-        role     = "maintainer"
-      },
-      {
-        username = "UsainSasal"
-        role     = "member"
-      },
-      {
-        username = "onurceylan"
-        role     = "member"
-      },
-      {
-        username = "flovearth"
-        role     = "member"
-      }
-    ]
-  },
-  "project-test-lutfiye" = {
-    project_display_name = "Project Test Lutfiye"
+
+  "lutfiye_test_projects" = {
+    project_display_name = "Test Projects of Lutfiye"
     project_lead         = "lerkush"
     team_permission      = "push"
-    team_name            = "Project Test Lutfiye"
+    team_name            = "Cherish"
     repositories = [
       {
-        name        = "project-test-lutfiye"
+        name        = "test_le_backend"
         description = "Test repository for demo purposes"
         visibility  = "public"
-        license     = ""
-
+        license     = "" # MIT lisansı olusmalı
       },
       {
-        name        = "test_le_frontend-uygulama"
-        description = "Frontend uygulaması"
+        name        = "test_le_frontend"
+        description = "Test repository for demo purposes"
         visibility  = "public"
         # MIT lisansı otomatik olarak kullanılacak
       },
       {
-        name        = "test_le_mobil_app"
-        description = "Frontend uygulaması"
+        name        = "test_le_web"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+        license     = "mit"
+      },
+      {
+        name        = "test_le_android"
+        description = "Test repository for demo purposes"
         visibility  = "public"
         license     = "apache-2.0"
       },
       {
-        name        = "test_le_uygulama"
-        description = "Frontend uygulaması"
+        name        = "test_le_ios"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+        license     = "lgpl-3.0"
+      },
+      {
+        name        = "test_le_document"
+        description = "Test repository for demo purposes"
+        visibility  = "public"
+        license     = "unlicense"
+      },
+      {
+        name        = "test_le_docs"
+        description = "Test repository for demo purposes"
         visibility  = "public"
         license     = "none"
       }
+
     ]
     members = [
       {
@@ -232,28 +193,53 @@ projects = {
         role     = "member"
       },
       {
+        username = "karalarmehmet"
+        role     = "member"
+      },
+      {
+        username = "slymanmrcan"
+        role     = "maintainer"
+      }
+    ]
+  }
+
+  "feyz-test" = {
+    project_display_name = "Feedback System"
+    project_lead         = "flovearth"
+    team_name            = "Feedy"
+    team_permission      = "push"
+    repositories = [
+      {
+        name        = "feedback-service"
+        description = "Core service for Project Feedy"
+        visibility  = "public"
+      }
+    ]
+    members = [
+      {
         username = "flovearth"
+        role     = "maintainer"
+      },
+      {
+        username = "ismailaricioglu"
+        role     = "member"
+      },
+      {
+        username = "hulyaoner"
+        role     = "member"
+      },
+      {
+        username = "slymanmrcan"
+        role     = "member"
+      },
+      {
+        username = "barisbutun"
         role     = "member"
       }
     ]
   }
+
+
 }
 
-
-# DIPNOT: Diğer rol ve zini türleri aşağıda listelenmiştir. İhtiyaca göre ilgili özellikler tanımlanabilinir.
-
-# Organization (Organizasyon) Roller  : github_membership
-# Team (Takım) Roller                 : github_team_membership
-# Environment Protection Rules        : github_repository_environment
-# Actions / Workflow Roller           : github_actions_repository_permissions
-# Branch Protection Roller            : github_branch_protection
-
-# | Kapsam            | Roller / İzinler                               |
-# | ----------------- | ---------------------------------------------- |
-# | Repository        | `admin`, `maintain`, `write`, `triage`, `read` |
-# | Organization      | `admin`, `member`                              |
-# | Team              | `maintainer`, `member`                         |
-# | Environment       | `selected_teams`, `selected_users`, `all`      |
-# | Actions           | `read`, `write`, `none`                        |
-# | Branch Protection | Kullanıcı/Takım bazlı kısıtlama                |
 
