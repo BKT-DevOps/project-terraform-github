@@ -344,6 +344,9 @@ resource "github_repository_file" "issue_template_config" {
   overwrite_on_create = true
 
   depends_on = [github_repository.repo]
+  lifecycle {
+    ignore_changes = [content]
+  }
 }
 
 # Abuse report template
